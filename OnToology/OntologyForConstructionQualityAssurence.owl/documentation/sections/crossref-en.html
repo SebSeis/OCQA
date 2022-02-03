@@ -1,0 +1,417 @@
+<h2 id="crossreference" class="list">Cross reference for Ontology for Construction Quality Assurence (OCQA) classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by Ontology for Construction Quality Assurence (OCQA).
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#Record" title="https://w3id.org/ocqa#Record">Aufnahme</a>
+      </li>
+      <li>
+         <a href="#Documentation" title="https://w3id.org/ocqa#Documentation">Dokumentation</a>
+      </li>
+      <li>
+         <a href="#ExternalResource" title="https://w3id.org/ocqa#ExternalResource">Externe Ressource</a>
+      </li>
+      <li>
+         <a href="#InspectionTask" title="https://w3id.org/ocqa#InspectionTask">Kontrollaktivität</a>
+      </li>
+      <li>
+         <a href="#Defect" title="https://w3id.org/ocqa#Defect">Mangel</a>
+      </li>
+      <li>
+         <a href="#Certificate" title="https://w3id.org/ocqa#Certificate">Nachweis</a>
+      </li>
+      <li>
+         <a href="#Inspection" title="https://w3id.org/ocqa#Inspection">Prüfung</a>
+      </li>
+      <li>
+         <a href="#InspectionMethod" title="https://w3id.org/ocqa#InspectionMethod">Prüfungsmethode</a>
+      </li>
+      <li>
+         <a href="#Damage" title="https://w3id.org/ocqa#Damage">Schaden</a>
+      </li>
+      <li>
+         <a href="#ControlMeasure" title="https://w3id.org/ocqa#ControlMeasure">Steuerungsmaßnahme/Korrekturmaßnahme</a>
+      </li>
+      <li>
+         <a href="#Causation" title="https://w3id.org/ocqa#Causation">Ursache</a>
+      </li>
+   </ul>
+   <div class="entity" id="Record">
+      <h3>Aufnahme<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Record</p>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#Defect" title="https://w3id.org/ocqa#Defect">Mangel</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Damage" title="https://w3id.org/ocqa#Damage">Schaden</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasCausation" title="https://w3id.org/ocqa#hasCausation">hatUrsache</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasRecord" title="https://w3id.org/ocqa#hasRecord">hatAufnahme</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Documentation">
+      <h3>Dokumentation<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Documentation</p>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#ExternalResource" title="https://w3id.org/ocqa#ExternalResource">Externe Ressource</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ExternalResource">
+      <h3>Externe Ressource<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#ExternalResource</p>
+      <div class="comment">
+         <span class="markdown">Eine externe Ressource werden über eine URI verknüpft</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Documentation" title="https://w3id.org/ocqa#Documentation">Dokumentation</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#filePath" title="https://w3id.org/ocqa#filePath">file path</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="InspectionTask">
+      <h3>Kontrollaktivität<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#InspectionTask</p>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasCertificate" title="https://w3id.org/ocqa#hasCertificate">hatNachweis</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasInspection" title="https://w3id.org/ocqa#hasInspection">hatPrüfung</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasInspectionTask" title="https://w3id.org/ocqa#hasInspectionTask">hatKontrollaktivität</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Defect">
+      <h3>Mangel<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Defect</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Record" title="https://w3id.org/ocqa#Record">Aufnahme</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Damage" title="https://w3id.org/ocqa#Damage">Schaden</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Certificate">
+      <h3>Nachweis<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Certificate</p>
+   </div>
+   <div class="entity" id="Inspection">
+      <h3>Prüfung<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Inspection</p>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasRecord" title="https://w3id.org/ocqa#hasRecord">hatAufnahme</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasInspection" title="https://w3id.org/ocqa#hasInspection">hatPrüfung</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="InspectionMethod">
+      <h3>Prüfungsmethode<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#InspectionMethod</p>
+   </div>
+   <div class="entity" id="Damage">
+      <h3>Schaden<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Damage</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Record" title="https://w3id.org/ocqa#Record">Aufnahme</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Defect" title="https://w3id.org/ocqa#Defect">Mangel</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ControlMeasure">
+      <h3>Steuerungsmaßnahme/Korrekturmaßnahme<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#ControlMeasure</p>
+   </div>
+   <div class="entity" id="Causation">
+      <h3>Ursache<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#Causation</p>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasCertificate" title="https://w3id.org/ocqa#hasCertificate">hatNachweis</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasCausation" title="https://w3id.org/ocqa#hasCausation">hatUrsache</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#hasRecord" title="https://w3id.org/ocqa#hasRecord">hatAufnahme</a>
+      </li>
+      <li>
+         <a href="#hasDocumentation" title="https://w3id.org/ocqa#hasDocumentation">hatDokumentation</a>
+      </li>
+      <li>
+         <a href="#hasInspectionTask" title="https://w3id.org/ocqa#hasInspectionTask">hatKontrollaktivität</a>
+      </li>
+      <li>
+         <a href="#hasCertificate" title="https://w3id.org/ocqa#hasCertificate">hatNachweis</a>
+      </li>
+      <li>
+         <a href="#hasInspectionMethod" title="https://w3id.org/ocqa#hasInspectionMethod">hatPrüfmethode</a>
+      </li>
+      <li>
+         <a href="#hasInspection" title="https://w3id.org/ocqa#hasInspection">hatPrüfung</a>
+      </li>
+      <li>
+         <a href="#hasCausation" title="https://w3id.org/ocqa#hasCausation">hatUrsache</a>
+      </li>
+   </ul>
+   <div class="entity" id="hasRecord">
+      <h3>hatAufnahme<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasRecord</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Inspection" title="https://w3id.org/ocqa#Inspection">Prüfung</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Record" title="https://w3id.org/ocqa#Record">Aufnahme</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasDocumentation">
+      <h3>hatDokumentation<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasDocumentation</p>
+   </div>
+   <div class="entity" id="hasInspectionTask">
+      <h3>hatKontrollaktivität<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasInspectionTask</p>
+      <div class="comment">
+         <span class="markdown">Eine Beziehung zwischen einem Element oder einer Bauaktivität mit einer Kontrollaktivität</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <a href="#InspectionTask" title="https://w3id.org/ocqa#InspectionTask">Kontrollaktivität</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasCertificate">
+      <h3>hatNachweis<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasCertificate</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#InspectionTask" title="https://w3id.org/ocqa#InspectionTask">Kontrollaktivität</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Causation" title="https://w3id.org/ocqa#Causation">Ursache</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasInspectionMethod">
+      <h3>hatPrüfmethode<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasInspectionMethod</p>
+   </div>
+   <div class="entity" id="hasInspection">
+      <h3>hatPrüfung<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasInspection</p>
+      <div class="comment">
+         <span class="markdown">Eine Beziehung zwischen einem Element, Bauaktivität oder Kontrollaktivität und einer Prüfung</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#InspectionTask" title="https://w3id.org/ocqa#InspectionTask">Kontrollaktivität</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Inspection" title="https://w3id.org/ocqa#Inspection">Prüfung</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasCausation">
+      <h3>hatUrsache<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#hasCausation</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Record" title="https://w3id.org/ocqa#Record">Aufnahme</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Causation" title="https://w3id.org/ocqa#Causation">Ursache</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#filePath" title="https://w3id.org/ocqa#filePath">
+            <span>file path</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="filePath">
+      <h3>file path<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/ocqa#filePath</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ExternalResource" title="https://w3id.org/ocqa#ExternalResource">Externe Ressource</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#anyURI"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#anyURI">any u r i</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals
+</div>
+</div>
