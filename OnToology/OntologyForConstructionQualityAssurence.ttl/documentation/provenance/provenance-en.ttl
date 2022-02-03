@@ -1,0 +1,13 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<https://w3id.org/ocqa/0.1> a prov:Entity;
+	 dc:title "Ontology for Construction Quality Assurence (OCQA)";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:wasGeneratedAt "2022-01-02";
+.
+:agent0 a prov:Agent; foaf:name "Sebastian Seiß".
+:agent1 a prov:Agent; foaf:name "The Ontology for Quality Assurance is a simple ontology defining the core concepts for quality quality assurence in construction.".
