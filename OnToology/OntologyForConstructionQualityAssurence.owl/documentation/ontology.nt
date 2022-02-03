@@ -1,0 +1,166 @@
+<https://w3id.org/ocqa#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/ocqa#> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/ocqa/0.1> .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/creator> "Sebastian Seiß" .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/creator> "The Ontology for Quality Assurance is a simple ontology defining the core concepts for quality quality assurence in construction." .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/issued> "2022-01-01" .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/1.0" .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/modified> "2022-01-02" .
+<https://w3id.org/ocqa#> <http://purl.org/dc/terms/title> "Ontology for Construction Quality Assurence (OCQA)" .
+<https://w3id.org/ocqa#> <http://purl.org/vocab/vann/preferredNamespacePrefix> "ocqa" .
+<https://w3id.org/ocqa#> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ocqa#" .
+<https://w3id.org/ocqa#> <http://www.w3.org/2000/01/rdf-schema#comment> "- Version 0.1\n- CoreModel" .
+<https://w3id.org/ocqa#> <http://www.w3.org/2002/07/owl#versionInfo> "0.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ocqa#hasCausation
+<https://w3id.org/ocqa#hasCausation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasCausation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ocqa#Record> .
+<https://w3id.org/ocqa#hasCausation> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ocqa#Causation> .
+<https://w3id.org/ocqa#hasCausation> <http://www.w3.org/2000/01/rdf-schema#label> "hatUrsache"@de .
+# 
+# https://w3id.org/ocqa#hasCertificate
+<https://w3id.org/ocqa#hasCertificate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasCertificate> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ocqa#InspectionTask> .
+<https://w3id.org/ocqa#hasCertificate> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ocqa#Causation> .
+<https://w3id.org/ocqa#hasCertificate> <http://www.w3.org/2000/01/rdf-schema#label> "hatNachweis"@de .
+# 
+# https://w3id.org/ocqa#hasDocumentation
+<https://w3id.org/ocqa#hasDocumentation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasDocumentation> <http://www.w3.org/2000/01/rdf-schema#label> "hatDokumentation"@de .
+# 
+# https://w3id.org/ocqa#hasInspection
+<https://w3id.org/ocqa#hasInspection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasInspection> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ocqa#InspectionTask> .
+<https://w3id.org/ocqa#hasInspection> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ocqa#Inspection> .
+<https://w3id.org/ocqa#hasInspection> <http://www.w3.org/2000/01/rdf-schema#comment> "Eine Beziehung zwischen einem Element, Bauaktivität oder Kontrollaktivität und einer Prüfung"@de .
+<https://w3id.org/ocqa#hasInspection> <http://www.w3.org/2000/01/rdf-schema#label> "hatPrüfung"@de .
+# 
+# https://w3id.org/ocqa#hasInspectionMethod
+<https://w3id.org/ocqa#hasInspectionMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasInspectionMethod> <http://www.w3.org/2000/01/rdf-schema#label> "hatPrüfmethode"@de .
+# 
+# https://w3id.org/ocqa#hasInspectionTask
+<https://w3id.org/ocqa#hasInspectionTask> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasInspectionTask> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ocqa#InspectionTask> .
+<https://w3id.org/ocqa#hasInspectionTask> <http://www.w3.org/2000/01/rdf-schema#comment> "Eine Beziehung zwischen einem Element oder einer Bauaktivität mit einer Kontrollaktivität"@de .
+<https://w3id.org/ocqa#hasInspectionTask> <http://www.w3.org/2000/01/rdf-schema#label> "hatKontrollaktivität"@de .
+# 
+# https://w3id.org/ocqa#hasRecord
+<https://w3id.org/ocqa#hasRecord> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ocqa#hasRecord> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ocqa#Inspection> .
+<https://w3id.org/ocqa#hasRecord> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ocqa#Record> .
+<https://w3id.org/ocqa#hasRecord> <http://www.w3.org/2000/01/rdf-schema#label> "hatAufnahme"@de .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ocqa#filePath
+<https://w3id.org/ocqa#filePath> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/ocqa#filePath> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ocqa#ExternalResource> .
+<https://w3id.org/ocqa#filePath> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyURI> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ocqa#Causation
+<https://w3id.org/ocqa#Causation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Causation> <http://www.w3.org/2000/01/rdf-schema#label> "Ursache"@de .
+# 
+# https://w3id.org/ocqa#Certificate
+<https://w3id.org/ocqa#Certificate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Certificate> <http://www.w3.org/2000/01/rdf-schema#label> "Nachweis"@de .
+# 
+# https://w3id.org/ocqa#ControlMeasure
+<https://w3id.org/ocqa#ControlMeasure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#ControlMeasure> <http://www.w3.org/2000/01/rdf-schema#label> "Steuerungsmaßnahme/Korrekturmaßnahme"@de .
+# 
+# https://w3id.org/ocqa#Damage
+<https://w3id.org/ocqa#Damage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Damage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ocqa#Record> .
+<https://w3id.org/ocqa#Damage> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/ocqa#Defect> .
+<https://w3id.org/ocqa#Damage> <http://www.w3.org/2000/01/rdf-schema#label> "Schaden"@de .
+# 
+# https://w3id.org/ocqa#Defect
+<https://w3id.org/ocqa#Defect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Defect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ocqa#Record> .
+<https://w3id.org/ocqa#Defect> <http://www.w3.org/2000/01/rdf-schema#label> "Mangel"@de .
+# 
+# https://w3id.org/ocqa#Documentation
+<https://w3id.org/ocqa#Documentation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Documentation> <http://www.w3.org/2000/01/rdf-schema#label> "Dokumentation"@de .
+# 
+# https://w3id.org/ocqa#ExternalResource
+<https://w3id.org/ocqa#ExternalResource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#ExternalResource> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ocqa#Documentation> .
+<https://w3id.org/ocqa#ExternalResource> <http://www.w3.org/2000/01/rdf-schema#comment> "Eine externe Ressource werden über eine URI verknüpft"@de .
+<https://w3id.org/ocqa#ExternalResource> <http://www.w3.org/2000/01/rdf-schema#label> "Externe Ressource"@de .
+# 
+# https://w3id.org/ocqa#Inspection
+<https://w3id.org/ocqa#Inspection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Inspection> <http://www.w3.org/2000/01/rdf-schema#label> "Prüfung"@de .
+# 
+# https://w3id.org/ocqa#InspectionMethod
+<https://w3id.org/ocqa#InspectionMethod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#InspectionMethod> <http://www.w3.org/2000/01/rdf-schema#label> "Prüfungsmethode"@de .
+# 
+# https://w3id.org/ocqa#InspectionTask
+<https://w3id.org/ocqa#InspectionTask> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#InspectionTask> <http://www.w3.org/2000/01/rdf-schema#label> "Kontrollaktivität"@de .
+# 
+# https://w3id.org/ocqa#Record
+<https://w3id.org/ocqa#Record> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ocqa#Record> <http://www.w3.org/2000/01/rdf-schema#label> "Aufnahme"@de .
+# 
+# Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/

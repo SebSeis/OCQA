@@ -1,0 +1,102 @@
+{
+  "@context" : {
+    "versionInfo" : {
+      "@id" : "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "license" : {
+      "@id" : "http://purl.org/dc/terms/license"
+    },
+    "Documentation" : {
+      "@id" : "https://w3id.org/ocqa#Documentation"
+    },
+    "hasCausation" : {
+      "@id" : "https://w3id.org/ocqa#hasCausation",
+      "@type" : "@id"
+    },
+    "InspectionMethod" : {
+      "@id" : "https://w3id.org/ocqa#InspectionMethod"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued"
+    },
+    "Damage" : {
+      "@id" : "https://w3id.org/ocqa#Damage"
+    },
+    "hasCertificate" : {
+      "@id" : "https://w3id.org/ocqa#hasCertificate",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "hasInspectionTask" : {
+      "@id" : "https://w3id.org/ocqa#hasInspectionTask",
+      "@type" : "@id"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator"
+    },
+    "filePath" : {
+      "@id" : "https://w3id.org/ocqa#filePath",
+      "@type" : "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    "hasRecord" : {
+      "@id" : "https://w3id.org/ocqa#hasRecord",
+      "@type" : "@id"
+    },
+    "ExternalResource" : {
+      "@id" : "https://w3id.org/ocqa#ExternalResource"
+    },
+    "hasInspectionMethod" : {
+      "@id" : "https://w3id.org/ocqa#hasInspectionMethod",
+      "@type" : "@id"
+    },
+    "hasInspection" : {
+      "@id" : "https://w3id.org/ocqa#hasInspection",
+      "@type" : "@id"
+    },
+    "preferredNamespacePrefix" : {
+      "@id" : "http://purl.org/vocab/vann/preferredNamespacePrefix"
+    },
+    "InspectionTask" : {
+      "@id" : "https://w3id.org/ocqa#InspectionTask"
+    },
+    "Record" : {
+      "@id" : "https://w3id.org/ocqa#Record"
+    },
+    "Defect" : {
+      "@id" : "https://w3id.org/ocqa#Defect"
+    },
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title"
+    },
+    "modified" : {
+      "@id" : "http://purl.org/dc/terms/modified"
+    },
+    "Inspection" : {
+      "@id" : "https://w3id.org/ocqa#Inspection"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "hasDocumentation" : {
+      "@id" : "https://w3id.org/ocqa#hasDocumentation",
+      "@type" : "@id"
+    },
+    "ControlMeasure" : {
+      "@id" : "https://w3id.org/ocqa#ControlMeasure"
+    },
+    "Certificate" : {
+      "@id" : "https://w3id.org/ocqa#Certificate"
+    },
+    "description" : {
+      "@id" : "http://purl.org/dc/terms/description"
+    },
+    "Causation" : {
+      "@id" : "https://w3id.org/ocqa#Causation"
+    },
+    "preferredNamespaceUri" : {
+      "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri"
+    }
+  }
+}
