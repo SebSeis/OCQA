@@ -1,0 +1,185 @@
+@prefix : <https://w3id.org/ocqa#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/ocqa#> .
+
+<https://w3id.org/ocqa#> rdf:type owl:Ontology ;
+                          owl:versionIRI <https://w3id.org/ocqa/0.1> ;
+                          dcterms:creator "Sebastian Seiß" ,
+                                          "The Ontology for Quality Assurance is a simple ontology defining the core concepts for quality quality assurence in construction." ;
+                          dcterms:issued "2022-01-01" ;
+                          dcterms:license "https://creativecommons.org/licenses/by/1.0" ;
+                          dcterms:modified "2022-01-02" ;
+                          dcterms:title "Ontology for Construction Quality Assurence (OCQA)" ;
+                          vann:preferredNamespacePrefix "ocqa" ;
+                          vann:preferredNamespaceUri "https://w3id.org/ocqa#" ;
+                          rdfs:comment """- Version 0.1
+- CoreModel""" ;
+                          owl:versionInfo 0.1 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/ocqa#hasCausation
+:hasCausation rdf:type owl:ObjectProperty ;
+              rdfs:domain :Record ;
+              rdfs:range :Causation ;
+              rdfs:label "hatUrsache"@de .
+
+
+###  https://w3id.org/ocqa#hasCertificate
+:hasCertificate rdf:type owl:ObjectProperty ;
+                rdfs:domain :InspectionTask ;
+                rdfs:range :Causation ;
+                rdfs:label "hatNachweis"@de .
+
+
+###  https://w3id.org/ocqa#hasDocumentation
+:hasDocumentation rdf:type owl:ObjectProperty ;
+                  rdfs:label "hatDokumentation"@de .
+
+
+###  https://w3id.org/ocqa#hasInspection
+:hasInspection rdf:type owl:ObjectProperty ;
+               rdfs:domain :InspectionTask ;
+               rdfs:range :Inspection ;
+               rdfs:comment "Eine Beziehung zwischen einem Element, Bauaktivität oder Kontrollaktivität und einer Prüfung"@de ;
+               rdfs:label "hatPrüfung"@de .
+
+
+###  https://w3id.org/ocqa#hasInspectionMethod
+:hasInspectionMethod rdf:type owl:ObjectProperty ;
+                     rdfs:label "hatPrüfmethode"@de .
+
+
+###  https://w3id.org/ocqa#hasInspectionTask
+:hasInspectionTask rdf:type owl:ObjectProperty ;
+                   rdfs:range :InspectionTask ;
+                   rdfs:comment "Eine Beziehung zwischen einem Element oder einer Bauaktivität mit einer Kontrollaktivität"@de ;
+                   rdfs:label "hatKontrollaktivität"@de .
+
+
+###  https://w3id.org/ocqa#hasRecord
+:hasRecord rdf:type owl:ObjectProperty ;
+           rdfs:domain :Inspection ;
+           rdfs:range :Record ;
+           rdfs:label "hatAufnahme"@de .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/ocqa#filePath
+:filePath rdf:type owl:DatatypeProperty ;
+          rdfs:domain :ExternalResource ;
+          rdfs:range xsd:anyURI .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/ocqa#Causation
+:Causation rdf:type owl:Class ;
+           rdfs:label "Ursache"@de .
+
+
+###  https://w3id.org/ocqa#Certificate
+:Certificate rdf:type owl:Class ;
+             rdfs:label "Nachweis"@de .
+
+
+###  https://w3id.org/ocqa#ControlMeasure
+:ControlMeasure rdf:type owl:Class ;
+                rdfs:label "Steuerungsmaßnahme/Korrekturmaßnahme"@de .
+
+
+###  https://w3id.org/ocqa#Damage
+:Damage rdf:type owl:Class ;
+        rdfs:subClassOf :Record ;
+        owl:disjointWith :Defect ;
+        rdfs:label "Schaden"@de .
+
+
+###  https://w3id.org/ocqa#Defect
+:Defect rdf:type owl:Class ;
+        rdfs:subClassOf :Record ;
+        rdfs:label "Mangel"@de .
+
+
+###  https://w3id.org/ocqa#Documentation
+:Documentation rdf:type owl:Class ;
+               rdfs:label "Dokumentation"@de .
+
+
+###  https://w3id.org/ocqa#ExternalResource
+:ExternalResource rdf:type owl:Class ;
+                  rdfs:subClassOf :Documentation ;
+                  rdfs:comment "Eine externe Ressource werden über eine URI verknüpft"@de ;
+                  rdfs:label "Externe Ressource"@de .
+
+
+###  https://w3id.org/ocqa#Inspection
+:Inspection rdf:type owl:Class ;
+            rdfs:label "Prüfung"@de .
+
+
+###  https://w3id.org/ocqa#InspectionMethod
+:InspectionMethod rdf:type owl:Class ;
+                  rdfs:label "Prüfungsmethode"@de .
+
+
+###  https://w3id.org/ocqa#InspectionTask
+:InspectionTask rdf:type owl:Class ;
+                rdfs:label "Kontrollaktivität"@de .
+
+
+###  https://w3id.org/ocqa#Record
+:Record rdf:type owl:Class ;
+        rdfs:label "Aufnahme"@de .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
