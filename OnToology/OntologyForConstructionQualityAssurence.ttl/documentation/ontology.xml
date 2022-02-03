@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/ocqa#"
+     xml:base="https://w3id.org/ocqa"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/ocqa#">
+        <owl:versionIRI rdf:resource="https://w3id.org/ocqa/0.1"/>
+        <terms:creator>Sebastian Seiß</terms:creator>
+        <terms:creator>The Ontology for Quality Assurance is a simple ontology defining the core concepts for quality quality assurence in construction.</terms:creator>
+        <terms:issued>2022-01-01</terms:issued>
+        <terms:license>https://creativecommons.org/licenses/by/1.0</terms:license>
+        <terms:modified>2022-01-02</terms:modified>
+        <terms:title>Ontology for Construction Quality Assurence (OCQA)</terms:title>
+        <vann:preferredNamespacePrefix>ocqa</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/ocqa#</vann:preferredNamespaceUri>
+        <rdfs:comment>- Version 0.1
+- CoreModel</rdfs:comment>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ocqa#hasCausation -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasCausation">
+        <rdfs:domain rdf:resource="https://w3id.org/ocqa#Record"/>
+        <rdfs:range rdf:resource="https://w3id.org/ocqa#Causation"/>
+        <rdfs:label xml:lang="de">hatUrsache</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasCertificate -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasCertificate">
+        <rdfs:domain rdf:resource="https://w3id.org/ocqa#InspectionTask"/>
+        <rdfs:range rdf:resource="https://w3id.org/ocqa#Causation"/>
+        <rdfs:label xml:lang="de">hatNachweis</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasDocumentation -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasDocumentation">
+        <rdfs:label xml:lang="de">hatDokumentation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasInspection -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasInspection">
+        <rdfs:domain rdf:resource="https://w3id.org/ocqa#InspectionTask"/>
+        <rdfs:range rdf:resource="https://w3id.org/ocqa#Inspection"/>
+        <rdfs:comment xml:lang="de">Eine Beziehung zwischen einem Element, Bauaktivität oder Kontrollaktivität und einer Prüfung</rdfs:comment>
+        <rdfs:label xml:lang="de">hatPrüfung</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasInspectionMethod -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasInspectionMethod">
+        <rdfs:label xml:lang="de">hatPrüfmethode</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasInspectionTask -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasInspectionTask">
+        <rdfs:range rdf:resource="https://w3id.org/ocqa#InspectionTask"/>
+        <rdfs:comment xml:lang="de">Eine Beziehung zwischen einem Element oder einer Bauaktivität mit einer Kontrollaktivität</rdfs:comment>
+        <rdfs:label xml:lang="de">hatKontrollaktivität</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ocqa#hasRecord -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ocqa#hasRecord">
+        <rdfs:domain rdf:resource="https://w3id.org/ocqa#Inspection"/>
+        <rdfs:range rdf:resource="https://w3id.org/ocqa#Record"/>
+        <rdfs:label xml:lang="de">hatAufnahme</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ocqa#filePath -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/ocqa#filePath">
+        <rdfs:domain rdf:resource="https://w3id.org/ocqa#ExternalResource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ocqa#Causation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Causation">
+        <rdfs:label xml:lang="de">Ursache</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Certificate -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Certificate">
+        <rdfs:label xml:lang="de">Nachweis</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#ControlMeasure -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#ControlMeasure">
+        <rdfs:label xml:lang="de">Steuerungsmaßnahme/Korrekturmaßnahme</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Damage -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Damage">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ocqa#Record"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/ocqa#Defect"/>
+        <rdfs:label xml:lang="de">Schaden</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Defect -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Defect">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ocqa#Record"/>
+        <rdfs:label xml:lang="de">Mangel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Documentation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Documentation">
+        <rdfs:label xml:lang="de">Dokumentation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#ExternalResource -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#ExternalResource">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ocqa#Documentation"/>
+        <rdfs:comment xml:lang="de">Eine externe Ressource werden über eine URI verknüpft</rdfs:comment>
+        <rdfs:label xml:lang="de">Externe Ressource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Inspection -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Inspection">
+        <rdfs:label xml:lang="de">Prüfung</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#InspectionMethod -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#InspectionMethod">
+        <rdfs:label xml:lang="de">Prüfungsmethode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#InspectionTask -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#InspectionTask">
+        <rdfs:label xml:lang="de">Kontrollaktivität</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ocqa#Record -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ocqa#Record">
+        <rdfs:label xml:lang="de">Aufnahme</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+
