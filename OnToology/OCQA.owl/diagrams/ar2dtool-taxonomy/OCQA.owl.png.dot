@@ -1,0 +1,30 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "ocqa:Result" "ocqa:Review" "ocqa:Determination" "ocqa:Sample" "ocqa:Plan" "ocqa:ProgressEvaluation" "ocqa:Nonconformity" "ocqa:Damage" "ocqa:Test" "ocqa:InspectionPlan" "ocqa:MeasuringEquipment" "ocqa:ConstructionProcedure" "ocqa:InspectionEquipment" "https://w3id.org/digitalconstruction/0.5/Processes#Activity" "ocqa:InspectionProcedure" "ocqa:Evaluation" "ocqa:Procedure" "ocqa:Protocol" "ocqa:Monitoring" "ocqa:Record" "ocqa:Conformity" "ocqa:Image" "ocqa:Inspection" "ocqa:ExternalResource" "ocqa:Measurement" "ocqa:Video" "ocqa:Defect" "https://w3id.org/digitalconstruction/0.5/Entities#Equipment" ; /*classes style*/
+	"ocqa:Image" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Monitoring" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:Conformity" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Conformity" -> "ocqa:Evaluation" [ label = "rdfs:subClassOf" ];
+	"ocqa:InspectionProcedure" -> "ocqa:Procedure" [ label = "rdfs:subClassOf" ];
+	"ocqa:ProgressEvaluation" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:InspectionPlan" -> "ocqa:Plan" [ label = "rdfs:subClassOf" ];
+	"ocqa:Test" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:ExternalResource" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Defect" -> "ocqa:Nonconformity" [ label = "rdfs:subClassOf" ];
+	"ocqa:InspectionEquipment" -> "https://w3id.org/digitalconstruction/0.5/Entities#Equipment" [ label = "rdfs:subClassOf" ];
+	"ocqa:ConstructionProcedure" -> "ocqa:Procedure" [ label = "rdfs:subClassOf" ];
+	"ocqa:Review" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:Sample" -> "owl:Thing" [ label = "rdfs:subClassOf" ];
+	"ocqa:Result" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Inspection" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:Measurement" -> "ocqa:Determination" [ label = "rdfs:subClassOf" ];
+	"ocqa:Nonconformity" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Nonconformity" -> "ocqa:Evaluation" [ label = "rdfs:subClassOf" ];
+	"ocqa:MeasuringEquipment" -> "https://w3id.org/digitalconstruction/0.5/Entities#Equipment" [ label = "rdfs:subClassOf" ];
+	"ocqa:Damage" -> "ocqa:Nonconformity" [ label = "rdfs:subClassOf" ];
+	"ocqa:Video" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Protocol" -> "ocqa:Record" [ label = "rdfs:subClassOf" ];
+	"ocqa:Determination" -> "https://w3id.org/digitalconstruction/0.5/Processes#Activity" [ label = "rdfs:subClassOf" ];
+
+}
