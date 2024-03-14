@@ -502,6 +502,21 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         </tbody>
     </table>
 </section>
+<section id="modules">
+    <h2>Modules</h2>
+    <h3 id="core">OCQA - Core module</h3>
+    <p>
+        Building upon this foundations Figure 6 illustrates a simplified structure of the proposed concept of the OCQA, with the class ocqa:Inspection in the center. The OCQA is designed to represent detailed inspection plans. Therefore, the OCQA represents inspections and associated entities of an inspection, like inspection equipment, inspectors, inspection objects, and inspection methods in detail. An inspection is designed as a subclass of <i>dicp:Activity</i> in the OCQA. For this reason, an inspection can be assigned a start and end date as well as a duration according to the activity. </p>
+        <p>The approach to model an inspection as an activity enables a deep integration of the inspections into the construction process including the schedule and the alignment with various entities of the construction process itself. Construction related entities are represented by the DiCon ontology and their alignments. Together with the contract, regulation and catalog module the OCQA provides all relevant inspection planning information. In addition, this enables the inspection planners to describe planned inspections in detail and answer all the required W-Questions.</p> 
+        <p>Likewise, entities to be inspected, such as dice:Location, dice:BuildingObject or <i>dicp:Activity</i> can be assigned. The objective of an inspection can be any entity, which includes several characteristics to be inspected. For this reason, the inspection refers not only to the entity to be inspected but also to the inspection characteristics of the entity itself. The inspection characteristics are modeled as <i>ocqa:Characteristic</i> and are aligned to the object being inspected as well as to the inspection itself. The class ocqa:Characterisitc refers to an ocqa:AssignedCharacteristicValue as a requirement to be achieved and an ocqa:ActualCharacteristicValue as a determined actual value. Accordingly, the ocqa:AssignedCharacteristicValue can be used as a direct comparison value to determine the conformance of the object regarding the inspection characteristic. The assigned characteristic value is required by regulations like norms or any other entity defining specific requirements for the object in question. Following the structure, the comparison of the assigned and actual characteristic can be done by standardized rules using a query or rule language.</p> 
+    </p>
+    <div class="figure">
+        <img src="https://SebSeis.github.io/OCQA/Core.png" alt="Italian Trulli">
+        <div class="caption"><strong>Figure 2:</strong> Illustration of the person module</div>
+    </div>
+    <h3 id="catalog">Catalog module</h3>
+
+
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
