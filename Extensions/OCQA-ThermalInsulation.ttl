@@ -1,0 +1,145 @@
+@prefix : <https://w3id.org/ocqa-thermalInsulation#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ocqa: <https://w3id.org/ocqa#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/ocqa-thermalInsulation#> .
+
+<https://w3id.org/ocqa-thermalInsulation#> rdf:type owl:Ontology ;
+                                            owl:imports <https://w3id.org/ocqa/0.3> ;
+                                            <http://purl.org/dc/terms/creator> """Rayan
+Thibault
+Sebastian Seiß Bauhaus-Universität Weimar
+Yuan Aalto University""" ;
+                                            <http://purl.org/dc/terms/description> "This ontology describes the inspection plan of thermal insulation." ;
+                                            owl:versionInfo 0.1 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/ocqa-thermalInsulation#AirLeakInspection
+:AirLeakInspection rdf:type owl:Class ;
+                   rdfs:subClassOf ocqa:Inspection .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#AirLeakageDetectionTest
+:AirLeakageDetectionTest rdf:type owl:Class ;
+                         rdfs:subClassOf ocqa:Test .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#BlowerDoorTest
+:BlowerDoorTest rdf:type owl:Class ;
+                rdfs:subClassOf ocqa:Test .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#CladdingInstallation
+:CladdingInstallation rdf:type owl:Class ;
+                      rdfs:subClassOf :ThermalInsulationActivities .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#EasyCutKnife
+:EasyCutKnife rdf:type owl:Class ;
+              rdfs:subClassOf :InstallationEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#HumiditySensors
+:HumiditySensors rdf:type owl:Class ;
+                 rdfs:subClassOf ocqa:InspectionEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#Infiltrometer
+:Infiltrometer rdf:type owl:Class ;
+               rdfs:subClassOf ocqa:InspectionEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#InstallationEquipment
+:InstallationEquipment rdf:type owl:Class ;
+                       rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#Equipment> .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#MoistureInspection
+:MoistureInspection rdf:type owl:Class ;
+                    rdfs:subClassOf ocqa:Inspection .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#SmokeGenerator
+:SmokeGenerator rdf:type owl:Class ;
+                rdfs:subClassOf ocqa:InspectionEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#StorageCondition
+:StorageCondition rdf:type owl:Class ;
+                  rdfs:subClassOf ocqa:Inspection .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#StorageConditionInspection
+:StorageConditionInspection rdf:type owl:Class ;
+                            rdfs:subClassOf ocqa:Inspection .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermalCamera
+:ThermalCamera rdf:type owl:Class ;
+               rdfs:subClassOf ocqa:InspectionEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermalFluxMeasurement
+:ThermalFluxMeasurement rdf:type owl:Class ;
+                        rdfs:subClassOf ocqa:Measurement .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermalInsulationActivities
+:ThermalInsulationActivities rdf:type owl:Class ;
+                             rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermalInsulationInspectionPlan
+:ThermalInsulationInspectionPlan rdf:type owl:Class ;
+                                 rdfs:subClassOf ocqa:InspectionPlan .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermalSensor
+:ThermalSensor rdf:type owl:Class ;
+               rdfs:subClassOf ocqa:InspectionEquipment .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermographicInspection
+:ThermographicInspection rdf:type owl:Class ;
+                         rdfs:subClassOf ocqa:Inspection .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#ThermographyTest
+:ThermographyTest rdf:type owl:Class ;
+                  rdfs:subClassOf ocqa:Test .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#VapourBarrierInstallation
+:VapourBarrierInstallation rdf:type owl:Class ;
+                           rdfs:subClassOf :ThermalInsulationActivities .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#VerticalFramingInstallation
+:VerticalFramingInstallation rdf:type owl:Class ;
+                             rdfs:subClassOf :ThermalInsulationActivities .
+
+
+###  https://w3id.org/ocqa-thermalInsulation#WindowFramingInstallation
+:WindowFramingInstallation rdf:type owl:Class ;
+                           rdfs:subClassOf :ThermalInsulationActivities .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

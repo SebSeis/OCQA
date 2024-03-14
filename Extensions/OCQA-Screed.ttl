@@ -1,0 +1,679 @@
+@prefix : <https://w3id.org/ocqa-screed#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ocqa-screed#: <https://w3id.org/ocqa-screed#> .
+@base <https://w3id.org/ocqa-screed#> .
+
+<https://w3id.org/ocqa-screed#> rdf:type owl:Ontology ;
+                                 owl:imports <https://w3id.org/ocqa/0.3> ;
+                                 <http://purl.org/dc/terms/creator> "Sebastian Seiß" ;
+                                 <http://purl.org/dc/terms/description> "The Ontology for Screed is an extension of the OCQA ontology" ;
+                                 <http://purl.org/dc/terms/issued> "2022-02-24" ;
+                                 <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/1.0" ;
+                                 <http://purl.org/dc/terms/title> "Ontology for Contruction Quality Assurence Extension Screed (ocqa-screed)" ;
+                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "ocqa-screed" ;
+                                 <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ocqa-screed#" ;
+                                 rdfs:comment """- Version 1
+- Extension Screed""" ;
+                                 owl:versionInfo 1 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasEnd
+<https://w3id.org/digitalconstruction/0.5/Entities#hasEnd> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasStart
+<https://w3id.org/digitalconstruction/0.5/Entities#hasStart> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#precedes
+<https://w3id.org/digitalconstruction/0.5/Entities#precedes> rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/ocqa#hasInspectionEquipment
+<https://w3id.org/ocqa#hasInspectionEquipment> rdfs:domain <https://w3id.org/ocqa#Inspection> ;
+                                               rdfs:range <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#FlatnessScreedInspCharacteristik
+ocqa-screed#:FlatnessScreedInspCharacteristik rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf ocqa-screed#:hasScreedInspCharacateristik ;
+                                              rdfs:domain ocqa-screed#:FlatnessInspection ;
+                                              rdfs:range ocqa-screed#:Flatness .
+
+
+###  https://w3id.org/ocqa-screed#hasFlatness
+ocqa-screed#:hasFlatness rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/ocqa-screed#hasScreedInspCharacateristik
+ocqa-screed#:hasScreedInspCharacateristik rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf <https://w3id.org/ocqa#hasInspCharacteristic> ;
+                                          rdfs:domain ocqa-screed#:ScreedInspection .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/ocqa-screed#measurementDistance
+ocqa-screed#:measurementDistance rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  #%23%23%23%23%23%23%23%23%23%23%23ocqa-screed%23Screed:_check_finished_height_(angle_deviations)
+<#%23%23%23%23%23%23%23%23%23%23%23ocqa-screed%23Screed:_check_finished_height_(angle_deviations)> rdf:type owl:Class ;
+                                                                                                   rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                                                   rdfs:label "Estrich: Fertighöhe überprüfen (Winkelabweichungen)"@de .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject
+<https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa-screed#BondedScreed
+ocqa-screed#:BondedScreed rdf:type owl:Class ;
+                          rdfs:subClassOf ocqa-screed#:Screed .
+
+
+###  https://w3id.org/ocqa-screed#CalciumCarbideMeasuringInstrument
+ocqa-screed#:CalciumCarbideMeasuringInstrument rdf:type owl:Class ;
+                                               rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#CheckSeperationLayer
+ocqa-screed#:CheckSeperationLayer rdf:type owl:Class ;
+                                  rdfs:subClassOf ocqa-screed#:PostScreedInspection .
+
+
+###  https://w3id.org/ocqa-screed#Check_floating_screed
+ocqa-screed#:Check_floating_screed rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                   rdfs:label "Schwimmender Estrich prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_readiness_for_covering
+ocqa-screed#:Check_readiness_for_covering rdf:type owl:Class ;
+                                          rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                          rdfs:label "Belegreife überprüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_screed_angle
+ocqa-screed#:Check_screed_angle rdf:type owl:Class ;
+                                rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                rdfs:label "Estrichwinkel prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_screed_joints
+ocqa-screed#:Check_screed_joints rdf:type owl:Class ;
+                                 rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                 rdfs:label "Estrichfugen prüfen" .
+
+
+###  https://w3id.org/ocqa-screed#Check_surface_treatment_of_mastic_asphalt
+ocqa-screed#:Check_surface_treatment_of_mastic_asphalt rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                       rdfs:label "Oberflächenbehandlung des Gussasphalt prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Chisel
+ocqa-screed#:Chisel rdf:type owl:Class ;
+                    rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#DIN-Screed
+ocqa-screed#:DIN-Screed rdf:type owl:Class ;
+                        rdfs:subClassOf <https://w3id.org/ocqa-regulation#DIN> .
+
+
+###  https://w3id.org/ocqa-screed#Flatness
+ocqa-screed#:Flatness rdf:type owl:Class ;
+                      rdfs:subClassOf <https://w3id.org/ocqa#QualityCharacteristic> .
+
+
+###  https://w3id.org/ocqa-screed#FlatnessInspection
+ocqa-screed#:FlatnessInspection rdf:type owl:Class ;
+                                owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <https://w3id.org/digitalconstruction/0.5/Processes#hasObject> ;
+                                                                             owl:someValuesFrom ocqa-screed#:Screed
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <https://w3id.org/ocqa#hasInspCharacteristic> ;
+                                                                             owl:someValuesFrom ocqa-screed#:Flatness
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty [ owl:inverseOf <https://w3id.org/digitalconstruction/0.5/Entities#precedes>
+                                                                                            ] ;
+                                                                             owl:someValuesFrom ocqa-screed#:Screeding
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ] ;
+                                rdfs:subClassOf ocqa-screed#:PostScreedInspection ,
+                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                         owl:someValuesFrom ocqa-screed#:TotalStation
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                         owl:hasValue ocqa-screed#:TotalStationMeasurement
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] ,
+                                                [ rdf:type owl:Class ;
+                                                  owl:unionOf ( [ owl:intersectionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                                                owl:someValuesFrom ocqa-screed#:WedgeGauge
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <https://w3id.org/ocqa#hasInspectionEquipment> ;
+                                                                                                                owl:someValuesFrom ocqa-screed#:SpiritLevel
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                                         owl:hasValue ocqa-screed#:SpiritLevelMeasurement
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                         owl:someValuesFrom ocqa-screed#:TotalStation
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                                         owl:hasValue ocqa-screed#:TotalStationMeasurement
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                                              )
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty <https://w3id.org/ocqa-regulation#requiredby> ;
+                                                  owl:hasValue <https://w3id.org/ocr#18202>
+                                                ] ;
+                                rdfs:label "Ebenheitsprüfung"@de .
+
+
+###  https://w3id.org/ocqa-screed#FlatnessInspectionProcedure
+ocqa-screed#:FlatnessInspectionProcedure rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://w3id.org/ocqa#InspectionProcedure> .
+
+
+###  https://w3id.org/ocqa-screed#FloatingScreed
+ocqa-screed#:FloatingScreed rdf:type owl:Class ;
+                            rdfs:subClassOf ocqa-screed#:Screed .
+
+
+###  https://w3id.org/ocqa-screed#FoldingRule
+ocqa-screed#:FoldingRule rdf:type owl:Class ;
+                         rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#Hammer
+ocqa-screed#:Hammer rdf:type owl:Class ;
+                    rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#HeightInspection
+ocqa-screed#:HeightInspection rdf:type owl:Class ;
+                              rdfs:subClassOf ocqa-screed#:PostScreedInspection ,
+                                              [ rdf:type owl:Class ;
+                                                owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#precedes> ;
+                                                                                       owl:someValuesFrom ocqa-screed#:Screeding
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/digitalconstruction/0.5/Processes#hasObject> ;
+                                                                                       owl:someValuesFrom ocqa-screed#:Screed
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                                       owl:someValuesFrom ocqa-screed#:HightInspectionProcedure
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/ocqa-regulation#requiredby> ;
+                                                                                       owl:hasValue <https://w3id.org/ocqa-screed#18560>
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                       owl:allValuesFrom ocqa-screed#:LevelingTrestle
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/digitalconstruction/0.5/Processes#hasObject> ;
+                                                                                       owl:allValuesFrom ocqa-screed#:Screed
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/ocqa#simultane> ;
+                                                                                       owl:allValuesFrom ocqa-screed#:Screeding
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                                       owl:hasValue ocqa-screed#:LevelingTrestleProcedure
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <https://w3id.org/ocqa-regulation#requiredby> ;
+                                                                                       owl:hasValue <https://w3id.org/ocqa-screed#18560>
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                                            )
+                                              ] .
+
+
+###  https://w3id.org/ocqa-screed#HightInspectionProcedure
+ocqa-screed#:HightInspectionProcedure rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://w3id.org/ocqa#InspectionProcedure> .
+
+
+###  https://w3id.org/ocqa-screed#LevelingTrestle
+ocqa-screed#:LevelingTrestle rdf:type owl:Class ;
+                             rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#MoistureInspection
+ocqa-screed#:MoistureInspection rdf:type owl:Class ;
+                                rdfs:subClassOf ocqa-screed#:PostScreedInspection ,
+                                                [ owl:intersectionOf ( [ owl:intersectionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                                                                       owl:hasValue ocqa-screed#:CalciumCarbidProcedure
+                                                                                                                     ]
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                       owl:onClass ocqa-screed#:CalciumCarbideMeasuringInstrument
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                owl:onClass ocqa-screed#:Chisel
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                owl:onClass ocqa-screed#:Hammer
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEnd> ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty [ owl:inverseOf <https://w3id.org/digitalconstruction/0.5/Entities#hasStart>
+                                                                                                             ] ;
+                                                                                              owl:someValuesFrom ocqa-screed#:ParquetWorks
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasStart> ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty [ owl:inverseOf <https://w3id.org/digitalconstruction/0.5/Entities#hasEnd>
+                                                                                                             ] ;
+                                                                                              owl:someValuesFrom ocqa-screed#:Screeding
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#precedes> ;
+                                                                         owl:allValuesFrom ocqa-screed#:Screeding
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/digitalconstruction/0.5/Processes#hasObject> ;
+                                                                         owl:allValuesFrom ocqa-screed#:Screed
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/ocqa#hasInspectionProcedure> ;
+                                                                         owl:allValuesFrom ocqa-screed#:MoistureInspectionProcedure
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <https://w3id.org/ocqa-regulation#requiredby> ;
+                                                                         owl:hasValue <https://w3id.org/ocqa-screed#18560>
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] .
+
+
+###  https://w3id.org/ocqa-screed#MoistureInspectionProcedure
+ocqa-screed#:MoistureInspectionProcedure rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://w3id.org/ocqa#InspectionProcedure> .
+
+
+###  https://w3id.org/ocqa-screed#Monitor_heating_protocol
+ocqa-screed#:Monitor_heating_protocol rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://w3id.org/ocqa#Monitoring> ;
+                                      rdfs:label "Aufheizprotokoll überwachen"@de .
+
+
+###  https://w3id.org/ocqa-screed#ParquetWorks
+ocqa-screed#:ParquetWorks rdf:type owl:Class ;
+                          rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  https://w3id.org/ocqa-screed#PostScreedInspection
+ocqa-screed#:PostScreedInspection rdf:type owl:Class ;
+                                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <https://w3id.org/digitalconstruction/0.5/Processes#hasObject> ;
+                                                                               owl:someValuesFrom ocqa-screed#:Screed
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty [ owl:inverseOf <https://w3id.org/digitalconstruction/0.5/Entities#precedes>
+                                                                                              ] ;
+                                                                               owl:someValuesFrom ocqa-screed#:Screeding
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ] ;
+                                  rdfs:subClassOf <https://w3id.org/ocqa#Inspection> .
+
+
+###  https://w3id.org/ocqa-screed#PreScreedInspection
+ocqa-screed#:PreScreedInspection rdf:type owl:Class ;
+                                 rdfs:subClassOf <https://w3id.org/ocqa#Inspection> .
+
+
+###  https://w3id.org/ocqa-screed#Screed
+ocqa-screed#:Screed rdf:type owl:Class ;
+                    rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject> .
+
+
+###  https://w3id.org/ocqa-screed#ScreedInspection
+ocqa-screed#:ScreedInspection rdf:type owl:Class ;
+                              rdfs:subClassOf <https://w3id.org/ocqa#Inspection> .
+
+
+###  https://w3id.org/ocqa-screed#Screeding
+ocqa-screed#:Screeding rdf:type owl:Class ;
+                       rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Processes#Activity> .
+
+
+###  https://w3id.org/ocqa-screed#SpiritLevel
+ocqa-screed#:SpiritLevel rdf:type owl:Class ;
+                         rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#TotalStation
+ocqa-screed#:TotalStation rdf:type owl:Class ;
+                          rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#WedgeGauge
+ocqa-screed#:WedgeGauge rdf:type owl:Class ;
+                        rdfs:subClassOf <https://w3id.org/ocqa#InspectionEquipment> .
+
+
+###  https://w3id.org/ocqa-screed#Check_bonded_screed_(preparation)
+<https://w3id.org/ocqa-screed#Check_bonded_screed_(preparation)> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                 rdfs:label "Verbundestrich prüfen (Vorbereitung)"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_cavity_floor_(substructure_for_screed_work)
+<https://w3id.org/ocqa-screed#Check_cavity_floor_(substructure_for_screed_work)> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                                 rdfs:label "Hohlraumboden (Unterkonstruktion für Estricharbeiten) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_floor_structure_(under_insulation/fill_insulation)
+<https://w3id.org/ocqa-screed#Check_floor_structure_(under_insulation/fill_insulation)> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                                        rdfs:label "Fußbodenaufbau (Unterdämmung/Schüttdämmung) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_industrial_screed_(products)
+<https://w3id.org/ocqa-screed#Check_industrial_screed_(products)> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                  rdfs:label "Industrieestrich (Produkte) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_insulation_frame_pre-wall_mounting_system_(windows)
+<https://w3id.org/ocqa-screed#Check_insulation_frame_pre-wall_mounting_system_(windows)> rdf:type owl:Class ;
+                                                                                         rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                                         rdfs:label "Dämmrahmen Vorwandmontagesystem (Fenster) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_insulation_screed_(fire_protection)
+<https://w3id.org/ocqa-screed#Check_insulation_screed_(fire_protection)> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                         rdfs:label "Dämmung Estrich (Brandschutz) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(before_execution)
+<https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(before_execution)> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                              rdfs:label "Gussasphaltestrich (vor der Ausführung) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(during_execution)
+<https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(during_execution)> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                              rdfs:label "Gussasphaltestrich (während der Ausführung) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(products)
+<https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(products)> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                      rdfs:label "Gussasphaltestrich (Produkte) prüfen"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_screed_(products)
+<https://w3id.org/ocqa-screed#Check_screed_(products)> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                       rdfs:label "Estrich (Produkte prüfen)"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_screed_for_separation_layer_(preparation)
+<https://w3id.org/ocqa-screed#Check_screed_for_separation_layer_(preparation)> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                               rdfs:label "Estriche auf Trennschicht prüfen (Vorbereitung)"@de .
+
+
+###  https://w3id.org/ocqa-screed#Check_ventilation_(screed_works)
+<https://w3id.org/ocqa-screed#Check_ventilation_(screed_works)> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://w3id.org/ocqa#Inspection> ;
+                                                                rdfs:label "Lüften (Estricharbeiten) prüfen"@de .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://example.de/ocqa-screed-inspections#FoldingRule023
+<https://example.de/ocqa-screed-inspections#FoldingRule023> rdf:type owl:NamedIndividual ,
+                                                                     ocqa-screed#:FoldingRule .
+
+
+###  https://w3id.org/ocqa-screed#CalciumCarbidProcedure
+ocqa-screed#:CalciumCarbidProcedure rdf:type owl:NamedIndividual ,
+                                             ocqa-screed#:MoistureInspectionProcedure .
+
+
+###  https://w3id.org/ocqa-screed#EBMR-ScreedFlatnessInspection
+ocqa-screed#:EBMR-ScreedFlatnessInspection rdf:type owl:NamedIndividual ,
+                                                    <https://w3id.org/ocqa-catalog#FailureProbabilityFeature> .
+
+
+###  https://w3id.org/ocqa-screed#LevelingTrestleProcedure
+ocqa-screed#:LevelingTrestleProcedure rdf:type owl:NamedIndividual ,
+                                               ocqa-screed#:HightInspectionProcedure ;
+                                      rdfs:label "Nivellierbock"@de .
+
+
+###  https://w3id.org/ocqa-screed#LineLaserMeasurement
+ocqa-screed#:LineLaserMeasurement rdf:type owl:NamedIndividual ,
+                                           ocqa-screed#:FlatnessInspectionProcedure .
+
+
+###  https://w3id.org/ocqa-screed#PlaceSpiritLevelOnScreedSurface
+ocqa-screed#:PlaceSpiritLevelOnScreedSurface rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/ocqa-screed#ScreedFailureProbability
+ocqa-screed#:ScreedFailureProbability rdf:type owl:NamedIndividual ,
+                                               <https://w3id.org/ocqa-catalog#FailureProbabilityCatalog> .
+
+
+###  https://w3id.org/ocqa-screed#SpiritLevelMeasurement
+ocqa-screed#:SpiritLevelMeasurement rdf:type owl:NamedIndividual ,
+                                             ocqa-screed#:FlatnessInspectionProcedure ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf <https://w3id.org/ocqa#hasInspectionProcedure>
+                                                              ] ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( ocqa-screed#:FlatnessInspection
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                           owl:someValuesFrom ocqa-screed#:WedgeGauge
+                                                                                         ]
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <https://w3id.org/digitalconstruction/0.5/Entities#hasEquipment> ;
+                                                                                           owl:allValuesFrom ocqa-screed#:WedgeGauge
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
+                                             ] .
+
+
+###  https://w3id.org/ocqa-screed#TotalStationMeasurement
+ocqa-screed#:TotalStationMeasurement rdf:type owl:NamedIndividual ,
+                                              ocqa-screed#:FlatnessInspectionProcedure .
+
+
+###  https://w3id.org/ocqa-screed#WaterLevelMeasurement
+ocqa-screed#:WaterLevelMeasurement rdf:type owl:NamedIndividual ,
+                                            ocqa-screed#:FlatnessInspectionProcedure .
+
+
+###  https://w3id.org/ocqa-screed#18202
+<https://w3id.org/ocqa-screed#18202> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/ocqa-screed#18560
+<https://w3id.org/ocqa-screed#18560> rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <#%23%23%23%23%23%23%23%23%23%23%23ocqa-screed%23Screed:_check_finished_height_(angle_deviations)>
+                ocqa-screed#:CheckSeperationLayer
+                ocqa-screed#:Check_floating_screed
+                ocqa-screed#:Check_readiness_for_covering
+                ocqa-screed#:Check_screed_angle
+                ocqa-screed#:Check_screed_joints
+                ocqa-screed#:Check_surface_treatment_of_mastic_asphalt
+                ocqa-screed#:FlatnessInspection
+                ocqa-screed#:HeightInspection
+                ocqa-screed#:Monitor_heating_protocol
+                <https://w3id.org/ocqa-screed#Check_bonded_screed_(preparation)>
+                <https://w3id.org/ocqa-screed#Check_cavity_floor_(substructure_for_screed_work)>
+                <https://w3id.org/ocqa-screed#Check_floor_structure_(under_insulation/fill_insulation)>
+                <https://w3id.org/ocqa-screed#Check_industrial_screed_(products)>
+                <https://w3id.org/ocqa-screed#Check_insulation_frame_pre-wall_mounting_system_(windows)>
+                <https://w3id.org/ocqa-screed#Check_insulation_screed_(fire_protection)>
+                <https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(before_execution)>
+                <https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(during_execution)>
+                <https://w3id.org/ocqa-screed#Check_mastic_asphalt_screed_(products)>
+                <https://w3id.org/ocqa-screed#Check_screed_(products)>
+                <https://w3id.org/ocqa-screed#Check_screed_for_separation_layer_(preparation)>
+                <https://w3id.org/ocqa-screed#Check_ventilation_(screed_works)>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://w3id.org/digitalconstruction/0.5/Processes#Actuation>
+                <https://w3id.org/digitalconstruction/0.5/Processes#Observation>
+                <https://w3id.org/digitalconstruction/0.5/Processes#Project>
+                <https://w3id.org/ocqa#Determination>
+                ocqa-screed#:ParquetWorks
+                ocqa-screed#:Screeding
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ocqa-screed#:CalciumCarbideMeasuringInstrument
+                ocqa-screed#:Chisel
+                ocqa-screed#:FoldingRule
+                ocqa-screed#:Hammer
+                ocqa-screed#:LevelingTrestle
+                ocqa-screed#:SpiritLevel
+                ocqa-screed#:TotalStation
+                ocqa-screed#:WedgeGauge
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ocqa-screed#:CheckSeperationLayer
+                ocqa-screed#:FlatnessInspection
+                ocqa-screed#:HeightInspection
+                ocqa-screed#:MoistureInspection
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ocqa-screed#:FlatnessInspectionProcedure
+                ocqa-screed#:HightInspectionProcedure
+                ocqa-screed#:MoistureInspectionProcedure
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

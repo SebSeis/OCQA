@@ -41,6 +41,14 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             padding: 5px 0 5px 0;
         }
 
+        desc {
+            display: block;
+            font-weight: bold;
+            /*padding: 5px 0 5px 0;*/
+            margin-top: 5px; /* Verringert den Abstand zum vorherigen Element */
+    margin-bottom: 5px; /* Verringert den Abstand zum nächsten Element */
+        }
+
         ul.hlist {
             list-style-type: none;
             border: 1px solid navy;
@@ -147,8 +155,10 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         }
 
         .figure {
-
-            margin-bottom: 20px;
+            margin-top: 1em;
+            /* Abstand oben */
+            /* margin-bottom: 1em; Abstand unten */
+            margin-bottom: 30px;
         }
 
         :link {
@@ -833,6 +843,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         </div>
 
         <h3 id="catalog">Catalog module</h3>
+        <desc>Prefix:ocqa-cat; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Modules/OCQA-Catalog.ttl">https://w3id.org/ocqa-catalog</a></desc>
         <p>To support the inspection planning process with essential data and knowledge, a catalog module is developed.
             The master data comprises, for example, information on failure probabilities, performance rates for
             inspection execution, and cost rates for failures or inspections. The feature catalog module is able to
@@ -846,16 +858,20 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             Management (OPM). The catalogs are designed according to the Data Catalog Vocabulary ontology and can be
             differentiated into a main catalog and a sub-catalog. Resulting estimations for costs or time efforts based
             on features can be aligned to inspections via a direct property.</p>
-        <div class="figure">
+
+        <div class="figure" style="height: 200px;">
             <img src="https://SebSeis.github.io/OCQA/Pictures/Catalog.png" alt="Italian Trulli">
             <div class="caption"><strong>Figure 3:</strong> Illustration of the catalog module</div>
         </div>
 
         <h3 id="contract">Contract module</h3>
+        <desc>Prefix:ocqa-con; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Modules/OCQA-Contract.ttl">https://w3id.org/ocqa-contract</a>
+        </desc>
         <p>The contract module will handle individual contracted quality requirements. Individual quality requirements
             are contractually agreed upon directly between the project participants via individual contract components.
             These requirements extend or reduce the general contracted quality requirements, which are contract
-            regulations that set only the minimum quality requirement [80]. The agreed contractual terms not only define
+            regulations that set only the minimum quality requirement. The agreed contractual terms not only define
             the quality requirements but also specify inspections to be performed. The tasks of the contract module are
             to support the planning of inspections and to refer planned inspections to the specified inspection
             requirements defined in contractual documents. The contractual module is therefore based on several classes,
@@ -863,16 +879,19 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         <p>performance description occurs via a functional performance description or a BOQ. Accordingly,
             ocqa-con:FunctionalPerformanceDescription and ocqa-con:BOQ are modeled as subclasses of
             ocqa-con:PerformanceDescription. The BOQ is defined as a structured description of required work by a set of
-            ocqa-con:BOQItems, including a number, description, quantity, unit, and price [81]. Both BOQs as well as
+            ocqa-con:BOQItems, including a number, description, quantity, unit, and price. Both BOQs as well as
             functional performance descriptions can directly require inspections, which is considered by the relation
             ocqa-con:requiredby. Further contractual components that have to be considered in inspection planning are
             ocqa-con:GeneralTerms and ocqa-con:GeneralTechnicalTerms.
         </p>
-        <div class="figure">
+        <div class="figure" style="height: 350px;">
             <img src="https://SebSeis.github.io/OCQA/Pictures/Contract.png" alt="Italian Trulli">
             <div class="caption"><strong>Figure 4:</strong> Illustration of the contract module</div>
         </div>
         <h3 id="contract">Regulation module</h3>
+        <desc>Prefix:ocqa-reg; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Modules/OCQA-Regulation.ttl">https://w3id.org/ocqa-regulation</a>
+        </desc>
         <p>To handle inpsection planning knowledge provided by norms, standards, and guidelines we provide the
             regulation module. The regulation module is used as a reference for all kind of rules relevant for
             inspection planning. It does not matter, if this rules are provided by company internal standards or
@@ -890,6 +909,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 
 
         <h3 id="extension">Rule module</h3>
+        <desc>Prefix:ocqa-rule; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Modules/OCQA-Rule.ttl">https://w3id.org/ocqa-rule</a></desc>
         <p>The rules module accommodates different types of inspections, which 1) check the consistency of input data
             for inspection planning, 2) perform inspection planning, and 3) validate planned inspections. These rules
             share a common goal of supporting the inspection planner in the inspection planning process. It is important
@@ -928,12 +949,16 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             date of the rule using <i>ocqa-rule:HasCreationTime</i>.
         </p>
 
-        <div class="figure">
+        <div class="figure" style="height: 300px;">
             <img src="https://SebSeis.github.io/OCQA/Pictures/Rule.png" alt="Italian Trulli">
             <div class="caption"><strong>Figure 5:</strong>Screed-specific extension of the OCQA by subclasses.</div>
         </div>
 
         <h3 id="extension">Trade-specific extensions</h3>
+        <desc>Prefix:ocqa-screed; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Extension/OCQA-Screed.ttl">https://w3id.org/ocqa-screed</a></desc>
+        <desc>Prefix:ocqa-insulation; Namespace:<a
+                href="https://SebSeis.github.io/OCQA/Extension/OCQA-ThermalInsulation.ttl">https://w3id.org/ocqa-insulation</a></desc>
         <p>Task-specific inspection planning is covered by trade-specific extensions of the OCQA ontology. For
             example, the extension OCQA-screed covers all inspections regarding the trade screed. The extensions are
             defined in separate OWL-Ontologies, such as OCQA-Screed for the trade screed or OCQA-Insulation for
@@ -945,7 +970,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             ontology is reduced since only the trades necessary for the user have to be represented in the ontology.
         </p>
 
-        <div class="figure">
+        <div class="figure" style="height: 300px;">
             <img src="https://SebSeis.github.io/OCQA/Pictures/ExtensionScreed.png" alt="Italian Trulli">
             <div class="caption"><strong>Figure 6:</strong>Screed-specific extension of the OCQA by subclasses.</div>
         </div>
