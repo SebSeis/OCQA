@@ -233,7 +233,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2022-06-07</dd>
         <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued">Issued</a></dt>
-        <dd>2022-01-01</dd>
+        <dd>2024-01-01</dd>
         <dt>Version Information</dt>
         <dd>0.3</dd>
         <dt>Version URI</dt>
@@ -261,6 +261,9 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 <section id="toc">
     <h2>Table of Contents</h2>
     <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#specification">Specification</a></li>
+        <li><a href="#modules">Modules</a></li>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#objectproperties">Object Properties</a></li>
         <li><a href="#datatypeproperties">Datatype Properties</a></li>
@@ -272,14 +275,231 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 </section>
 <section id="overview">
     <h2>Overview</h2>
-    <div>This document provides a description of the XYZ ontology, which is designed to represent knowledge about the domain of XYZ. The ontology is intended to provide a standardized vocabulary for describing concepts, entities, and relationships relevant to XYZ. It is based on a set of axioms that define the properties and relationships of the concepts within the ontology. This document includes an overview of the ontology structure, the types of entities and relationships represented, and the intended applications of the ontology. It also provides guidance on how to use and extend the ontology, and describes the processes used to develop and maintain it.</div>
-    <img src="https://SebSeis.github.io/OCQA/Pictures/KnowledgeDomains.jpg" alt="Italian Trulli">
+    <div>This document provides a description of the Ontology for Construction Quality Assurance (OCQA), which is designed to represent explicit knowledge about the domain of quality inspection planning. The ontology is intended to provide a standardized vocabulary for describing concepts, entities, and relationships relevant to inspection planning in construction execution. It is based on a set of axioms that define the properties and relationships of the concepts within the ontology. This document includes an overview of the ontology structure, the types of entities and relationships represented, and the intended applications of the ontology. It also provides guidance on how to use and extend the ontology, and describes the processes used to develop and maintain it. The development of the OCQA follows the Linked Open Terms (LOT) methodology and is encoded using Semantic Web Ontology Language (OWL) to ensure machine-readability and alignment with other ontologies. According to LOT, we provide the ontology requirements specification document (ORSD), which can be found in the specification section. The OCQA is evaluated using various approaches, including automatic consistency checking, competency questions, criteria-based evaluation, and focus group interviews. </div>
+    <br>
+    <div>The OCQA is based on four modules to fully describe the required data (see Figure below). Each of these modules reflect construction domain knowledge that is directly related to the OCQA and thus to inspection planning. In particular, DiCon is reused in the OCQA as a module to provide the basic terminologies and concepts related to construction execution, as shown in Figures 4 and 6. DiCon is a higher-level domain ontology that generically represents construction workflow knowledge with related entities and properties. The DiCon ontology contains basic concepts for describing components, construction activities, materials, agents, and more. For example, the goal of an inspection can be related to a component, activity, or person, thus satisfying the high variance of inspections and possible inspection characteristics. Furthermore, DiCon has built alignments with existing relevant ontologies that enable the direct integration of heterogeneous systems in the construction domain. For example, DiCon has aligned with ifcOWL and BOT to integrate building information models, organizational descriptions, and schedules. DiCon is implemented in the OCQA as hard reuse via owl:imports, which reuses the imported ontology as it is and as a whole. In turn, the OCQA is itself an extension of the DiCon ontology. The OCQA-Catalog module is used to store quality-related information. The catalog module contains parameters about failure probabilities, performance and cost rates, which can be used for example to estimate costs and durations of inspections. The OCQA-Regulations module is used to store the corresponding norms, guidelines and standards, to which inspections or contracts refer. Contracts are described via the OCQA-Contract module.</div>
+
+    <div>To keep the ontology lean and flexible, inspection-specific contents of the inspection planning were modeled as extensions according to their trade-specific terminology. These extensions specify the classes of the OCQA to fit their trade-specific terminology. The extensions are not limited to the OCQA but can also be applied to modules like trade-specific regulations or catalogs. The extendibility of the ontology enables the use of the OCQA in different contexts and the customization of the ontology depending on the needs of a project. The extensions can be added to the ontology as needed, for example, to add the trades that are required for the construction project or that are covered by a construction company. Moreover, the modularization into trades not only simplifies the further development of the ontology, allowing different users to extend it, but also paves the way for an expansive compilation of diverse trades.
+    </div>
+    <img src="https://SebSeis.github.io/OCQA/Pictures/Overview_of_OCQA.jpg" alt="Italian Trulli">
+    <!--<img src="https://SebSeis.github.io/OCQA/Pictures/KnowledgeDomains.jpg" alt="Italian Trulli">
     <img src="https://SebSeis.github.io/OCQA/Pictures/Overview of OCQA with classes.png" alt="Italian Trulli">
     <img src="https://SebSeis.github.io/OCQA/Pictures/Overview on modules and extensions of OCQA.png" alt="Italian Trulli">
-    <!-- <div class="figure">
+     <div class="figure">
         <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div> -->
+</section>
+<section id="specification">
+    <h2>Specification</h2>
+    <table style="width: 81%; border-collapse: collapse; border: none; margin-right: calc(19%);">
+        <tbody>
+            <tr>
+                <td colspan="2" style="width: 450pt;border: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;height: 21pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;text-align:center;border:none;'><strong><span style="color:black;">Ontology Requirements Specification Document</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">1</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Purpose</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>The purpose of the OCQA is to provide a structural basis for representing project-specific inspection plan in construction execution and to support decision making in the process of inspection planning. The objective is to ensure a transparent, objective, and rule-based process for assigning building permit applications. The ontology will support civil engineers in gaining a better understanding of inspection plans. Accordingly, the ontology will provide terminology and semantics to describe inspections and inspection planning knowledge.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">2</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Scope</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>The OCQA aims to represent inspections and inspection plans in construction, applicable across various trades in the construction domain. The terminology conforms to DIN 55350, ISO 9000, and ISO 9001 standards. It encompasses inspections and related entities such as agents, equipment, procedures, norms, costs, instructions, and failure probabilities. The ontology is therefore designed as a domain-specific model, aligning both construction-specific and high-level ontologies to provide comprehensive knowledge representation about inspection-related entities. Furthermore, the OCQA integrates heterogeneous data from multiple knowledge domains, ensures the consistency of inspection plans, facilitates inspection coordination within a company or project, and enables information exchange among relevant parties.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">3</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Implementation Language</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>The implementation language for the OCQA is OWL for the T-Box and SHACL for business rules (i.e., the R-Box). This approach provides the necessary flexibility and expressiveness for modeling the complex relationships between building permit authorities, building officials, and building applications. The OCQA is operating bilingually in English and German.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">4</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Intended End-Users</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>The primary end-users of the OCQA ontology are stakeholders in the construction execution process and work preparation, including construction managers, experts, architects, work planners, foremen, construction workers, and suppliers. These users interact with the ontology indirectly through a software application, which serves as a user-friendly interface. Developers will directly use the OCQA as a substructure for programming software applications, enabling the storage and processing of inspection data from heterogeneous sources.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">5</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Intended Uses</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>The OCQA is used to support the following use cases:</p>
+                    <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                        <ol style="margin-bottom: 0cm; margin-left: 23.7px;"><span class="fr-close-ol"></span><span class="fr-close-ol"></span>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Description of inspection plans and relevant information</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Provision of knowledge to support decision making in the inspection planning</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>(Semi-)Automated planning of inspections</li>
+                        </ol>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">6</span></strong></p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Ontology Requirements</span></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <ol style="margin-bottom:0cm;margin-top:0cm;" start="1" type="a">
+                        <li style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Non-Functional Requirements</span></strong></li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>In addition to these use cases, the following nonfunctional requirements have been identified as crucial for the OCQA:</p>
+                    <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                        <ol style="margin-bottom:0cm;list-style-type: decimal;">
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Coverage and sufficiency</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Consistency</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Usability</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Clear and concise terminology</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Reusability and extensibility</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Reliability and transparency</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Modularity</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Adherence to the FAIR principles (Findable, Accessible, Interoperable, and Reusable)</li>
+                        </ol>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;background: rgb(239, 239, 239);padding: 5pt;vertical-align: top;">
+                    <ol style="margin-bottom:0cm;margin-top:0cm;" start="2" type="a">
+                        <li style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'><strong><span style="color:black;">Functional Requirements: Lists or tables of requirements written as Competency Questions (CQs)&nbsp;</span></strong></li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 31.5pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+                <td style="width: 418.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 5pt;vertical-align: top;">
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>Use Case 1: Description of inspection plans and relevant information</p>
+                    <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                        <ol style="margin-bottom:0cm;list-style-type: decimal;margin-left:52.05px;">
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What are the characteristics being inspected?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What type of inspection is it?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What are the related entities of an inspection?</li>
+                            <ul>
+                                <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                                    <ol style="margin-bottom:0cm;list-style-type: decimal;">
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What inspection procedure is used?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What inspection equipment is required for the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Where is the inspection located?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What agent processes or has processed the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which company hires the person who is responsible for the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Does the responsible person has the required skills to execute the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Why is the inspection required?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>How often does the measurement of the inspection have to be done?</li>
+                                    </ol>
+                                </div>
+                            </ul>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What is the start and end date of an inspection?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>How are inspections interlinked in an inspection plan and interlinked with the construction schedule?</li>
+                            <ul>
+                                <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                                    <ol style="margin-bottom:0cm;list-style-type: decimal;">
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What construction activity is related to the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What is the preceding/following construction activity of the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What is the precding/following inspection of the inspection?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which inspection can be done on a specific point of time?</li>
+                                        <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What will be the best time point to do as many inspections in one site inspection?</li>
+                                    </ol>
+                                </div>              
+                            </ul>                         
+                        </ol>
+                    </div>
+                    <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:36.0pt;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>Use Case 2: Providing knowledge to support decision making in inspection planning</p>
+                    <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                        <ol style="margin-bottom:0cm;list-style-type: undefined;margin-left:52.05px;">
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which inspection types can be assigned or are required by an activity, building object, or location?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which entities are required for an inspection type?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What are the time constraints of an inspection type?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which inspection characteristics can be inspected by an inspection type?</li>
+                        </ol>
+                    </div>
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>Use Case 3: (Semi-)Automated planning of inspections</p>
+                    <div style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>
+                        <ol style="margin-bottom:0cm;list-style-type: undefined;margin-left:52.05px;">
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which inspection should be done for the specific construction project (considering different information like schedule, contract, design (BIM), construction equipment, norms and standards)?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>When should the inspection start and end?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>What should be the frequence and scope of the inspection?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Who should process the inspection?</li>
+                            <li style='margin:0cm;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;'>Which inspection procedure and equipment should be used to execute the inspection?</li>
+                        </ol>
+                    </div>
+                    <p style='margin:0cm;line-height:normal;font-size:15px;font-family:"Arial",sans-serif;border:none;'>&nbsp;</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
