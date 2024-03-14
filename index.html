@@ -147,6 +147,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         }
 
         .figure {
+
             margin-bottom: 20px;
         }
 
@@ -324,7 +325,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
     </section>
     <section id="overview">
         <h2>Overview</h2>
-        <div>This document provides a description of the Ontology for Construction Quality Assurance (OCQA), which is
+        <p>This document provides a description of the Ontology for Construction Quality Assurance (OCQA), which is
             designed to represent explicit knowledge about the domain of quality inspection planning. The ontology is
             intended to provide a standardized vocabulary for describing concepts, entities, and relationships relevant
             to inspection planning in construction execution. It is based on a set of axioms that define the properties
@@ -335,9 +336,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             is encoded using Semantic Web Ontology Language (OWL) to ensure machine-readability and alignment with other
             ontologies. According to LOT, we provide the ontology requirements specification document (ORSD), which can
             be found in the specification section. The OCQA is evaluated using various approaches, including automatic
-            consistency checking, competency questions, criteria-based evaluation, and focus group interviews. </div>
-        <br>
-        <div>The OCQA is based on four modules to fully describe the required data (see Figure below). Each of these
+            consistency checking, competency questions, criteria-based evaluation, and focus group interviews. </p>
+        <p>The OCQA is based on four modules to fully describe the required data (see Figure below). Each of these
             modules reflect construction domain knowledge that is directly related to the OCQA and thus to inspection
             planning. In particular, DiCon is reused in the OCQA as a module to provide the basic terminologies and
             concepts related to construction execution, as shown in Figures 4 and 6. DiCon is a higher-level domain
@@ -353,9 +353,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             information. The catalog module contains parameters about failure probabilities, performance and cost rates,
             which can be used for example to estimate costs and durations of inspections. The OCQA-Regulations module is
             used to store the corresponding norms, guidelines and standards, to which inspections or contracts refer.
-            Contracts are described via the OCQA-Contract module.</div>
-
-        <div>To keep the ontology lean and flexible, inspection-specific contents of the inspection planning were
+            Contracts are described via the OCQA-Contract module.</p>
+        <p>To keep the ontology lean and flexible, inspection-specific contents of the inspection planning were
             modeled as extensions according to their trade-specific terminology. These extensions specify the classes of
             the OCQA to fit their trade-specific terminology. The extensions are not limited to the OCQA but can also be
             applied to modules like trade-specific regulations or catalogs. The extendibility of the ontology enables
@@ -364,8 +363,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             required for the construction project or that are covered by a construction company. Moreover, the
             modularization into trades not only simplifies the further development of the ontology, allowing different
             users to extend it, but also paves the way for an expansive compilation of diverse trades.
-        </div>
-        <div class="figure">
+        </p>
+        <div class="figure" style="width: 1000px; height: 550px;">
             <img src="https://SebSeis.github.io/OCQA/Pictures/Overview_of_OCQA.png" alt="Italian Trulli">
             <div class="caption"><strong>Figure 1:</strong>Overall architecture of OCQA</div>
         </div>
@@ -373,12 +372,14 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
     </section>
     <section id="specification">
         <h2>Specification</h2>
-        <div>The objective of this section is to provide a formal specification document utilizing competency questions
+        <p>The objective of this section is to provide a formal specification document utilizing competency questions
             (CQs) as requirements. The CQs are extracted from use cases, which are based on the intended purpose and
             scope of the relevant ontology during the specification process. The subsequent table represents the
             ontology requirements specification document (ORSD), which provides all results of the specification
-            process.</div>
+            process.</p>
+
         <table style="width: 81%; border-collapse: collapse; border: none; margin-right: calc(19%);">
+            <caption><strong>Table 1:</strong>Ontology requirements specification document (ORSD)of OCQA</caption>
             <tbody>
                 <tr>
                     <td colspan="2"
@@ -887,12 +888,66 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             and the subclasses ocqa-reg:Norm, ocqa-reg:Standard, and ocqa-reg:Guideline (see Figure 4).
         </p>
 
+
+        <h3 id="extension">Rule module</h3>
+        <p>The rules module accommodates different types of inspections, which 1) check the consistency of input data
+            for inspection planning, 2) perform inspection planning, and 3) validate planned inspections. These rules
+            share a common goal of supporting the inspection planner in the inspection planning process. It is important
+            to note that the described use cases for inspection planning are not exhaustive and can be expanded to
+            include compliance checks if necessary.</p>
+        <p>The rule module is remodelled according to the rule ontology illustrated by Zheng 2022. The rules are
+            represented by the class <i>ocqa-rule:Rule</i> and are linked to the <i>dice:Entity</i> through the object
+            property <i>ocqa-rule:inferredBy</i> (see Figure 5). This relationship ensures that each
+            subclass of <i>dice:Entity</i> such as <i>ocqa:Inspection</i>, <i>dicp:activity,</i>
+            <i>ocqa:InspectionEquipment</i> or <i>ocqa:InspectionProcedure</i> can be inferred by a rule. This
+            distinction allows rules to be categorized based on the inspection characteristics, which have to be planned
+            by the rules, as described earlier.
+        </p>
+        <p> The rules are linked to a SHACL shape, which defines the content of a rule using either a
+            <i>sh:NodeShape</i> or a <i>sh:PropertyShape</i>. In SHACL, a NodeShape is a type of shape that focuses on
+            validating individual nodes in an RDF data graph. When a target class is associated with a NodeShape, it
+            means that the constraints defined within that shape apply only to instances of the specified target class,
+            including any subclasses of <i>dice:Entity</i>. A PropertyShape, on the other hand, focuses on validating
+            the values of a specific property for a node in an RDF data graph. The properties to get validated are
+            defined as <i>dicv:Property</i> and are related to the <i>dice:Entity</i>. The rules themselves are defined
+            based on regulations, represented by <i>ocqa-reg:Regulation</i>. The connection between a rule and a
+            regulation is necessary to describe the rule's source and to identify all rules that must be applied due to
+            contractual constraints.
+        </p>
+        <p> In addition, the rules within the system can be categorized into two types: generic rules and specific
+            rules, denoted as <i>ocqa-rule:GeneralRule</i> and <i>ocqa-rule:SpecificRule</i> respectively. Generic rules
+            are designed to guide the planning of inspections for specific classes of inspections. An example of a
+            generic rule is setting the earliest start or end time for an inspection. Another instance is the automated
+            generation of geometric inspections based on the information extracted from the BIM model. On the other
+            hand, specific rules are tailored to address explicit requirements derived from the contract or regulations
+            module. For instance, a specific rule may dictate that the evenness of a screed must be assessed prior to
+            installation. For further classification of the rules, subclasses according to the task of the rule are
+            defined like <i>ocqa-rule:InspectionPlanningRule</i>, <i>ocqa-rule:InspectionPlanningEvaluationRule</i> and
+            <i>ocqa-rule:InspectionEvaluationRule</i>. Furthermore, the rules have additional information about the
+            creator via <i>dice:Agent</i>, the version of the rule using <i>ocqa-rule:hasVersion</i> and the creation
+            date of the rule using <i>ocqa-rule:HasCreationTime</i>.
+        </p>
+
+        <div class="figure">
+            <img src="https://SebSeis.github.io/OCQA/Pictures/Rule.png" alt="Italian Trulli">
+            <div class="caption"><strong>Figure 5:</strong>Screed-specific extension of the OCQA by subclasses.</div>
+        </div>
+
         <h3 id="extension">Trade-specific extensions</h3>
-        <p>Task-specific inspection planning is covered by trade-specific extensions of the OCQA ontology. For example, the extension OCQA-screed covers all inspections regarding the trade screed. The extensions are defined in separate OWL-Ontologies, such as OCQA-Screed for the trade screed or OCQA-Insulation for insulation trades. To ensure compatibility with the OCQA, these ontologies have to be aligned with the OCQA core and modules. The extension is done by using rdfs:subClassOf to expand the generic classes of OCQA and its modules for trade-specific use cases. An example of the extension for screed and insulation is given in Figure 9. The use of extensions enables improved reusability of the ontology as it becomes easier to share and extend trade-related knowledge between users. Furthermore, the complexity of the ontology is reduced since only the trades necessary for the user have to be represented in the ontology.</p>
+        <p>Task-specific inspection planning is covered by trade-specific extensions of the OCQA ontology. For
+            example, the extension OCQA-screed covers all inspections regarding the trade screed. The extensions are
+            defined in separate OWL-Ontologies, such as OCQA-Screed for the trade screed or OCQA-Insulation for
+            insulation trades. To ensure compatibility with the OCQA, these ontologies have to be aligned with the
+            OCQA core and modules. The extension is done by using rdfs:subClassOf to expand the generic classes of
+            OCQA and its modules for trade-specific use cases. An example of the extension for screed and insulation
+            is given in Figure 6. The use of extensions enables improved reusability of the ontology as it becomes
+            easier to share and extend trade-related knowledge between users. Furthermore, the complexity of the
+            ontology is reduced since only the trades necessary for the user have to be represented in the ontology.
+        </p>
 
         <div class="figure">
             <img src="https://SebSeis.github.io/OCQA/Pictures/ExtensionScreed.png" alt="Italian Trulli">
-            <div class="caption"><strong>Figure 5:</strong>Screed-specific extension of the OCQA by subclasses./div>
+            <div class="caption"><strong>Figure 6:</strong>Screed-specific extension of the OCQA by subclasses.</div>
         </div>
 
         <section id="classes">
@@ -1356,8 +1411,10 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
                     <tr>
                         <th>Description</th>
                         <td>
-                            <p>Das Wissen eines Prüfverfahrens wird durch eine Regel abgebildet. Die Regel entspricht
-                                somit einer Verfahrensanweisung aus der sich die individuelle Prüfung ergibt.</p>
+                            <p>Das Wissen eines Prüfverfahrens wird durch eine Regel abgebildet. Die Regel
+                                entspricht
+                                somit einer Verfahrensanweisung aus der sich die individuelle Prüfung ergibt.
+                            </p>
                         </td>
                     </tr>
                     <tr>
@@ -1778,7 +1835,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             </div>
         </section>
         <section id="objectproperties">
-            <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span>
+            </h2>
             <ul class="hlist">
                 <li><a href="#detect">detect</a></li>
                 <li><a href="#hasCausation">hasCausation</a></li>
@@ -2831,7 +2889,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 
 
         <section id="namedindividuals">
-            <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span>
+            </h2>
             <ul class="hlist">
                 <li><a href="#ScreedPanning">ScreedPanning</a></li>
             </ul>
