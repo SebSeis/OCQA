@@ -1,10 +1,10 @@
-@prefix : <https://w3id.org/ocqa-contract#> .
+@prefix : <https://w3id.org/ocqa/contract#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/ocqa-contract#> .
+@base <https://w3id.org/ocqa/contract#> .
 
 <https://w3id.org/ocqa/contract#> rdf:type owl:Ontology ;
                                    owl:versionIRI <https://w3id.org/ocqa/contract/0.1> ;
@@ -62,18 +62,18 @@
 #################################################################
 
 ###  https://w3id.org/ocqa/contract#contain
-:contain rdf:type owl:ObjectProperty ;
-         rdfs:domain :BOQ ;
-         rdfs:range :BOQItem ;
-         rdfs:label "enthält"@de .
+<https://w3id.org/ocqa/contract#contain> rdf:type owl:ObjectProperty ;
+                                         rdfs:domain <https://w3id.org/ocqa/contract#BOQ> ;
+                                         rdfs:range <https://w3id.org/ocqa/contract#BOQItem> ;
+                                         rdfs:label "enthält"@de .
 
 
 ###  https://w3id.org/ocqa/contract#contract
-:contract rdf:type owl:ObjectProperty ;
-          rdfs:domain :performanceDescription ;
-          rdfs:range <https://w3id.org/ocqa/regulation#Regulation> ;
-          rdfs:comment "contract"@en ;
-          rdfs:label "vereinbart"@de .
+<https://w3id.org/ocqa/contract#contract> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain <https://w3id.org/ocqa/contract#performanceDescription> ;
+                                          rdfs:range <https://w3id.org/ocqa/regulation#Regulation> ;
+                                          rdfs:comment "contract"@en ;
+                                          rdfs:label "vereinbart"@de .
 
 
 #################################################################
@@ -81,38 +81,38 @@
 #################################################################
 
 ###  https://w3id.org/ocqa/contract#BOQ
-:BOQ rdf:type owl:Class ;
-     rdfs:subClassOf :performanceDescription ;
-     rdfs:label "Leistungsverzeichnis"@de .
+<https://w3id.org/ocqa/contract#BOQ> rdf:type owl:Class ;
+                                     rdfs:subClassOf <https://w3id.org/ocqa/contract#performanceDescription> ;
+                                     rdfs:label "Leistungsverzeichnis"@de .
 
 
 ###  https://w3id.org/ocqa/contract#BOQItem
-:BOQItem rdf:type owl:Class ;
-         rdfs:subClassOf :BOQ ;
-         rdfs:label "Position"@de .
+<https://w3id.org/ocqa/contract#BOQItem> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://w3id.org/ocqa/contract#BOQ> ;
+                                         rdfs:label "Position"@de .
 
 
 ###  https://w3id.org/ocqa/contract#FunctionalPerformanceDescription
-:FunctionalPerformanceDescription rdf:type owl:Class ;
-                                  rdfs:subClassOf :performanceDescription ;
-                                  rdfs:label "funktionale Leistungsbeschreibung"@de .
+<https://w3id.org/ocqa/contract#FunctionalPerformanceDescription> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://w3id.org/ocqa/contract#performanceDescription> ;
+                                                                  rdfs:label "funktionale Leistungsbeschreibung"@de .
 
 
 ###  https://w3id.org/ocqa/contract#GerneralTechnicalTerms
-:GerneralTechnicalTerms rdf:type owl:Class ;
-                        rdfs:subClassOf :performanceDescription ;
-                        rdfs:label "Allgemein technische Vertragsbedingungen"@de .
+<https://w3id.org/ocqa/contract#GerneralTechnicalTerms> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://w3id.org/ocqa/contract#performanceDescription> ;
+                                                        rdfs:label "Allgemein technische Vertragsbedingungen"@de .
 
 
 ###  https://w3id.org/ocqa/contract#GerneralTerms
-:GerneralTerms rdf:type owl:Class ;
-               rdfs:subClassOf :performanceDescription ;
-               rdfs:label "Allgemeine Vertragsbedingungen"@de .
+<https://w3id.org/ocqa/contract#GerneralTerms> rdf:type owl:Class ;
+                                               rdfs:subClassOf <https://w3id.org/ocqa/contract#performanceDescription> ;
+                                               rdfs:label "Allgemeine Vertragsbedingungen"@de .
 
 
 ###  https://w3id.org/ocqa/contract#performanceDescription
-:performanceDescription rdf:type owl:Class ;
-                        rdfs:label "Leistungsbeschreibung"@de .
+<https://w3id.org/ocqa/contract#performanceDescription> rdf:type owl:Class ;
+                                                        rdfs:label "Leistungsbeschreibung"@de .
 
 
 ###  https://w3id.org/ocqa/regulation#Regulation
@@ -125,10 +125,10 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :BOQ
-                :FunctionalPerformanceDescription
-                :GerneralTechnicalTerms
-                :GerneralTerms
+  owl:members ( <https://w3id.org/ocqa/contract#BOQ>
+                <https://w3id.org/ocqa/contract#FunctionalPerformanceDescription>
+                <https://w3id.org/ocqa/contract#GerneralTechnicalTerms>
+                <https://w3id.org/ocqa/contract#GerneralTerms>
               )
 ] .
 

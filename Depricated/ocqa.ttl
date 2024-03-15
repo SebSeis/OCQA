@@ -9,22 +9,24 @@
 @base <https://w3id.org/ocqa#> .
 
 <https://w3id.org/ocqa#> rdf:type owl:Ontology ;
-                          owl:versionIRI <https://w3id.org/ocqa/0.3> ;
+                          owl:versionIRI <https://w3id.org/ocqa> ;
                           owl:imports <http://w3id.org/digitalconstruction/0.5/Units> ,
-                                      <https://w3id.org/concontract-0.1> ,
                                       <https://w3id.org/digitalconstruction/0.5/Information> ,
-                                      <https://w3id.org/ocr/0.1> ;
+                                      <https://w3id.org/ocqa/catalog>,
+                                      <https://w3id.org/contract>,
+                                      <https://w3id.org/ocqa/regulation>,
+                                      <https://w3id.org/ocqa/rule> ;
                           dcterms:creator "Sebastian Seiß" ;
-                          dcterms:description "The Ontology for Quality Assurance is a simple ontology defining the core concepts for quality quality assurence in construction." ;
+                          dcterms:description "The Ontology for Quality Assurance is a simple ontology defining the core concepts for inspection planning in construction." ;
                           dcterms:issued "2022-01-01" ;
                           dcterms:license "https://creativecommons.org/licenses/by/1.0" ;
-                          dcterms:modified "2022-06-07" ;
+                          dcterms:modified "2024-03-14" ;
                           dcterms:title "Ontology for Construction Quality Assurence (OCQA)" ;
                           vann:preferredNamespacePrefix "ocqa" ;
                           vann:preferredNamespaceUri "https://w3id.org/ocqa#" ;
-                          rdfs:comment """- Version 0.3
+                          rdfs:comment """- Version 1.0
 - CoreModel""" ;
-                          owl:versionInfo 0.3 .
+                          owl:versionInfo 1.0 .
 
 #################################################################
 #    Annotation properties
@@ -66,6 +68,10 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :BGB rdf:type owl:AnnotationProperty .
 
 
+###  https://w3id.org/ocqa#hasValue
+:hasValue rdf:type owl:AnnotationProperty .
+
+
 ###  https://w3id.org/ocqa#DIN_55350:2021-10
 <https://w3id.org/ocqa#DIN_55350:2021-10> rdf:type owl:AnnotationProperty .
 
@@ -80,46 +86,60 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/ocqa#detect
 :detect rdf:type owl:ObjectProperty ;
-        rdfs:domain :InspectionProcedure ;
-        rdfs:range :FailureCategories .
+        rdfs:domain :Inspection ;
+        rdfs:range :Failure .
 
 
 ###  https://w3id.org/ocqa#hasCausation
 :hasCausation rdf:type owl:ObjectProperty ;
-              rdfs:domain :Evaluation ;
               rdfs:range :Causation ;
               rdfs:label "hatUrsache"@de .
 
 
-###  https://w3id.org/ocqa#hasDocumentation
-:hasDocumentation rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Evaluation ,
-                              :Inspection ;
-                  rdfs:range :Record ;
-                  rdfs:label "hatDokumentation"@de .
+###  https://w3id.org/ocqa#hasFailureType
+:hasFailureType rdf:type owl:ObjectProperty ;
+                rdfs:domain :Failure ;
+                rdfs:range :FailureType .
 
 
 ###  https://w3id.org/ocqa#hasInspection
 :hasInspection rdf:type owl:ObjectProperty ;
+               owl:inverseOf :hasInspectionPlan ;
+               rdfs:domain :InspectionPlan ;
                rdfs:range :Inspection ;
-               rdfs:comment "Eine Beziehung zwischen einem Element, Bauaktivität oder Kontrollaktivität und einer Prüfung"@de ;
+               rdfs:comment "Eine Beziehung zwischen einem Prüfplan und einer Inspection"@de ;
                rdfs:label "hatPrüfung"@de .
+
+
+###  https://w3id.org/ocqa#hasInspectionPlan
+:hasInspectionPlan rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Inspection ;
+                   rdfs:range :InspectionPlan .
 
 
 ###  https://w3id.org/ocqa#hasInspectionProcedure
 :hasInspectionProcedure rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasProcedure ;
                         rdfs:domain :Inspection ;
                         rdfs:range :InspectionProcedure .
 
 
+###  https://w3id.org/ocqa#hasProcedure
+:hasProcedure rdf:type owl:ObjectProperty ;
+              rdfs:domain <https://w3id.org/digitalconstruction/0.5/Processes#Activity> ;
+              rdfs:range :Procedure .
+
+
 ###  https://w3id.org/ocqa#hasQualification
-:hasQualification rdf:type owl:ObjectProperty .
+:hasQualification rdf:type owl:ObjectProperty ;
+                  rdfs:domain <https://w3id.org/digitalconstruction/0.5/Agents#Person> ;
+                  rdfs:range :Procedure .
 
 
 ###  https://w3id.org/ocqa#hasRecord
 :hasRecord rdf:type owl:ObjectProperty ;
            rdfs:domain :Inspection ;
-           rdfs:range :Evaluation ;
+           rdfs:range :Record ;
            rdfs:label "hatAufnahme"@de .
 
 
@@ -133,18 +153,39 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
            rdfs:range :Sample .
 
 
+###  https://w3id.org/ocqa#hasSubInspection
+:hasSubInspection rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Inspection ;
+                  rdfs:range :Inspection .
+
+
+###  https://w3id.org/ocqa#hasTargetFailureType
+:hasTargetFailureType rdf:type owl:ObjectProperty ;
+                      rdfs:domain :InspectionProcedure ;
+                      rdfs:range :FailureType .
+
+
+###  https://w3id.org/ocqa#isDocumentedBy
+:isDocumentedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain :Failure ;
+                rdfs:range :Record ;
+                rdfs:comment "ist dokumentiert durch"@de ;
+                rdfs:label "ist aufgezeichnet durch"@de .
+
+
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://w3id.org/ocqa#Aufwandswert
-:Aufwandswert rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :Wert .
+###  https://w3id.org/ocqa#ExpenseValue
+:ExpenseValue rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasEstimationValues ;
+              rdfs:label "Aufwandswert"@de .
 
 
 ###  https://w3id.org/ocqa#InspectionStatus
 :InspectionStatus rdf:type owl:DatatypeProperty ;
-                  rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#Object> ;
+                  rdfs:domain :Inspection ;
                   rdfs:comment "Prüfstatus"@de ;
                   <https://w3id.org/ocqa#DIN_55350:2021-10> """Zustand bezüglich der Frage, welche Prüfungen an einem bestimmten Objekt durchgeführt wurden und welche Prüfergebnisse dabei erzielt wurden
 Anmerkung 1 zum Begriff: Der Prüfstatus kann zum Beispiel dokumentiert sein:
@@ -156,28 +197,10 @@ Anmerkung 1 zum Begriff: Der Prüfstatus kann zum Beispiel dokumentiert sein:
 — in einer sonstigen geeigneten Weise."""@de .
 
 
-###  https://w3id.org/ocqa#Kostwert
-:Kostwert rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf :Wert .
-
-
-###  https://w3id.org/ocqa#Leistungswert
-:Leistungswert rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :Wert .
-
-
-###  https://w3id.org/ocqa#Wert
-:Wert rdf:type owl:DatatypeProperty ;
-      rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  https://w3id.org/ocqa#accepted
-:accepted rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:domain :Inspection ;
-          rdfs:range xsd:boolean ;
-          rdfs:comment "Describes if the quality checked by a inspection or the sum of inspection in a quality inspection task is according to the required quality"@de ;
-          rdfs:label "Bestanden"@de .
+###  https://w3id.org/ocqa#PerformanceValue
+:PerformanceValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :hasEstimationValues ;
+                  rdfs:label "Leistungswert"@de .
 
 
 ###  https://w3id.org/ocqa#filePath
@@ -188,16 +211,34 @@ Anmerkung 1 zum Begriff: Der Prüfstatus kann zum Beispiel dokumentiert sein:
 
 ###  https://w3id.org/ocqa#hasCostPerInspection
 :hasCostPerInspection rdf:type owl:DatatypeProperty ;
-                      rdfs:subPropertyOf :Kostwert ;
+                      rdfs:subPropertyOf :hasCostValue ;
                       rdfs:domain :InspectionProcedure ;
                       rdfs:comment """Can be used for easy inpsection cost estimation. Equivalent to UnitCost
 
-Otherwise inspection cost estimation can be done by the sum over equipment cost, inspector cost""" .
+Otherwise inspection cost estimation can be done by the sum over equipment cost, inspector cost""" ;
+                      rdfs:label "Koste pro Prüfung"@de .
+
+
+###  https://w3id.org/ocqa#hasCostValue
+:hasCostValue rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasEstimationValues ;
+              rdfs:domain :InspectionProcedure ;
+              rdfs:label "Kostenwert"@de .
+
+
+###  https://w3id.org/ocqa#hasEstimationValues
+:hasEstimationValues rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:comment "Values can be used to estimate work"@en ,
+                                  "Werte die zur Kalkulation verwendet werden"@de ;
+                     rdfs:label "Kalkulationsansatz"@de .
 
 
 ###  https://w3id.org/ocqa#hasFixCostPerInspection
 :hasFixCostPerInspection rdf:type owl:DatatypeProperty ;
-                         rdfs:subPropertyOf :hasCostPerInspection .
+                         rdfs:subPropertyOf :hasCostPerInspection ;
+                         rdfs:domain :InspectionProcedure ;
+                         rdfs:label "FixeKostenProInspection"@de .
 
 
 ###  https://w3id.org/ocqa#hasInpsectionPerUnit
@@ -226,7 +267,9 @@ Anmerkung 1 zum Begriff: Prüfkosten entstehen durch das für Prüfungen eingese
 
 ###  https://w3id.org/ocqa#hasLabourCostPerInspection
 :hasLabourCostPerInspection rdf:type owl:DatatypeProperty ;
-                            rdfs:subPropertyOf :hasCostPerInspection .
+                            rdfs:subPropertyOf :hasCostPerInspection ;
+                            rdfs:domain :InspectionProcedure ;
+                            rdfs:label "Personalkosten"@de .
 
 
 ###  https://w3id.org/ocqa#hasLikelihood
@@ -240,12 +283,15 @@ Anmerkung 2 zum Begriff: Der englische Begriff \"likelihood\" hat in einigen Spr
 
 ###  https://w3id.org/ocqa#hasMaterialCostPerInspection
 :hasMaterialCostPerInspection rdf:type owl:DatatypeProperty ;
-                              rdfs:subPropertyOf :hasCostPerInspection .
+                              rdfs:subPropertyOf :hasCostPerInspection ;
+                              rdfs:domain :InspectionProcedure ;
+                              rdfs:label "Materialkosten"@de .
 
 
 ###  https://w3id.org/ocqa#hasNonConfirmityCost
 :hasNonConfirmityCost rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf :hasQuality-related-costs ;
+                      rdfs:domain :Inspection ;
                       rdfs:label "Fehlerkosten"@de ;
                       <https://w3id.org/ocqa#DIN_55350:2021-10> """Kosten, die durch Fehler verursacht werden
 Anmerkung 1 zum Begriff: Fehlerkosten können nach dem Ort der Feststellung der Fehler in zwei Untergruppen eingeteilt werden: in interne Fehlerkosten und in externe Fehlerkosten. Es kann zweckmäßig sein, für eine Organisation festzulegen, was unter „intern“ und „extern“ zu verstehen ist.
@@ -258,6 +304,7 @@ zum Beispiel Kosten durch Imageverlust."""@de .
 ###  https://w3id.org/ocqa#hasNonConfirmityProbability
 :hasNonConfirmityProbability rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf :hasLikelihood ;
+                             rdfs:domain :InspectionProcedure ;
                              rdfs:comment ""@de ;
                              rdfs:label "Wahrscheinlichkeit einer nicht Konformität"@de .
 
@@ -265,6 +312,7 @@ zum Beispiel Kosten durch Imageverlust."""@de .
 ###  https://w3id.org/ocqa#hasPreventionCost
 :hasPreventionCost rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf :hasQuality-related-costs ;
+                   rdfs:domain :Inspection ;
                    rdfs:label "Fehlerverhütungskosten"@de ;
                    <https://w3id.org/ocqa#DIN_55350:2021-10> """Kosten, die durch die Analyse und Beseitigung von Fehlerursachen verursacht werden
 Anmerkung 1 zum Begriff: Zu den Fehlerverhütungskosten gehören insbesondere die Kosten für Vorbeugungsmaßnahmen (bei möglichen Fehlerursachen) und Korrekturmaßnahmen (bei erkannten Fehlerursachen)."""@de .
@@ -272,6 +320,7 @@ Anmerkung 1 zum Begriff: Zu den Fehlerverhütungskosten gehören insbesondere di
 
 ###  https://w3id.org/ocqa#hasQuality-related-costs
 :hasQuality-related-costs rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :Inspection ;
                           rdfs:label "Qualitätsbezogene Kosten"@de ;
                           <https://w3id.org/ocqa#DIN_55350:2021-10> """Summe von Fehlerverhütungs-, Prüf- und Fehlerkosten
 Anmerkung 1 zum Begriff: Qualitätsbezogene Kosten werden in einer Organisation nach deren eigenen Kriterien abgegrenzt und erfasst.
@@ -282,6 +331,7 @@ Anmerkung 3 zum Begriff: Die Benennung „Qualitätskosten“ wird nicht empfohl
 
 ###  https://w3id.org/ocqa#hasRisk
 :hasRisk rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Inspection ;
          rdfs:label "Risiko"@de ;
          <https://w3id.org/ocqa#DIN_9000:2015> """Auswirkung von Ungewissheit
 Anmerkung 1 zum Begriff: Eine Auswirkung ist eine Abweichung vom Erwarteten — in positiver oder negativer Hinsicht
@@ -299,6 +349,10 @@ Anhang SL enthalten sind. Die ursprüngliche Definition wurde durch Hinzufügen 
 #    Classes
 #################################################################
 
+###  https://w3id.org/digitalconstruction/0.5/Agents#Person
+<https://w3id.org/digitalconstruction/0.5/Agents#Person> rdf:type owl:Class .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Entities#Equipment
 <https://w3id.org/digitalconstruction/0.5/Entities#Equipment> rdf:type owl:Class .
 
@@ -314,8 +368,7 @@ Anhang SL enthalten sind. Die ursprüngliche Definition wurde durch Hinzufügen 
 
 ###  https://w3id.org/ocqa#Conformity
 :Conformity rdf:type owl:Class ;
-            rdfs:subClassOf :Evaluation ,
-                            :Record ;
+            rdfs:subClassOf :Failure ;
             owl:disjointWith :Nonconformity ;
             rdfs:label "Konformität"@de ;
             <https://w3id.org/ocqa#DIN_9000:2015> """Erfüllung einer Anforderung (3.6.4)
@@ -360,12 +413,6 @@ Anmerkung 2 zum Begriff: Der vom Kunden (3.2.4) beabsichtigte Gebrauch kann durc
                <https://w3id.org/ocqa#DIN_9000:2015> "Tätigkeit zur Ermittlung eines oder mehrerer Merkmale (3.10.1) und ihrer Merkmalswerte"@de .
 
 
-###  https://w3id.org/ocqa#Evaluation
-:Evaluation rdf:type owl:Class ;
-            rdfs:label "Aufzeichnung"@de ;
-            <https://w3id.org/ocqa#DIN_9000:2015> ""@de .
-
-
 ###  https://w3id.org/ocqa#ExternalResource
 :ExternalResource rdf:type owl:Class ;
                   rdfs:subClassOf :Record ;
@@ -373,11 +420,16 @@ Anmerkung 2 zum Begriff: Der vom Kunden (3.2.4) beabsichtigte Gebrauch kann durc
                   rdfs:label "Externe Ressource"@de .
 
 
-###  https://w3id.org/ocqa#FailureCategories
-:FailureCategories rdf:type owl:Class ;
-                   rdfs:comment "Diese Fehlerkategorien beschreiben möglich Fehler die an einem Bauteil auftauchen können."@de ;
-                   rdfs:label "Failure Categorie"@en ,
-                              "Fehlerkategorie"@de .
+###  https://w3id.org/ocqa#Failure
+:Failure rdf:type owl:Class ;
+         rdfs:comment "Die Fehlerkategorie enthält die Kostenansätze, die durch die durch eine Kontrolle gefundene Fehler selbst entstehen. (Fehlerkosten)"@de ,
+                      "Diese Fehlerkategorien beschreiben möglich Fehler die an einem Bauteil auftauchen können."@de ;
+         rdfs:label "Failure Categorie"@en ,
+                    "Fehlerkategorie"@de .
+
+
+###  https://w3id.org/ocqa#FailureType
+:FailureType rdf:type owl:Class .
 
 
 ###  https://w3id.org/ocqa#Image
@@ -397,7 +449,6 @@ Anmerkung 2 zum Begriff: Das Ergebnis einer Prüfung kann Konformität oder Nich
 
 ###  https://w3id.org/ocqa#InspectionEquipment
 :InspectionEquipment rdf:type owl:Class ;
-                     owl:equivalentClass :MeasuringEquipment ;
                      rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#Equipment> .
 
 
@@ -414,7 +465,8 @@ Anmerkung 2 zum Begriff: Zusätzlich zu einem umfassenden Prüfplan können für
 ###  https://w3id.org/ocqa#InspectionProcedure
 :InspectionProcedure rdf:type owl:Class ;
                      rdfs:subClassOf :Procedure ;
-                     rdfs:comment "An die Prüfmethode können die Eigenschaften der Prüfmethode hinzugefügt werden. Hierzu kann DiCon, OPM und SOSA verwendet werden." ,
+                     rdfs:comment "Die Prüfmethode enthält die Kostenansätze, die durch die Kontrolle selbst entstehen."@de ,
+                                  "An die Prüfmethode können die Eigenschaften der Prüfmethode hinzugefügt werden. Hierzu kann DiCon, OPM und SOSA verwendet werden." ,
                                   "Das Wissen eines Prüfverfahrens wird durch eine Regel abgebildet. Die Regel entspricht somit einer Verfahrensanweisung aus der sich die individuelle Prüfung ergibt." ;
                      rdfs:label "Prüfungsmethode"@de ,
                                 "Prüfverfahren"@de .
@@ -448,9 +500,9 @@ Anmerkung 3 zum Begriff: Dieser Begriff stellt eine der gemeinsamen Benennungen 
 
 ###  https://w3id.org/ocqa#Nonconformity
 :Nonconformity rdf:type owl:Class ;
-               rdfs:subClassOf :Evaluation ,
-                               :Record ;
-               rdfs:label "Fehler"@de ;
+               rdfs:subClassOf :Failure ;
+               rdfs:label "Fehler"@de ,
+                          "Nichtkonformität"@de ;
                <https://w3id.org/ocqa#DIN_9000:2015> """Nichterfüllung einer Anforderung (3.6.4)
 Anmerkung 1 zum Begriff: Dieser Begriff stellt eine der gemeinsamen Benennungen und der Basisdefinitionen für ISO-Managementsystemnormen dar, die in ISO/IEC Directives, Part 1, Consolidated ISO Supplement, Anhang SL enthalten sind"""@de .
 
@@ -545,6 +597,18 @@ Anmerkung 2 zum Begriff: Ein Muster kann in seiner Gesamtheit repräsentativ sei
 Anmerkung 3 zum Begriff: Es sollte vermieden werden, andere Benennungen wie „Qualitätsmuster“, „Prüfmuster“, „Spezialmuster“ als Synonyme zu „Muster“ zu verwenden."""@de .
 
 
+###  https://w3id.org/ocqa#ScreedFailure
+:ScreedFailure rdf:type owl:Class ;
+               rdfs:subClassOf :FailureType ;
+               :hasValue "Beispiel"@de .
+
+
+###  https://w3id.org/ocqa#Specimen
+:Specimen rdf:type owl:Class ;
+          rdfs:subClassOf :Record ;
+          rdfs:label "Probe"@de .
+
+
 ###  https://w3id.org/ocqa#Test
 :Test rdf:type owl:Class ;
       rdfs:subClassOf :Determination ;
@@ -559,6 +623,15 @@ Anmerkung 1 zum Begriff: Zeigt das Ergebnis eines Tests Konformität (3.6.11), k
 ###  https://w3id.org/ocqa#Video
 :Video rdf:type owl:Class ;
        rdfs:subClassOf :Record .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/ocqa#ScreedPanning
+:ScreedPanning rdf:type owl:NamedIndividual ,
+                        :ScreedFailure .
 
 
 #################################################################
@@ -590,4 +663,4 @@ Anmerkung 1 zum Begriff: Zeigt das Ergebnis eines Tests Konformität (3.6.11), k
 ] .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/ocqa-regulation#> .
+@prefix : <https://w3id.org/ocqa/regulation#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -6,18 +6,18 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/ocqa-regulation#> .
+@base <https://w3id.org/ocqa/regulation#> .
 
-<https://w3id.org/ocqa-regulation#> rdf:type owl:Ontology ;
-                                     owl:versionIRI <https://w3id.org/ocqa-regulation/0.1> ;
+<https://w3id.org/ocqa/regulation#> rdf:type owl:Ontology ;
+                                     owl:versionIRI <https://w3id.org/ocqa/regulation/0.1> ;
                                      dcterms:creator "Sebastian Seiß" ;
                                      dcterms:description "The Ontology for Quality Assurance is extended by module called ocqa-regulation. This module provides knowledge about regulations to plan or describe inspections." ;
                                      dcterms:issued "2022-01-01" ;
                                      dcterms:license "https://creativecommons.org/licenses/by/1.0" ;
                                      dcterms:modified "2022-06-07" ;
-                                     dcterms:title "Ontology for Construction Quality Assurence Regulation (OCQA-regulation)" ;
+                                     dcterms:title "Ontology for Construction Quality Assurence Regulation (OCQA-reg)" ;
                                      vann:preferredNamespacePrefix "ocqa-regulation" ;
-                                     vann:preferredNamespaceUri "https://w3id.org/ocqa-regulation#" ;
+                                     vann:preferredNamespaceUri "https://w3id.org/ocqa/regulation#" ;
                                      rdfs:comment """- Version 0.1
 - Regulation Module""" ;
                                      owl:versionInfo 0.1 .
@@ -67,25 +67,25 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                    rdfs:domain :Regulation .
 
 
-###  https://w3id.org/ocqa-regulation#hasPart
+###  https://w3id.org/ocqa/regulation#hasPart
 :hasPart rdf:type owl:ObjectProperty ;
          owl:inverseOf :isPart ;
          rdfs:domain :Regulation ;
          rdfs:range :Regulation .
 
 
-###  https://w3id.org/ocqa-regulation#isPart
+###  https://w3id.org/ocqa/regulation#isPart
 :isPart rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  https://w3id.org/ocqa-regulation#references
+###  https://w3id.org/ocqa/regulation#references
 :references rdf:type owl:ObjectProperty ;
             rdfs:domain :Regulation ;
             rdfs:range :Regulation .
 
 
-###  https://w3id.org/ocqa-regulation#requiredby
+###  https://w3id.org/ocqa/regulation#requiredby
 :requiredby rdf:type owl:ObjectProperty ;
             rdfs:domain <https://w3id.org/ocqa#Inspection> ;
             rdfs:range :Regulation ;
@@ -100,50 +100,50 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 <https://w3id.org/ocqa#Inspection> rdf:type owl:Class .
 
 
-###  https://w3id.org/ocqa-regulation#CompanyGuideline
+###  https://w3id.org/ocqa/regulation#CompanyGuideline
 :CompanyGuideline rdf:type owl:Class ;
                   rdfs:subClassOf :Guideline ;
                   rdfs:label "Firmenrichtlinie"@de .
 
 
-###  https://w3id.org/ocqa-regulation#CompanyStandard
+###  https://w3id.org/ocqa/regulation#CompanyStandard
 :CompanyStandard rdf:type owl:Class ;
                  rdfs:subClassOf :Standard .
 
 
-###  https://w3id.org/ocqa-regulation#DIN
+###  https://w3id.org/ocqa/regulation#DIN
 :DIN rdf:type owl:Class ;
      rdfs:subClassOf :Norm .
 
 
-###  https://w3id.org/ocqa-regulation#DIN-Estrich
+###  https://w3id.org/ocqa/regulation#DIN-Estrich
 :DIN-Estrich rdf:type owl:Class ;
              rdfs:subClassOf :DIN .
 
 
-###  https://w3id.org/ocqa-regulation#Guideline
+###  https://w3id.org/ocqa/regulation#Guideline
 :Guideline rdf:type owl:Class ;
            rdfs:subClassOf :Regulation ;
            rdfs:label "Richtlinien"@de .
 
 
-###  https://w3id.org/ocqa-regulation#ISO
+###  https://w3id.org/ocqa/regulation#ISO
 :ISO rdf:type owl:Class ;
      rdfs:subClassOf :Norm .
 
 
-###  https://w3id.org/ocqa-regulation#IndustryStandard
+###  https://w3id.org/ocqa/regulation#IndustryStandard
 :IndustryStandard rdf:type owl:Class ;
                   rdfs:subClassOf :Standard .
 
 
-###  https://w3id.org/ocqa-regulation#ManufacturerGuidelines
+###  https://w3id.org/ocqa/regulation#ManufacturerGuidelines
 :ManufacturerGuidelines rdf:type owl:Class ;
                         rdfs:subClassOf :Guideline ;
                         rdfs:label "Verarbeitungshinweise durch Hersteller"@de .
 
 
-###  https://w3id.org/ocqa-regulation#Norm
+###  https://w3id.org/ocqa/regulation#Norm
 :Norm rdf:type owl:Class ;
       rdfs:subClassOf :Regulation ;
       rdfs:comment """Dokument, das mit Konsens erstellt und von einer anerkannten Institution angenommen wurde und das für die allgemeine und wiederkehrende Anwendung Regeln, Leitlinien oder Merkmale für Tätigkeiten oder deren Ergebnisse festlegt, wobei ein optimaler Ordnungsgrad in einem gegebenen Zusammenhang angestrebt wird (ISO/IEC Guide 2:2004, Definition 3.2) Quelle DIN EN ISO 28803:2012-06
@@ -154,12 +154,12 @@ Anmerkung: Normen basieren auf den konsolidierten Ergebnissen aus Wissenschaft, 
                  "Standard"@en-us .
 
 
-###  https://w3id.org/ocqa-regulation#Regulation
+###  https://w3id.org/ocqa/regulation#Regulation
 :Regulation rdf:type owl:Class ;
             rdfs:label "Regularien"@de .
 
 
-###  https://w3id.org/ocqa-regulation#Standard
+###  https://w3id.org/ocqa/regulation#Standard
 :Standard rdf:type owl:Class ;
           rdfs:subClassOf :Regulation ;
           rdfs:comment "A standard refers to the standardization of dimensions, types, procedures, and other factors, without being necessarily based on a set of rules, a consensus, or a specific procedure"@en ,
@@ -194,4 +194,4 @@ Anmerkung: Normen basieren auf den konsolidierten Ergebnissen aus Wissenschaft, 
                                         :DIN-Estrich .
 
 
-###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="https://w3id.org/ocqa/rule" uri="Modules/Rule/OCQA-Rule.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/ocqa/regulation" uri="Modules/Regulation/OCQA-Regulation.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/contract" uri="Modules/Contract/OCQA-Contract.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/ocqa/catalog" uri="Modules/Catalog/OCQA-Catalog.ttl"/>
+    <uri id="Imports Wizard Entry" name="https://w3id.org/ocqa/rules/0.1" uri="Modules/Rule/OCQA-Rule.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/ocr/0.1" uri="Modules/Regulation/OCQA-Regulation.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/digitalconstruction/0.5/Information" uri="file:/C:/Users/sebas/OneDrive/Dokumente/GitHub/OntologyForConstructionQualityAssurance/09_DiCon/information.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/concontract-0.1" uri="Modules/Contract/OCQA-Contract.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1710451403398" name="https://w3id.org/ocqa" uri="Depricated/OnToology/OntologyForConstructionQualityAssurence.ttl/documentation/ontology.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1710451403398" name="shadowed:https://w3id.org/ocqa" uri="Depricated/OnToology/OntologyForConstructionQualityAssurence.owl/documentation/ontology.xml"/>
+    </group>
+</catalog>
