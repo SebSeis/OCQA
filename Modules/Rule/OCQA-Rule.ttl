@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/ocqa/rules#> .
+@prefix : <https://w3id.org/ocqa/rule#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -6,18 +6,18 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ocqa: <https://w3id.org/ocqa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/ocqa/rules#> .
+@base <https://w3id.org/ocqa/rule#> .
 
-<https://w3id.org/ocqa/rules> rdf:type owl:Ontology ;
-                               owl:versionIRI <https://w3id.org/ocqa/rules/0.1> ;
+<https://w3id.org/ocqa/rule> rdf:type owl:Ontology ;
+                               owl:versionIRI <https://w3id.org/ocqa/rule/0.1> ;
                                <http://purl.org/dc/terms/creator> "Sebastian Seiß" ;
-                               <http://purl.org/dc/terms/description> "The aim of this ontology is to provide a library to easily access rules by queries. Therefore different classes are defined to structure the SHACL Shapes in a more generic way. This ontology get imported by OCQA." ;
+                               <http://purl.org/dc/terms/description> "The aim of this ontology is to provide a library to easily access rule by queries. Therefore different classes are defined to structure the SHACL Shapes in a more generic way. This ontology get imported by OCQA." ;
                                <http://purl.org/dc/terms/issued> "2022-01-01" ;
                                <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/1.0" ;
                                <http://purl.org/dc/terms/modified> "2022-06-07" ;
-                               <http://purl.org/dc/terms/title> "Ontology for Construction Quality Assurence Rules (OCQA-rules)" ;
-                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "ocqa-rules" ;
-                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ocqa/rules#" ;
+                               <http://purl.org/dc/terms/title> "Ontology for Construction Quality Assurence Rules (OCQA-rule)" ;
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "ocqa-rule" ;
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ocqa/rule#" ;
                                rdfs:comment """- Version 0.1
 - Rule Module""" ;
                                owl:versionInfo 0.1 .
@@ -74,65 +74,65 @@
                                          rdfs:range <https://w3id.org/digitalconstruction/0.5/Entities#Entity> .
 
 
-###  https://w3id.org/ocqa/rules#hasBody
+###  https://w3id.org/ocqa/rule#hasBody
 :hasBody rdf:type owl:ObjectProperty ;
          rdfs:domain :Rule ;
          rdfs:range sh:Shape .
 
 
-###  https://w3id.org/ocqa/rules#hasComment
+###  https://w3id.org/ocqa/rule#hasComment
 :hasComment rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Rule ;
             rdfs:range :Comment .
 
 
-###  https://w3id.org/ocqa/rules#hasCreator
+###  https://w3id.org/ocqa/rule#hasCreator
 :hasCreator rdf:type owl:ObjectProperty ;
             rdfs:domain :Rule ;
             rdfs:range <https://w3id.org/digitalconstruction/0.5/Agents#Agent> .
 
 
-###  https://w3id.org/ocqa/rules#hasFocusedProcedure
+###  https://w3id.org/ocqa/rule#hasFocusedProcedure
 :hasFocusedProcedure rdf:type owl:ObjectProperty ;
                      rdfs:domain :Rule ;
                      rdfs:range ocqa:Procedure .
 
 
-###  https://w3id.org/ocqa/rules#hasFocusedProcess
+###  https://w3id.org/ocqa/rule#hasFocusedProcess
 :hasFocusedProcess rdf:type owl:ObjectProperty ;
                    rdfs:domain :Rule ;
                    rdfs:range ocqa:Activity .
 
 
-###  https://w3id.org/ocqa/rules#inferredBy
+###  https://w3id.org/ocqa/rule#inferredBy
 :inferredBy rdf:type owl:ObjectProperty ;
             rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#Entity> ;
             rdfs:range :Rule .
 
 
-###  https://w3id.org/ocqa/rules#isDefinedBy
+###  https://w3id.org/ocqa/rule#isDefinedBy
 :isDefinedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Rule ;
              rdfs:range <https://w3id.org/ocqa/regulation#Regulation> .
 
 
-###  https://w3id.org/ocqa/rules#isDefinedByCompany
+###  https://w3id.org/ocqa/rule#isDefinedByCompany
 :isDefinedByCompany rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf :isDefinedBy ;
                     rdfs:domain :Rule ;
                     rdfs:range <https://w3id.org/digitalconstruction/0.5/Agents#Organization> .
 
 
-###  https://w3id.org/ocqa/rules#isDefinedByContract
+###  https://w3id.org/ocqa/rule#isDefinedByContract
 :isDefinedByContract rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf :isDefinedBy ;
                      rdfs:domain :Rule ;
                      rdfs:range <https://w3id.org/digitalconstruction/0.5/Information#Contract> .
 
 
-###  https://w3id.org/ocqa/rules#isDefinedByRegulation
+###  https://w3id.org/ocqa/rule#isDefinedByRegulation
 :isDefinedByRegulation rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf :isDefinedBy ;
                        rdfs:domain :Rule .
@@ -142,12 +142,12 @@
 #    Data properties
 #################################################################
 
-###  https://w3id.org/ocqa/rules#hasCreationTime
+###  https://w3id.org/ocqa/rule#hasCreationTime
 :hasCreationTime rdf:type owl:DatatypeProperty ;
                  rdfs:range xsd:dateTime .
 
 
-###  https://w3id.org/ocqa/rules#hasVersion
+###  https://w3id.org/ocqa/rule#hasVersion
 :hasVersion rdf:type owl:DatatypeProperty ;
             rdfs:range xsd:string .
 
@@ -200,57 +200,57 @@ ocqa:Procedure rdf:type owl:Class .
 <https://w3id.org/ocqa/regulation#Regulation> rdf:type owl:Class .
 
 
-###  https://w3id.org/ocqa/rules#Comment
+###  https://w3id.org/ocqa/rule#Comment
 :Comment rdf:type owl:Class .
 
 
-###  https://w3id.org/ocqa/rules#GeneralRule
+###  https://w3id.org/ocqa/rule#GeneralRule
 :GeneralRule rdf:type owl:Class ;
              rdfs:subClassOf :Rule ;
              rdfs:comment "Allgemeine Regeln sollen die Planung von Inspektionen für bestimmte Klassen von Inspektionen steuern. Ein Beispiel für eine generische Regel ist die Festlegung der frühesten Start- oder Endzeit für eine Inspektion."@de ,
-                          "Generic rules are designed to guide the planning of inspections for specific classes of inspections. An example of a generic rule is setting the earliest start or end time for an inspection."@en ;
+                          "Generic rule are designed to guide the planning of inspections for specific classes of inspections. An example of a generic rule is setting the earliest start or end time for an inspection."@en ;
              rdfs:label "Allgemeine Regel" .
 
 
-###  https://w3id.org/ocqa/rules#InspectionEvaluationRule
+###  https://w3id.org/ocqa/rule#InspectionEvaluationRule
 :InspectionEvaluationRule rdf:type owl:Class ;
                           rdfs:subClassOf :Rule ;
                           rdfs:comment "Die Regeln dienen der Evaluation von aufgenommenen Qualitäten"@de ,
-                                       "The rules of this class evaluate the quality of products/services"@en ;
-                          rdfs:label "Inspections evaluation rules"@en ,
+                                       "The rule of this class evaluate the quality of products/services"@en ;
+                          rdfs:label "Inspections evaluation rule"@en ,
                                      "Regel zur Evaluation von Prüfungsergebnisse"@de .
 
 
-###  https://w3id.org/ocqa/rules#InspectionPlanValidationRule
+###  https://w3id.org/ocqa/rule#InspectionPlanValidationRule
 :InspectionPlanValidationRule rdf:type owl:Class ;
                               rdfs:subClassOf :Rule ;
                               rdfs:comment "Die Regeln dieser Klasse Validieren und stellen die Konsistenz des Prüfplans sicher."@de ,
-                                           "This rules of this class validate and ensure the consistenc of the inspection plan"@en ;
+                                           "This rule of this class validate and ensure the consistenc of the inspection plan"@en ;
                               rdfs:label "Konsistenzregeln"@de ,
-                                         "Validation rules"@en .
+                                         "Validation rule"@en .
 
 
-###  https://w3id.org/ocqa/rules#InspectionPlanningRule
+###  https://w3id.org/ocqa/rule#InspectionPlanningRule
 :InspectionPlanningRule rdf:type owl:Class ;
                         rdfs:subClassOf :Rule ;
                         rdfs:comment "In dieser Klasse werden alle Regeln zur Plannung von Kontrollen definiert"@de ,
-                                     "This class definies rules to plan inspections"@en ;
+                                     "This class definies rule to plan inspections"@en ;
                         rdfs:label "Inspection planning rule"@en ,
                                    "Regel zur Planung von Prüfungen"@de .
 
 
-###  https://w3id.org/ocqa/rules#Rule
+###  https://w3id.org/ocqa/rule#Rule
 :Rule rdf:type owl:Class ;
       rdfs:comment "Die Klasse beschreibt Regeln"@de ,
-                   "This class describes rules in general"@en ;
+                   "This class describes rule in general"@en ;
       rdfs:label "Regel"@de ,
                  "Rule"@en .
 
 
-###  https://w3id.org/ocqa/rules#SpecificRule
+###  https://w3id.org/ocqa/rule#SpecificRule
 :SpecificRule rdf:type owl:Class ;
               rdfs:subClassOf :Rule ;
-              rdfs:comment "Specific rules are tailored to address explicit requirements derived from the contract or regulations module. For instance, a specific rule may dictate that the evenness of a screed must be assessed prior to installation."@en ,
+              rdfs:comment "Specific rule are tailored to address explicit requirements derived from the contract or regulations module. For instance, a specific rule may dictate that the evenness of a screed must be assessed prior to installation."@en ,
                            "Spezifische Regeln sind auf explizite Anforderungen zugeschnitten, die sich aus dem Vertrag oder dem Regelungsmodul ergeben. Eine spezifische Regel kann zum Beispiel vorschreiben, dass die Ebenheit eines Estrichs vor dem Einbau beurteilt werden muss."@de ;
               rdfs:label "Spezielle Regel"@de .
 
