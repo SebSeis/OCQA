@@ -1,0 +1,41 @@
+@prefix rdf:                <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:                 <http://www.w3.org/ns/shacl#> .
+@prefix dash:               <http://datashapes.org/dash#> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:                 <http://www.semanticweb.org/verwalter/ontologies/2022/1/Example_Screed_Sichtpruefung#> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix ocqa:               <https://w3id.org/ocqa/0.3#>.
+@prefix ocqa_screed:        <https://w3id.org/ocqa_screed#>.
+@prefix ocqa_rules:         <https://w3id.org/ocqa_rules#>.
+@prefix nivellement:        <https://w3id.org/ocqa/0.3/JNL2022Masterarbeit/Erweiterung/Nivellement#>.
+
+
+ocqa_rules:CalculateInspectionCosts
+a sh:NodeShape;
+sh:targetClass nivellement:Nivellement;
+sh:rule [
+		a sh:SPARQLRule ;
+		sh:construct """
+            prefix ocqa:           <https://w3id.org/ocqa/0.3#>
+			prefix nivellement:    <https://w3id.org/ocqa/0.3/JNL2022Masterarbeit/Erweiterung/Nivellement#>
+            prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+			prefix ocqa:           <https://w3id.org/ocqa#>
+
+			CONSTRUCT {
+				$this ocqa:hasAppraisalCosts ?AppraisalCosts .
+			}
+			WHERE { 
+				$this 	ocqa:hasCharacteristicInspectionQuantity ?propertyQuantity;
+						ocqa:hasCharacteristicInspectionOverheadCosts ?propertyOverheadCosts;
+						ocqa:hasCharacteristicInspectionMaterialCosts ?propertyMaterialCosts;
+						ocqa:hasCharacteristicInspectionLabourCosts ?propertyLabourCosts;
+				?propertyQuantity schema:value ?Quantity.
+				?propertyOverheadCosts schema:value ?OverheadCosts.
+				?propertyMaterialCosts schema:value ?MaterialCosts.
+				?propertyLabourCosts schema:value ?LabourCosts.
+			BIND (?OverheadCosts + (?Quantity * (?MaterialCosts + ?LabourCosts)) AS ?InspectionCost).
+			}
+			""" ;
+	] ;
+.
