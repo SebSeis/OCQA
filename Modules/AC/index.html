@@ -150,6 +150,21 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             margin-bottom: 20px;
         }
 
+        .figure img {
+            display: block;
+            /* no inline whitespace hacks */
+            width: 100%;
+            /* fill the container width */
+            height: auto !important;
+            /* recompute height from width */
+            max-width: 100%;
+            /* never exceed its natural size */
+            filter: brightness(100%);
+            object-fit: contain;
+            line-height: normal;
+            /* kill any line-height jumps */
+        }
+
         :link {
             color: #00C;
             background: transparent
@@ -448,7 +463,8 @@ sh:NodeShape a sh:NodeShape ;
             and can be validated against your RDF with the pySHACL runner script available at <a
                 href="https://SebSeis.github.io/OCQA/Modules/AC/run_shacl_ac_inference.py">https://SebSeis.github.io/OCQA/Modules/AC/run_shacl_ac_inference.py</a>
             (e.g.,
-            <code>pyshacl --shacl shapes/ocqa-ac-shapes.ttl --data data/ocqa-ac-data.ttl --output results/ocqa-ac-results.ttl</code>). The python script is imrpoved and commented using ChatGPT.
+            <code>pyshacl --shacl shapes/ocqa-ac-shapes.ttl --data data/ocqa-ac-data.ttl --output results/ocqa-ac-results.ttl</code>).
+            The python script is imrpoved and commented using ChatGPT.
         </p>
 
     </section>
