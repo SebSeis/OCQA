@@ -893,6 +893,27 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         <div class="caption"><strong>Figure 5:</strong>Screed-specific extension of the OCQA by subclasses.</div>
     </div>
 
+<h3 id="extension">Appraisal cost and Non-confirmity cost module</h3>
+    <desc>Prefix:ocqa-ac; Namespace:<a
+            href="https://SebSeis.github.io/OCQA/Modules/AC/OCQA-AC.ttl">https://w3id.org/ocqa/ocqa-ac</a></desc>
+            <desc>Prefix:ocqa-risk; Namespace:<a
+            href="https://SebSeis.github.io/OCQA/Modules/AC/OCQA-RISK.ttl">https://w3id.org/ocqa/ocqa-risk</a></desc>
+
+    <p>The Appraisal cost and Non-confirmity cost modules contain a rich and comprehensive terminology to describe appraisal costs and non-conformity costs. The OCQA-AC uses a catalog containing cost values and SHACL rules to inference the appraisal costs of an inspection. The appraisal costs will be represented as ocqa-ac:hasAppraisalCost (see Figure 6). The OCQA-RISK uses the cost to fix a non-confirmity based on the percentange along the production cost. This costs are multiplied with probability of the non-confirmity to calculate the risk represented as ocqa-risk:hasPotentialNCC (see Figure 6). The estimation of the costs are done using SHACL-Rules.</p>
+    <p>The cost values of ocqa-ac:hasAppraisalCost and ocqa-risk:hasPotentialNCC enables us to do a cost comparison to minimize quality costs. To minimize qualiy costs and to therefore find the lowest total quality costs only inspection are done, if a potential financial impact of defects is greater or equal to the cost required for inspection activities (NCC ≥ AC). Therefore, it will be possible to reach the optimal QC level for the inspection plan as described in Figure \ref{fig:OptimumTotalCost}. The automated decision-making support mechanism was implemented using a SHACL rule. If the ACs are less than or equal to the NCCs, the inspection status is set to "planned." Conversely, if the ACs exceed the NCCs, the inspection status is set to "blocked." Notably, this inference rule serves as a decision-support tool and can be overridden by the user as needed.</p>
+            
+    <div class="figure">
+        <img src="https://SebSeis.github.io/OCQA/Pictures/OCQA-AC-NCC-Interaction.png" alt="Italian Trulli" style="height: 300px;">
+        <div class="caption"><strong>Figure 6:</strong>Screed-specific extension of the OCQA by subclasses.</div>
+    </div>
+    <p>An example case on how to use the OCQA-AC and OCQA-RIKS is provided in the following Figure 7. The exmaple illustrates the cost comparison of a flatness inspection for screed illustrating the cost to fix uneveness and the cost of an inspection.</p>
+
+    <div class="figure">
+        <img src="https://SebSeis.github.io/OCQA/Pictures/OCQA-Risk-AC-Example.png" alt="Italian Trulli" style="height: 300px;">
+        <div class="caption"><strong>Figure 7:</strong>Example of interaction for OCQA-AC and OCQA-RISK.</div>
+    </div>
+
+
     <h3 id="extension">Trade-specific extensions</h3>
     <desc>Prefix:ocqa-screed; Namespace:<a
             href="https://SebSeis.github.io/OCQA/Extensions/Screed/OCQA-Screed.ttl">https://w3id.org/ocqa-screed</a></desc>
@@ -911,8 +932,10 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 
     <div class="figure">
         <img src="https://SebSeis.github.io/OCQA/Pictures/ExtensionScreed.png" alt="Italian Trulli" style="height: 300px;">
-        <div class="caption"><strong>Figure 6:</strong>Screed-specific extension of the OCQA by subclasses.</div>
+        <div class="caption"><strong>Figure 8:</strong>Screed-specific extension of the OCQA by subclasses.</div>
     </div>
+
+    
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
