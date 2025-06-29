@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ontology for Construction Quality Assurence RISK (OCQA-RISK)</title>
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding: 5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin: 5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: left
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #005A9C;
+            background: white
+        }
+
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+
+        h2 {
+            font: 140% sans-serif;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+
+        h4 {
+            font: bold 100% sans-serif
+        }
+
+        h5 {
+            font: italic 100% sans-serif
+        }
+
+        h6 {
+            font: small-caps 100% sans-serif
+        }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        .figure img {
+            display: block;
+            /* no inline whitespace hacks */
+            width: 100%;
+            /* fill the container width */
+            height: auto !important;
+            /* recompute height from width */
+            max-width: 100%;
+            /* never exceed its natural size */
+            filter: brightness(100%);
+            object-fit: contain;
+            line-height: normal;
+            /* kill any line-height jumps */
+        }
+
+        :link {
+            color: #00C;
+            background: transparent
+        }
+
+        :visited {
+            color: #609;
+            background: transparent
+        }
+
+        a:active {
+            color: #C00;
+            background: transparent
+        }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor: help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color: orange;
+        }
+
+        .sup-op {
+            color: navy;
+        }
+
+        .sup-fp {
+            color: lightskyblue;
+        }
+
+        .sup-dp {
+            color: green;
+        }
+
+        .sup-ap {
+            color: darkred;
+        }
+
+        .sup-p {
+            color: black;
+        }
+
+        .sup-ni {
+            color: brown;
+        }
+
+        .sup-con {
+            color: orange;
+        }
+
+        .sup-col {
+            color: darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "https://w3id.org/ocqa/ocqa-risk",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<ul>\n<li>Version 1- Risk Module</li>\n</ul>"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/1.0"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Ontology for Construction Quality Assurence RISK (OCQA-RISK)"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+
+<body>
+    <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+            <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+        <span style="font-size:smaller;">2.13.2</span>
+    </div>
+    <h1>Ontology for Construction Quality Assurence RISK (OCQA-RISK)</h1>
+    <section id="metadata">
+        <h2 style="display:none;">Metadata</h2>
+        <dl>
+            <dt>URI</dt>
+            <dd><code>https://w3id.org/ocqa/ocqa-risk</code></dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)
+            </dt>
+            <dd>
+                Sebastian Seiß<br />
+            </dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a>
+            </dt>
+            <dd>2025-01-07</dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued">Issued</a>
+            </dt>
+            <dd>2024-10-12</dd>
+            <dt>Version Information</dt>
+            <dd>1</dd>
+            <dt>Version URI</dt>
+            <dd><a href="https://w3id.org/ocqa/ocqa-risk">https://w3id.org/ocqa/ocqa-risk</a></dd>
+            <dt>License</dt>
+            <dd><a href="https://creativecommons.org/licenses/by/1.0">https://creativecommons.org/licenses/by/1.0</a>
+            </dd>
+            <dt>Ontology RDF</dt>
+            <dd><a href="https://w3id.org/ocqa/ocqa-risk.ttl">RDF
+                    (turtle)</a></dd>
+        </dl>
+        <h2>Description</h2>
+        <div id="description">
+            <ul>
+                <li>Version 1- Risk Module</li>
+            </ul>
+        </div>
+    </section>
+    <section id="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#objectproperties">Object Properties</a></li>
+            <li><a href="#datatypeproperties">Datatype Properties</a></li>
+            <li><a href="#annotationproperties">Annotation Properties</a></li>
+            <li><a href="#namespaces">Namespaces</a></li>
+            <li><a href="#legend">Legend</a></li>
+        </ol>
+    </section>
+    <section id="ocqa-risk-module">
+        <h2>Ontology for Risk Estimation in Construction (OCQA-RISK)</h2>
+        <p>
+            The <strong>OCQA-Risk</strong> ontology extends OCQA to model potential non-conformities and estimate
+            non-conformity costs (NCCs) (see Figure 1). The classes, relations, and properties of OCQA-Risk shown in
+            Figure 2 are essential for the estimation of NCC. The OCQA-Risk ontology models causal links between
+            construction activities and defects using <em>ocqa-risk:PotentialNonConfirmity</em>. Historical defect data
+            drive the <em>ocqa-risk:Probability</em> values, while remedy costs are stored in
+            <em>ocqa-risk:AverageNCC</em> and tied to component production costs via
+            <em>ocqa-risk:hasProductionCosts</em>. A SHACL rule then multiplies probability by average cost to infer the
+            expected non-conformity cost (<em>ocqa-risk:hasPotentialNCC</em>). Finally, <em>ocqa-risk:detects</em>
+            connects each inspection (a subclass of <em>dicp:Activity</em>) to the potential defects it can identify. A
+            summary of relevenat data properties to store estiamted values is listed below:
+
+        </p>
+
+        <ul>
+            <li><code>ocqa-risk:hasProductionCosts</code> stores the component’s production cost.</li>
+            <li><code>ocqa-risk:AverageNCC</code> describes the imminent NCCs</li>
+            <li><code>ocqa-risk:hasPotentialNCC</code> is the risk resulting by multiplying the risk:hasAverageNCC with
+                ocqa-risk:Probability </li>
+        </ul>
+
+        <div class="figure">
+            <img src="https://SebSeis.github.io/OCQA/Pictures/OCQA-AC-RISK.png" alt="Italian Trulli"
+                style=" height: 550px;">
+            <div class="caption"><strong>Figure 1:</strong>OCQA-RISK as a module of OCQA</div>
+        </div>
+        <div class="figure">
+            <img src="https://SebSeis.github.io/OCQA/Pictures/OCQA-RISK.png" alt="Italian Trulli"
+                style=" height: 550px;">
+            <div class="caption"><strong>Figure 2:</strong>Architecture of OCQA-RISK</div>
+        </div>
+    </section>
+    <section id="risk-estimation-methods">
+        <h2>Risk Estimation Methods</h2>
+        <p>
+            The achievement of the set quality objectives is the result of internal and external factors. ISO
+            31000 describes the "effect of uncertainty on objectives" as a risk. Applied to quality manage-
+            ment (QM), the "non-fulfilment of a requirement" (nonconformity, also known as a defect) rep-
+            resents a quality risk. If the intended or specified use is not pos-
+            sible as a result of the quality deviation, it is a defect. The risk consequences
+            of defective work are NCC from rework, repair, scrapping, disposal, handling of rejects, un-
+            planned sorting tests, repeat tests, downtime, warranties, and product liability. In addition to economic
+            damage, errors and defects in the AEC sector disrupt construction processes, waste environmental resources,
+            and damage the company's image.
+        </p>
+        <p>
+            The estimation of NCC in AEC uses a for quantitative risk assessment, which is illustrated in following
+            formular. probability of occurrence describes on which probability a Failure will happen. This probability
+            value will be based on historical defect data. Consequence is approximated by the expected non-conformity
+            cost.
+        </p>
+        <p style="text-align:center; font-family:monospace;">
+            <strong>Risk = Probability of occurrence × Consequence</strong>
+        </p>
+
+        <p>
+            In this work the non-confirmity cost is limited to the component and no furhter costs are considered.
+            Nonconformity costs (NCCs) arise when products or services fail to meet defined quality specifications.
+            Nonconformity costs can be divided into direct costs — those incurred to legally correct defects — and
+            indirect costs—those resulting from the broader impact of defects (see Table 1).
+        </p>
+
+        <table class="doc-table" style="width:100%; border-collapse: collapse; font-size: 0.9em;">
+            <caption style="caption-side: bottom; text-align: left; font-style: italic;">
+                Table 1: Selected Cost Components of Direct and Indirect Nonconformity Costs
+            </caption>
+            <thead>
+                <tr>
+                    <th style="border-bottom: 1px solid #333; padding: 0.5em; text-align: left;">
+                        Direct Nonconformity Costs
+                    </th>
+                    <th style="border-bottom: 1px solid #333; padding: 0.5em; text-align: left;">
+                        Indirect Nonconformity Costs
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.5em;">Reworks<sup></sup></td>
+                    <td style="padding: 0.5em;">Warranty works<sup></sup></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Scrap and demolition<sup></sup></td>
+                    <td style="padding: 0.5em;">Customer complaints<sup></sup></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Repairs and corrective actions<sup></sup></td>
+                    <td style="padding: 0.5em;">Legal costs and compensations<sup></sup></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Variations due to failure<sup></sup></td>
+                    <td style="padding: 0.5em;">Penalties due to nonconformance</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Material wastage</td>
+                    <td style="padding: 0.5em;">Revenue losses</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Failure analysis</td>
+                    <td style="padding: 0.5em;">Costs from repeat inspection</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Damage compensation costs</td>
+                    <td style="padding: 0.5em;">Additional planning costs</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5em;">Reduction costs</td>
+                    <td style="padding: 0.5em;"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+        <section id="shacl-rule-inference">
+            <h2>SHACL rule Potential Non-Conformity Cost inferencing</h2>
+            <p>
+                In OCQA-Risk, potential non-conformity costs (NCCs) are inferred entirely within the ontology by a
+                SHACL-SPARQL rule (See Figure 3 and Listing 1): the rule targets every <code>ocqa:Characteristic</code>, filters those linked to
+                screed flatness and <code>ocqa-screed:Screed</code>, and then <code>CONSTRUCT</code>s a new
+                <code>ocqa-risk:Uneveness</code> instance of type <code>ocqa-risk:PotentialNonConfirmity</code>. This
+                instance is attached to its inspection via <code>ocqa-risk:detects</code>. Next, the rule retrieves the
+                component’s production cost and the characteristic’s probability, computes the average remedy cost from
+                the cost catalog, and binds two values: <code>?averageNCC</code> and <code>?PotentialNCC</code> (the
+                product of <code>?averageNCC</code> and <code>?probability</code>). The resulting
+                <code>ocqa-risk:hasPotentialNCC</code> literal is then asserted on each defect instance, making NCC
+                estimation seamless, transparent, and fully declarative.
+            </p>
+                   <div class="figure">
+            <img src="https://SebSeis.github.io/OCQA/Pictures/SHACL-Rule-OCQA-Risk_NCC_.png" alt="Italian Trulli"
+                style=" height: 550px;">
+            <div class="caption"><strong>Figure 3:</strong>NCC estimation using SHACL rules in OCQA-RISK</div>
+        </div>
+
+            <p>
+                To validate OCQA-Risk, we used a screed installation project (DERICHS & KONERTZ, DEKO) as a case study.
+                Instance data were imported into GraphDB and mapped to OCQA to deviate of potential non-conformities and
+                related non-conformity costs via SHACL rules. The rules 
+            </p>
+            <pre><code>
+# Listing 1: SHACL Statements to Infer Potential Non-Conformity and NCC for Screed
+ocqa-screed:NonConfirmityShapeScreed
+    a sh:NodeShape;
+    sh:targetClass ocqa:Characteristic;
+    sh:rule [
+        a sh:SPARQLRule;
+        sh:condition [
+            sh:property [
+                sh:path (sh:inversePath ocqa-screed:hasFlatness);
+                sh:class ocqa-screed:Screed
+            ];
+        ];
+        sh:construct """
+        [Prefixes]
+        CONSTRUCT {
+            $this ocqa-risk:hasPotentialNonConfirmity ?PotentialNonConfirmity.
+            ?PotentialNonConfirmity a ocqa-risk:Uneveness;
+                                     a ocqa-risk:PotentialNonConfirmity.
+            ?Inspection ocqa-risk:detects ?PotentialNonConfirmity.
+            ?PotentialNonConfirmity ocqa-risk:AverageNCC ?averageNCC.
+            ?PotentialNonConfirmity ocqa-risk:hasPotentialNCC ?PotentialNCC.
+        }
+        WHERE {
+            $this ^ocqa:hasInspectionCharacteristic ?Inspection;
+                  ^ocqa-screed:hasFlatness/ocqa-risk:hasProductionCost ?ProductionCostScreed.
+            ?Inspection ocqa-risk:probability ?probability.
+            
+            BIND ((?ProductionCostScreed * 0.1) AS ?averageNCC).
+            BIND (?averageNCC * ?probability AS ?PotentialNCC).
+        }""";
+    ];
+  </code></pre>
+          <p>
+            This declarative, standards‐based approach enables domain experts to maintain and adapt cost estimation for potentail non-conformaty costs in construction using a             logic directly in the ontology, without external scripts based on semantic web standards.
+        </p>
+
+        <p>
+            The SHACL shapes for OCQA-RISK are published at <a
+                href="https://SebSeis.github.io/OCQA/Modules/RISK/InferenceRule_PotentialNCC.ttl">https://SebSeis.github.io/OCQA/Modules/RISK/InferenceRule_PotentialNCC.ttl</a>
+            and can be validated against your RDF with the pySHACL runner script available at <a
+                href="https://SebSeis.github.io/OCQA/Modules/RISK/run_shacl_ac_inference.py">https://SebSeis.github.io/OCQA/Modules/RISK/run_shacl_ac_inference.py</a>
+            (e.g.,
+            <code>pyshacl --shacl shapes/ocqa-ac-shapes.ttl --data data/ocqa-ac-data.ttl --output results/ocqa-ac-results.ttl</code>).
+            The python script is imrpoved and commented using ChatGPT.
+        </p>
+        </section>
+
+
+        <section id="classes">
+            <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a
+                        href="http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/PotentialNonConfirmity">PotentialNonConfirmity</a>
+                </li>
+                <li><a
+                        href="https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement">https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement</a>
+                </li>
+                <li><a
+                        href="https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject">https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject</a>
+                </li>
+                <li><a href="https://w3id.org/ocqa#Conformity">https://w3id.org/ocqa#Conformity</a></li>
+                <li><a href="https://w3id.org/ocqa#Determination">https://w3id.org/ocqa#Determination</a></li>
+                <li><a href="https://w3id.org/ocqa#Evaluation">https://w3id.org/ocqa#Evaluation</a></li>
+                <li><a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a></li>
+                <li><a href="https://w3id.org/ocqa#Nonconformity">https://w3id.org/ocqa#Nonconformity</a></li>
+                <li><a href="https://w3id.org/ocqa#Record">https://w3id.org/ocqa#Record</a></li>
+            </ul>
+            <div class="entity class" id="PotentialNon-Conformity">
+                <h3>
+                    Potential Non-Conformity<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#PotentialNon-Conformity"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/PotentialNonConfirmity</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <p>Represents a possible defect or deviation from specified quality requirements, derived
+                                from historical defect data and linked to construction activities.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Record">https://w3id.org/ocqa#Record</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="IfcElement">
+                <h3>
+                    IfcElement<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#IfcElement"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a
+                                href="https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject">https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="BuildingObject">
+                <h3>
+                    BuildingObject<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BuildingObject"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a
+                                href="https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement">https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Conformity">
+                <h3>
+                    Conformity<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Conformity"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Conformity</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Evaluation">https://w3id.org/ocqa#Evaluation</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="https://w3id.org/ocqa#Record">https://w3id.org/ocqa#Record</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Determination">
+                <h3>
+                    Determination<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Determination"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Determination</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Evaluation">
+                <h3>
+                    Evaluation<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Evaluation"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Evaluation</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Conformity">https://w3id.org/ocqa#Conformity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="https://w3id.org/ocqa#Nonconformity">https://w3id.org/ocqa#Nonconformity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Inspection">
+                <h3>
+                    Inspection<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Inspection"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Inspection</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Determination">https://w3id.org/ocqa#Determination</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In domain of</th>
+                        <td>
+                            <a
+                                href="http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/detects">detects</a><sup
+                                class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Nonconformity">
+                <h3>
+                    Nonconformity<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Nonconformity"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Nonconformity</code></td>
+                    </tr>
+                    <tr>
+                        <th>Super-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Record">https://w3id.org/ocqa#Record</a><sup class="sup-c"
+                                title="class">c</sup><br />
+                            <a href="https://w3id.org/ocqa#Evaluation">https://w3id.org/ocqa#Evaluation</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>In range of</th>
+                        <td>
+                            <a
+                                href="http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/detects">detects</a><sup
+                                class="sup-op" title="object property">op</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity class" id="Record">
+                <h3>
+                    Record<sup title="class" class="sup-c">c</sup>
+                    <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Record"
+                            title="fragment link to here">#</a> <a href="#classes"
+                            title="Classes Index">Classes</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>https://w3id.org/ocqa#Record</code></td>
+                    </tr>
+                    <tr>
+                        <th>Sub-classes</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Nonconformity">https://w3id.org/ocqa#Nonconformity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a
+                                href="http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/PotentialNonConfirmity">PotentialNonConfirmity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                            <a href="https://w3id.org/ocqa#Conformity">https://w3id.org/ocqa#Conformity</a><sup
+                                class="sup-c" title="class">c</sup><br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section id="objectproperties">
+            <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#detects">detects</a></li>
+                <li><a href="#Linksanbuildingobjecttothenon-conformitywhichrepresentapotentialdefect.">Links an building
+                        object to the non-conformity which represent a potential defect.</a></li>
+            </ul>
+            <div class="entity property" id="detects">
+                <h3>detects<sup title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#detects" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/detects</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <p>Relates an inspection activity to the potential non-conformity that it is capable of
+                                identifying.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Domain(s)</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Inspection">https://w3id.org/ocqa#Inspection</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="https://w3id.org/ocqa#Nonconformity">https://w3id.org/ocqa#Nonconformity</a><sup
+                                class="sup-c" title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="Linksanbuildingobjecttothenon-conformitywhichrepresentapotentialdefect.">
+                <h3>Links an building object to the non-conformity which represent a potential defect.<sup
+                        title="object property" class="sup-op">op</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#Linksanbuildingobjecttothenon-conformitywhichrepresentapotentialdefect."
+                            title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                            title="Object Properties Index">OPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/hasPotentialNonConfirmity</code>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="datatypeproperties">
+            <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#AverageNCC">Average NCC</a></li>
+                <li><a href="#Probability">Probability</a></li>
+                <li><a href="#productioncosts">production costs</a></li>
+            </ul>
+            <div class="entity property" id="AverageNCC">
+                <h3>Average NCC<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#AverageNCC" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/hasAverageNCC</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <p>Holds the estimated average cost of non-conformities (direct and indirect) for a given
+                                defect type, approximated as 10 % of the component’s production cost.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="Probability">
+                <h3>Probability<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#Probability" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                            title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/hasProbability</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <p>Specifies the likelihood of occurrence of a potential non-conformity, expressed as a
+                                numeric probability value.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="productioncosts">
+                <h3>production costs<sup title="datatype property" class="sup-dp">dp</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#productioncosts" title="fragment link to here">#</a>&nbsp;<a
+                            href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/hasProductionCost</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <p>Records the base production cost of a building object, used as input to calculate
+                                expected non-conformity costs.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Range(s)</th>
+                        <td>
+                            <a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a><sup class="sup-c"
+                                title="class">c</sup>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="annotationproperties">
+            <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <ul class="hlist">
+                <li><a href="#creator">creator</a></li>
+                <li><a href="#description">description</a></li>
+                <li><a href="#issued">issued</a></li>
+                <li><a href="#license">license</a></li>
+                <li><a href="#modified">modified</a></li>
+                <li><a href="#title">title</a></li>
+                <li><a href="#preferredNamespacePrefix">preferredNamespacePrefix</a></li>
+                <li><a href="#preferredNamespaceUri">preferredNamespaceUri</a></li>
+            </ul>
+            <div class="entity property" id="creator">
+                <h3>creator<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#creator" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/creator</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="description">
+                <h3>description<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#description" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/description</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="issued">
+                <h3>issued<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#issued" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/issued</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="license">
+                <h3>license<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#license" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/license</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="modified">
+                <h3>modified<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#modified" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/modified</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="title">
+                <h3>title<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#title" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                            title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/dc/terms/title</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="preferredNamespacePrefix">
+                <h3>preferredNamespacePrefix<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#preferredNamespacePrefix" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="entity property" id="preferredNamespaceUri">
+                <h3>preferredNamespaceUri<sup title="annotation property" class="sup-ap">ap</sup><span
+                        style="float:right; margin-right:10px; font-size:smaller;">
+                        <a href="#preferredNamespaceUri" title="fragment link to here">#</a>&nbsp;<a
+                            href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+                </h3>
+                <table>
+                    <tr>
+                        <th>URI</th>
+                        <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+        <section id="namespaces">
+            <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+            <dl>
+                <dt>default (ocqa-risk)</dt>
+                <dd><code>https://w3id.org/ocqa/ocqa-risk#</code></dd>
+                <dt>:</dt>
+                <dd><code>http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/</code>
+                </dd>
+                <dt>brick</dt>
+                <dd><code>https://brickschema.org/schema/Brick#</code></dd>
+                <dt>csvw</dt>
+                <dd><code>http://www.w3.org/ns/csvw#</code></dd>
+                <dt>dc</dt>
+                <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+                <dt>dcam</dt>
+                <dd><code>http://purl.org/dc/dcam/</code></dd>
+                <dt>dcat</dt>
+                <dd><code>http://www.w3.org/ns/dcat#</code></dd>
+                <dt>dcmitype</dt>
+                <dd><code>http://purl.org/dc/dcmitype/</code></dd>
+                <dt>dcterms</dt>
+                <dd><code>http://purl.org/dc/terms/</code></dd>
+                <dt>doap</dt>
+                <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+                <dt>foaf</dt>
+                <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+                <dt>geo</dt>
+                <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+                <dt>odrl</dt>
+                <dd><code>http://www.w3.org/ns/odrl/2/</code></dd>
+                <dt>org</dt>
+                <dd><code>http://www.w3.org/ns/org#</code></dd>
+                <dt>owl</dt>
+                <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+                <dt>prof</dt>
+                <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+                <dt>prov</dt>
+                <dd><code>http://www.w3.org/ns/prov#</code></dd>
+                <dt>qb</dt>
+                <dd><code>http://purl.org/linked-data/cube#</code></dd>
+                <dt>rdf</dt>
+                <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+                <dt>rdfs</dt>
+                <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+                <dt>sdo</dt>
+                <dd><code>https://schema.org/</code></dd>
+                <dt>sh</dt>
+                <dd><code>http://www.w3.org/ns/shacl#</code></dd>
+                <dt>skos</dt>
+                <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+                <dt>sosa</dt>
+                <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+                <dt>ssn</dt>
+                <dd><code>http://www.w3.org/ns/ssn/</code></dd>
+                <dt>time</dt>
+                <dd><code>http://www.w3.org/2006/time#</code></dd>
+                <dt>vann</dt>
+                <dd><code>http://purl.org/vocab/vann/</code></dd>
+                <dt>void</dt>
+                <dd><code>http://rdfs.org/ns/void#</code></dd>
+                <dt>wgs</dt>
+                <dd><code>https://www.w3.org/2003/01/geo/wgs84_pos#</code></dd>
+                <dt>xsd</dt>
+                <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+            </dl>
+        </section>
+        <section id="legend">
+            <h2>Legend</h2>
+            <table class="entity">
+                <tr>
+                    <td><sup class="sup-c" title="Classes">c</sup></td>
+                    <td>Classes</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-op" title="Object Properties">op</sup></td>
+                    <td>Object Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-fp" title="Functional Properties">fp</sup></td>
+                    <td>Functional Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-dp" title="Data Properties">dp</sup></td>
+                    <td>Data Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-ap" title="Annotation Properties">ap</sup></td>
+                    <td>Annotation Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-p" title="Properties">p</sup></td>
+                    <td>Properties</td>
+                </tr>
+                <tr>
+                    <td><sup class="sup-ni" title="Named Individuals">ni</sup></td>
+                    <td>Named Individuals</td>
+                </tr>
+            </table>
+        </section>
+</body>
+
+</html>
