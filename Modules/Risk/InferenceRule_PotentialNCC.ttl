@@ -1,0 +1,74 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix ocqa-screed: <https://w3id.org/ocqa-screed#> .
+@prefix ocqa-risk: <http://www.semanticweb.org/sebas/ontologies/2023/7/untitled-ontology-21#> .
+@prefix ocqa-rule: <https://w3id.org/ocqa/rule#> .
+@prefix rdf:                <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:                 <http://www.w3.org/ns/shacl#> .
+@prefix dash:               <http://datashapes.org/dash#> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:                 <https://example.de/ocqa-screed-inspections#> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix ocqa:               <https://w3id.org/ocqa#>.
+@prefix schema:				<https://schema.org/>.
+@prefix ocqa_screed:        <https://w3id.org/ocqa_screed#>.
+@prefix ocqa_rules:        <https://w3id.org/ocqa_rules#>.
+@prefix nivellement:              <https://w3id.org/ocqa/0.3/JNL2022Masterarbeit/Erweiterung/Nivellement#>.
+@prefix diconvariable:      <https://w3id.org/digitalconstruction/0.5/Variables#>.
+
+
+
+ocqa-screed:NonConfirmityShapeScreed
+  a sh:NodeShape ;
+  sh:targetClass ocqa:Characteristic;                      
+  sh:rule [
+    		a sh:SPARQLRule ;
+            sh:condition[
+                sh:property [
+                    sh:path (sh:inversePath ocqa-screed:hasFlatness); 
+                    sh:class ocqa-screed:Screed                      
+                ];
+            ];
+            sh:construct """
+            base          <https://www.qualityAssurence.de/DuplexHouset#> 
+            prefix ifc:   <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2/OWL#> 
+            prefix inst:  <https://www.qualityAssurence.de/DuplexHouset#> 
+            prefix list:  <https://w3id.org/list#> 
+            prefix express: <https://w3id.org/express#> 
+            prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+            prefix xsd:   <http://www.w3.org/2001/XMLSchema#> 
+            prefix owl:   <http://www.w3.org/2002/07/owl#> 
+            prefix ex1: <http://www.semanticweb.org/verwalter/ontologies/2022/1/Example_Screed_Sichtpruefung#>
+            prefix ocqa: <https://w3id.org/ocqa#>
+            prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#>
+            prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#>
+            prefix dicv: <https://w3id.org/digitalconstruction/0.5/Variables#>
+            #prefix ocqa_screed:        <https://w3id.org/ocqa_screed#>
+            prefix ocqa-screed: <https://w3id.org/ocqa-screed-inspections#> 
+            prefix ocqa-risk: <http://www.semanticweb.org/sebas/ontologies/2023/7/untitled-ontology-21#> 
+            prefix ocqa-rule: <https://w3id.org/ocqa/rule#> 
+            prefix ex:                 <https://example.de/ocqa-screed-inspections#> 
+
+
+            CONSTRUCT
+            { 
+            
+                $this ocqa-risk:hasPotentialNonConfirmity ?PotentialNonConfirmity.
+                ?PotentialNonConfirmity a ocqa-risk:Uneveness;
+                                        a ocqa-risk:PotentialNonConfirmity.
+                ?Inspection ocqa-risk:detects ?PotentialNonConfirmity.
+                ?PotentialNonConfirmity ocqa-risk:AverageNCC ?averageNCC.
+                ?PotentialNonConfirmity ocqa-risk:hasPotentialNCC ?PotentialNCC.
+            }
+            WHERE {
+                    $this ^ocqa:hasInspectionCharacteristic ?Inspection;
+                        ^ocqa-screed:hasFlatness/ocqa-risk:hasProductionCost ?ProductionCostScreed.
+                    ?Inspection ocqa-risk:probability ?probability.
+                    
+                    BIND ((?ProductionCostScreed * 0.1) AS ?averageNCC).
+                    BIND (?averageNCC * ?probability AS ?PotentialNCC).
+            }""";
+  ].
