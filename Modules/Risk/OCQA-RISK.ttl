@@ -1,0 +1,148 @@
+@prefix : <http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/seiss_consultant/ontologies/2025/5/28/untitled-ontology-17/> .
+
+<https://w3id.org/ocqa/ocqa-risk> rdf:type owl:Ontology ;
+                                   owl:versionIRI <https://w3id.org/ocqa/ocqa-risk> ;
+                                   <http://purl.org/dc/terms/creator> "Sebastian Seiß" ;
+                                   <http://purl.org/dc/terms/description> "The Ontology for RISK is an ontology defining the core concepts for construction risk estimation based on defects." ;
+                                   <http://purl.org/dc/terms/issued> "2024-10-12" ;
+                                   <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/1.0" ;
+                                   <http://purl.org/dc/terms/modified> "2025-01-07" ;
+                                   <http://purl.org/dc/terms/title> "Ontology for Construction Quality Assurence RISK (OCQA-RISK)" ;
+                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "ocqa-risk" ;
+                                   <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ocqa/ocqa-risk#" ;
+                                   rdfs:comment "- Version 1- Risk Module" ;
+                                   owl:versionInfo 1 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/ocqa/ocqa-risk#detects
+:detects rdf:type owl:ObjectProperty ;
+         rdfs:domain <https://w3id.org/ocqa#Inspection> ;
+         rdfs:range <https://w3id.org/ocqa#Nonconformity> ;
+         rdfs:comment "Relates an inspection activity to the potential non-conformity that it is capable of identifying."@en .
+
+
+###  https://w3id.org/ocqa/ocqa-risk#hasPotentialNonConfirmity
+:hasPotentialNonConfirmity rdf:type owl:ObjectProperty ;
+                           rdfs:label "Links an building object to the non-conformity which represent a potential defect."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/ocqa/ocqa-risk#hasAverageNCC
+:hasAverageNCC rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:double ;
+               rdfs:comment "Holds the estimated average cost of non-conformities (direct and indirect) for a given defect type, approximated as 10 % of the component’s production cost."@en ;
+               rdfs:label "Average NCC"@en .
+
+
+###  https://w3id.org/ocqa/ocqa-risk#hasProbability
+:hasProbability rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:double ;
+                rdfs:comment "Specifies the likelihood of occurrence of a potential non-conformity, expressed as a numeric probability value."@en ;
+                rdfs:label "Probability"@en .
+
+
+###  https://w3id.org/ocqa/ocqa-risk#hasProductionCost
+:hasProductionCost rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:double ;
+                   rdfs:comment "Records the base production cost of a building object, used as input to calculate expected non-conformity costs."@en ;
+                   rdfs:label "production costs"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement
+<https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject
+<https://w3id.org/digitalconstruction/0.5/Entities#BuildingObject> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcElement> .
+
+
+###  https://w3id.org/ocqa#Conformity
+<https://w3id.org/ocqa#Conformity> rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://w3id.org/ocqa#Evaluation> ,
+                                                   <https://w3id.org/ocqa#Record> .
+
+
+###  https://w3id.org/ocqa#Determination
+<https://w3id.org/ocqa#Determination> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa#Evaluation
+<https://w3id.org/ocqa#Evaluation> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa#Inspection
+<https://w3id.org/ocqa#Inspection> rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://w3id.org/ocqa#Determination> .
+
+
+###  https://w3id.org/ocqa#Nonconformity
+<https://w3id.org/ocqa#Nonconformity> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://w3id.org/ocqa#Evaluation> ,
+                                                      <https://w3id.org/ocqa#Record> .
+
+
+###  https://w3id.org/ocqa#Record
+<https://w3id.org/ocqa#Record> rdf:type owl:Class .
+
+
+###  https://w3id.org/ocqa/ocqa-risk#PotentialNonConfirmity
+:PotentialNonConfirmity rdf:type owl:Class ;
+                        rdfs:subClassOf <https://w3id.org/ocqa#Record> ;
+                        rdfs:comment "Represents a possible defect or deviation from specified quality requirements, derived from historical defect data and linked to construction activities."@en ;
+                        rdfs:label "Potential Non-Conformity"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
