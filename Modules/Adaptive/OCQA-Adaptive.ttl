@@ -1,0 +1,270 @@
+@prefix : <https://w3id.org/ocqa/adaptive#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dica: <https://w3id.org/digitalconstruction/0.5/Agents#> .
+@prefix dicc: <https://w3id.org/digitalconstruction/0.5/Contexts#> .
+@prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> .
+@prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/ocqa/adaptive#> .
+
+<https://w3id.org/ocqa/adaptive#> rdf:type owl:Ontology ;
+                                   owl:imports <https://w3id.org/digitalconstruction/0.5/Contexts> ;
+                                   dcterms:creator "Sebastian Seiß" ;
+                                   dcterms:description "The Ontology for Quality Assurance Adaptive is a ontology for contextualisation of information used in the OCQA" ;
+                                   dcterms:issued "2025-12-01" ;
+                                   dcterms:license "https://creativecommons.org/licenses/by/1.0" ;
+                                   dcterms:modified "2024-03-18" ;
+                                   dcterms:title "Ontology for Construction Quality Assurence Adaptive (OCQA-Adaptive)" ;
+                                   vann:preferredNamespacePrefix "ocqa-adaptive" ;
+                                   vann:preferredNamespaceUri "https://w3id.org/ocqa/adaptive#" ;
+                                   rdfs:comment """- Extension of OCQA
+- Represents capabilities for adaptive insoection planning using contextualisation
+- The context module of OCQA is based on the digital construction contexts of DiCon
+- The contextualisation is based on the named graphs
+- A named graph is considered as  \"A set of named graphs is a set {(u1, G1), (u2, G2), ...(un, Gn)} where each Gi is an RDF graph, and each ui is a URI reference.  All ui are distinct.\" Bizer 2007 Quality-Driven Information Filtering in the Context of Web-Based Information Systems""" ;
+                                   owl:versionInfo 1.0 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty ;
+                rdfs:label "creator"@en ,
+                           "Ersteller"@de ;
+                rdfs:comment "Indicates the agent that created the resource."@en .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty ;
+                    rdfs:label "description"@en ,
+                               "Beschreibung"@de ;
+                    rdfs:comment "Provides a textual description of the resource."@en .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty ;
+               rdfs:label "issued"@en ,
+                          "Herausgegeben"@de ;
+               rdfs:comment "Date of formal issuance of the resource."@en .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty ;
+                rdfs:label "license"@en ,
+                           "Lizenz"@de ;
+                rdfs:comment "Link to the license governing use of the resource."@en .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty ;
+                 rdfs:label "modified"@en ,
+                            "Geändert"@de ;
+                 rdfs:comment "Date of last modification of the resource."@en .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty ;
+              rdfs:label "title"@en ,
+                         "Titel"@de ;
+              rdfs:comment "Name given to the resource."@en .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty ;
+                              rdfs:label "preferred namespace prefix"@en ,
+                                         "Bevorzugtes Namespace-Präfix"@de ;
+                              rdfs:comment "Suggested prefix for the namespace."@en .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty ;
+                           rdfs:label "preferred namespace URI"@en ,
+                                      "Bevorzugte Namespace-URI"@de ;
+                           rdfs:comment "Suggested namespace URI."@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/ocqa/adaptive#dependsOn
+:dependsOn rdf:type owl:ObjectProperty ;
+           rdfs:label "depends on"@en ,
+                      "hängt ab von"@de ;
+           rdfs:comment "Relates a context to another context it depends on."@en ;
+           rdfs:domain :Context ;
+           owl:equivalentProperty dicc:dependsOn ;
+           rdfs:range :Context .
+
+
+###  https://w3id.org/ocqa/adaptive#hasContent
+:hasContent rdf:type owl:ObjectProperty ;
+            rdfs:label "has content"@en ,
+                       "hat Inhalt"@de ;
+            rdfs:comment "Links a context to the resource that represents its content."@en ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Context ;
+            owl:equivalentProperty dicc:hasContent ;
+            rdfs:range rdfs:Resource .
+
+
+###  https://w3id.org/ocqa/adaptive#hasContext
+:hasContext rdf:type owl:ObjectProperty ;
+            rdfs:label "has context"@en ,
+                       "besitzt Kontext"@de ;
+            rdfs:comment "Links a context collection to a contained context."@en ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :ContextCollection ;
+            owl:equivalentProperty dicc:hasContext ;
+            rdfs:range :Context .
+
+
+###  https://w3id.org/ocqa/adaptive#nextContext
+:nextContext rdf:type owl:ObjectProperty ;
+             rdfs:label "next context"@en ,
+                        "nächster Kontext"@de ;
+             rdfs:comment "Relates a context to the next context in a sequence."@en ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Context ;
+             owl:equivalentProperty dicc:nextContext ;
+             rdfs:range :Context .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/ocqa/adaptive#hasGraphUploadDate
+:hasGraphUploadDate rdf:type owl:DatatypeProperty ;
+                    rdfs:label "graph upload date"@en ,
+                               "Upload-Datum des Graphen"@de ;
+                    rdfs:comment "Timestamp when the graph was uploaded."@en ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain rdfs:Resource ;
+                    rdfs:range xsd:dateTime .
+
+
+###  https://w3id.org/ocqa/adaptive#hasOwnerOfGraph
+:hasOwnerOfGraph rdf:type owl:DatatypeProperty ;
+                 rdfs:label "graph owner"@en ,
+                            "Eigentümer des Graphen"@de ;
+                 rdfs:comment "Name of the owner of the graph."@en ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain rdfs:Resource ;
+                 rdfs:range xsd:string .
+
+
+###  https://w3id.org/ocqa/adaptive#hasSource
+:hasSource rdf:type owl:DatatypeProperty ;
+           rdfs:label "source"@en ,
+                      "Quelle"@de ;
+           rdfs:comment "Source identifier or reference for the resource."@en ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class ;
+              rdfs:label "resource"@en ,
+                         "Ressource"@de ;
+              rdfs:comment "Generic resource."@en .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Contexts#Context
+dicc:Context rdf:type owl:Class ;
+             owl:equivalentClass :Context .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Contexts#ContextFramework
+dicc:ContextFramework rdf:type owl:Class ;
+                      rdfs:subClassOf :ContextCollection .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Contexts#ContextSet
+dicc:ContextSet rdf:type owl:Class ;
+                rdfs:subClassOf :ContextCollection .
+
+
+###  https://w3id.org/ocqa/adaptive#ConstructionStatusContext
+:ConstructionStatusContext rdf:type owl:Class ;
+                           rdfs:label "construction status context"@en ,
+                                      "Bauzustandskontext"@de ;
+                           rdfs:comment "Context describing the construction status."@en ;
+                           rdfs:subClassOf :Context .
+
+
+###  https://w3id.org/ocqa/adaptive#Context
+:Context rdf:type owl:Class ;
+         rdfs:label "context"@en ,
+                    "Kontext"@de ;
+         rdfs:comment "Context used to characterize information by using named graphs."@en , 
+                      "Bezugsrahmen unter der die Aussage gültig ist unter der Verwendung von Named Graphs."@de .
+
+
+###  https://w3id.org/ocqa/adaptive#ContextCollection
+:ContextCollection rdf:type owl:Class ;
+                   rdfs:label "context collection"@en ,
+                              "Kontextsammlung"@de ;
+                   owl:equivalentClass [ owl:intersectionOf ( dicc:ContextFramework
+                                                              dicc:ContextSet
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:comment """Combines dicc:ContextSet and dicc:ContextFramework into a single class. This enables an easier and faster definition of different framework collections according to themes such as temporal aspects (status and versioning), level of development, context ownership, approval and authorization status by e.g. owner or authority and spatial grouping
+But we recommend to use differnt subclasses for context to keep track of about the meaning of the context. Like using the statusContext subclass instead of using a ContextCollection. This reduces the complexity far more."""@en .
+
+
+###  https://w3id.org/ocqa/adaptive#VersionContext
+:VersionContext rdf:type owl:Class ;
+                rdfs:label "version context"@en ,
+                           "Version des Kontext"@de ;
+                rdfs:comment "Context describing versioning information."@en ;
+                rdfs:subClassOf :Context .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/ocqa/adaptive#AsBuilt
+:AsBuilt rdf:type owl:NamedIndividual ,
+                  :ConstructionStatusContext .
+
+
+###  https://w3id.org/ocqa/adaptive#AsDesigned
+:AsDesigned rdf:type owl:NamedIndividual ,
+                     :ConstructionStatusContext .
+
+
+###  https://w3id.org/ocqa/adaptive#AsPerformed
+:AsPerformed rdf:type owl:NamedIndividual ,
+                      :ConstructionStatusContext .
+
+
+###  https://w3id.org/ocqa/adaptive#AsPlanned
+:AsPlanned rdf:type owl:NamedIndividual ,
+                    :ConstructionStatusContext .
+
+
+###  https://w3id.org/ocqa/adaptive#Version01
+:Version01 rdf:type owl:NamedIndividual ,
+                    :VersionContext .
+
+
+###  https://w3id.org/ocqa/adaptive#Version02
+:Version02 rdf:type owl:NamedIndividual ,
+                    :VersionContext .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,34 @@
+@prefix : <https://example.org/ocqa/example#> .
+@prefix ex: <https://example.org/ocqa/example#> .
+@prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> .
+@prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ocqa-screed:      <https://w3id.org/ocqa-screed#> .
+@prefix inst:     <https://www.officeBuilding.de#> .
+
+
+# ---- Screeding activity (primary) ----
+ex:Screeding_20220801_20220808
+    rdf:type dicp:Activity, ocqa-screed:Screeding;
+    rdfs:label "Screeding activity"@en ;
+    dicp:occupiesTimeInterval [
+        dice:hasStart [ time:inXSDDateTime "2022-07-25T00:00:00"^^xsd:dateTime ] ;
+        dice:hasEnd   [ time:inXSDDateTime "2022-08-01T00:00:00"^^xsd:dateTime ]
+    ] ;
+    dicp:hasObject inst:slab_8e865db3-371f-4ba5-aa37-e645eecf3b2d ;
+    dice:precedes ex:Drying_20220809_20220822 .
+
+# ---- Drying activity (2 weeks) ----
+ex:Drying_20220809_20220822
+    rdf:type dicp:Activity, ocqa-screed:DryingScreed;
+    rdfs:label "Drying activity (2 weeks)"@en ;
+    dicp:occupiesTimeInterval [
+        dice:hasStart [ time:inXSDDateTime "2022-08-01T00:00:00"^^xsd:dateTime ] ;
+        dice:hasEnd   [ time:inXSDDateTime "2022-08-15T00:00:00"^^xsd:dateTime ]
+    ] ;
+    dicp:hasObject inst:slab_8e865db3-371f-4ba5-aa37-e645eecf3b2d ;
+    dice:precedes ex:Drywall_20220823 .

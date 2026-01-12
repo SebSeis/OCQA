@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ontology for Construction Quality Assurence Adaptive (OCQA-Adaptive)</title>
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding: 5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin: 5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: left
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #005A9C;
+            background: white
+        }
+
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+
+        h2 {
+            font: 140% sans-serif;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+
+        h4 {
+            font: bold 100% sans-serif
+        }
+
+        h5 {
+            font: italic 100% sans-serif
+        }
+
+        h6 {
+            font: small-caps 100% sans-serif
+        }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link {
+            color: #00C;
+            background: transparent
+        }
+
+        :visited {
+            color: #609;
+            background: transparent
+        }
+
+        a:active {
+            color: #C00;
+            background: transparent
+        }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor: help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color: orange;
+        }
+
+        .sup-op {
+            color: navy;
+        }
+
+        .sup-fp {
+            color: lightskyblue;
+        }
+
+        .sup-dp {
+            color: green;
+        }
+
+        .sup-ap {
+            color: darkred;
+        }
+
+        .sup-p {
+            color: black;
+        }
+
+        .sup-ni {
+            color: brown;
+        }
+
+        .sup-con {
+            color: orange;
+        }
+
+        .sup-col {
+            color: darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "https://w3id.org/ocqa/adaptive#",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<ul>\n<li>Extension of OCQA</li>\n<li>Represents capabilities for adaptive insoection planning using contextualisation</li>\n<li>The context module of OCQA is based on the digital construction contexts of DiCon</li>\n<li>The contextualisation is based on the named graphs</li>\n<li>A named graph is considered as  \"A set of named graphs is a set {(u1, G1), (u2, G2), ...(un, Gn)} where each Gi is an RDF graph, and each ui is a URI reference.  All ui are distinct.\" Bizer 2007 Quality-Driven Information Filtering in the Context of Web-Based Information Systems</li>\n</ul>"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/1.0"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Ontology for Construction Quality Assurence Adaptive (OCQA-Adaptive)"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+
+<body>
+    <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+            <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+        <span style="font-size:smaller;">2.13.2</span>
+    </div>
+    <h1>Ontology for Construction Quality Assurence Adaptive (OCQA-Adaptive)</h1>
+    <section id="metadata">
+        <h2 style="display:none;">Metadata</h2>
+        <dl>
+            <dt>URI</dt>
+            <dd><code>https://w3id.org/ocqa/adaptive#</code></dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)
+            </dt>
+            <dd>
+                Sebastian Seiß<br />
+            </dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a>
+            </dt>
+            <dd>2024-03-18</dd>
+            <dt><a class="proplink"
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued">Issued</a>
+            </dt>
+            <dd>2025-12-01</dd>
+            <dt>Version Information</dt>
+            <dd>1.0</dd>
+            <dt>Imports</dt>
+            <dd>
+                <a
+                    href="https://w3id.org/digitalconstruction/0.5/Contexts">https://w3id.org/digitalconstruction/0.5/Contexts</a><br />
+            </dd>
+            <dt>License</dt>
+            <dd><a href="https://creativecommons.org/licenses/by/1.0">https://creativecommons.org/licenses/by/1.0</a>
+            </dd>
+            <dt>Ontology RDF</dt>
+            <dd><a
+                    href="c:\Users\Seiss_Consultant\OneDrive\Dokumentumok\GitHub\OCQA\Modules\Adaptive\ocqa-adaptive.ttl">RDF
+                    (turtle)</a></dd>
+        </dl>
+        <h2>Short Description</h2>
+        <div id="description">
+            <ul>
+                <li>Extension of OCQA</li>
+                <li>Represents capabilities for adaptive insoection planning using contextualisation</li>
+                <li>The context module of OCQA is based on the digital construction contexts of DiCon</li>
+                <li>The contextualisation is based on the named graphs</li>
+                <li>A named graph is considered as "A set of named graphs is a set {(u1, G1), (u2, G2), ...(un, Gn)}
+                    where each Gi is an RDF graph, and each ui is a URI reference. All ui are distinct." Bizer 2007
+                    Quality-Driven Information Filtering in the Context of Web-Based Information Systems</li>
+            </ul>
+        </div>
+    </section>
+    <section id="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#objectproperties">Object Properties</a></li>
+            <li><a href="#datatypeproperties">Datatype Properties</a></li>
+            <li><a href="#annotationproperties">Annotation Properties</a></li>
+            <li><a href="#namedindividuals">Named Individuals</a></li>
+            <li><a href="#namespaces">Namespaces</a></li>
+            <li><a href="#legend">Legend</a></li>
+        </ol>
+    </section>
+    <section id="overview">
+        <h2>Overview</h2>
+
+        <p>
+            To represent different states of inspection plans and related information, OCQA-Adaptive uses
+            contextualization.
+            The framework defines contexts to structure inspection-related data and support adaptive planning of quality
+            inspections during construction.
+            Instead of overwriting values, evolving information is represented in contexts so that different states can
+            be tracked, compared, and reused.
+            Context can be represented using qualified properties, objectified properties, or named RDF graphs.
+            While an ontology provides a shared vocabulary, context specifies the conditions under which that vocabulary
+            is applied, allowing conflicting representations to coexist in one knowledge base and enabling systematic
+            comparison and reasoning.
+        </p>
+
+        <p>
+            OCQA-Adaptive follows the FAIR principles and is accessible at https://w3id.org/ocqa-adaptive#.
+            Contextual information is represented using named graphs due to high performance and reduced complexity.
+            Named graphs support versioning and status tracking of entities such as inspections and building objects.
+            Each named graph is linked via <code>ocqa-adaptive:hasContent</code> to an instance of
+            <code>ocqa-adaptive:Context</code> that captures version or status metadata.
+            Version-related named graphs capture releases and changes to information models; micro changes can be
+            recorded within the named graph using qualified or objectified properties.
+        </p>
+
+        <p>
+            In parallel, OCQA-Adaptive provides an orthogonal layer that represents the current status of project
+            entities using four contexts:
+            As-Designed, As-Built, As-Planned, and As-Performed.
+            By linking contexts with relations such as <code>ocqa-adaptive:dependsOn</code> and
+            <code>ocqa-adaptive:nextContext</code>, the framework supports adaptive inspection planning across the
+            construction lifecycle and enables comparisons between planned and performed inspections and between design
+            and construction states.
+            Contexts can also be grouped using <code>ocqa-adaptive:ContextCollection</code>, for example by spatial,
+            temporal, or authorization status, supporting transparent long-term tracking and dynamic adaptation.
+        </p>
+
+
+        <div class="figure">
+            <img src="https://SebSeis.github.io/OCQA/Pictures/ocqa-adaptive.png" alt="Italian Trulli"
+                style=" height: 550px;">
+            <div class="caption"><strong>Figure 1:</strong>Contextualization concept in OCQA-Adaptive for versioning and
+                status tracking.</div>
+        </div>
+    </section>
+
+    <section id="classes">
+        <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></li>
+            <li><a href="https://w3id.org/digitalconstruction/0.5/Contexts#Context">dicc:Context</a></li>
+            <li><a href="https://w3id.org/digitalconstruction/0.5/Contexts#ContextFramework">dicc:ContextFramework</a>
+            </li>
+            <li><a href="https://w3id.org/digitalconstruction/0.5/Contexts#ContextSet">dicc:ContextSet</a></li>
+            <li><a href="#constructionstatuscontext">construction status context</a></li>
+            <li><a href="#context">context</a></li>
+            <li><a href="#contextcollection">context collection</a></li>
+            <li><a href="#versioncontext">version context</a></li>
+        </ul>
+        <div class="entity class" id="resource">
+            <h3>
+                resource<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#resource"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/2000/01/rdf-schema#Resource</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Generic resource.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>In domain of</th>
+                    <td>
+                        <a href="#graphowner">graph owner</a><sup class="sup-dp"
+                            title="datatype property">dp</sup><br />
+                        <a href="#graphuploaddate">graph upload date</a><sup class="sup-dp"
+                            title="datatype property">dp</sup><br />
+                        <a href="#source">source</a><sup class="sup-dp" title="datatype property">dp</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>In range of</th>
+                    <td>
+                        <a href="#hascontent">has content</a><sup class="sup-op" title="object property">op</sup><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="Context">
+            <h3>
+                Context<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Context"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/digitalconstruction/0.5/Contexts#Context</code></td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="ContextFramework">
+            <h3>
+                ContextFramework<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ContextFramework"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/digitalconstruction/0.5/Contexts#ContextFramework</code></td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="#contextcollection">context collection</a><sup class="sup-c"
+                            title="class">c</sup><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="ContextSet">
+            <h3>
+                ContextSet<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ContextSet"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/digitalconstruction/0.5/Contexts#ContextSet</code></td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="#contextcollection">context collection</a><sup class="sup-c"
+                            title="class">c</sup><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="constructionstatuscontext">
+            <h3>
+                construction status context<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#constructionstatuscontext"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#ConstructionStatusContext</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Context describing the construction status.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="#context">context</a><sup class="sup-c" title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td>
+                        <a href="https://w3id.org/ocqa/adaptive#AsBuilt">AsBuilt</a><br />
+                        <a href="https://w3id.org/ocqa/adaptive#AsPlanned">AsPlanned</a><br />
+                        <a href="https://w3id.org/ocqa/adaptive#AsPerformed">AsPerformed</a><br />
+                        <a href="https://w3id.org/ocqa/adaptive#AsDesigned">AsDesigned</a><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="context">
+            <h3>
+                context<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#context"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#Context</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Context used to characterize information by using named graphs.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sub-classes</th>
+                    <td>
+                        <a href="#constructionstatuscontext">construction status context</a><sup class="sup-c"
+                            title="class">c</sup><br />
+                        <a href="#versioncontext">version context</a><sup class="sup-c" title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>In domain of</th>
+                    <td>
+                        <a href="#dependson">depends on</a><sup class="sup-op" title="object property">op</sup><br />
+                        <a href="#hascontent">has content</a><sup class="sup-op" title="object property">op</sup><br />
+                        <a href="#nextcontext">next context</a><sup class="sup-op"
+                            title="object property">op</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>In range of</th>
+                    <td>
+                        <a href="#dependson">depends on</a><sup class="sup-op" title="object property">op</sup><br />
+                        <a href="#hascontext">has context</a><sup class="sup-op" title="object property">op</sup><br />
+                        <a href="#nextcontext">next context</a><sup class="sup-op"
+                            title="object property">op</sup><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="contextcollection">
+            <h3>
+                context collection<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#contextcollection"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#ContextCollection</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Combines dicc:ContextSet and dicc:ContextFramework into a single class. This enables an
+                            easier and faster definition of different framework collections according to themes such as
+                            temporal aspects (status and versioning), level of development, context ownership, approval
+                            and authorization status by e.g. owner or authority and spatial grouping
+                            But we recommend to use differnt subclasses for context to keep track of about the meaning
+                            of the context. Like using the statusContext subclass instead of using a ContextCollection.
+                            This reduces the complexity far more.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sub-classes</th>
+                    <td>
+                        <a href="https://w3id.org/digitalconstruction/0.5/Contexts#ContextSet">dicc:ContextSet</a><sup
+                            class="sup-c" title="class">c</sup><br />
+                        <a
+                            href="https://w3id.org/digitalconstruction/0.5/Contexts#ContextFramework">dicc:ContextFramework</a><sup
+                            class="sup-c" title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>In domain of</th>
+                    <td>
+                        <a href="#hascontext">has context</a><sup class="sup-op" title="object property">op</sup><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity class" id="versioncontext">
+            <h3>
+                version context<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#versioncontext"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#VersionContext</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Context describing versioning information.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="#context">context</a><sup class="sup-c" title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td>
+                        <a href="https://w3id.org/ocqa/adaptive#Version02">Version02</a><br />
+                        <a href="https://w3id.org/ocqa/adaptive#Version01">Version01</a><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section id="objectproperties">
+        <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#dependson">depends on</a></li>
+            <li><a href="#hascontent">has content</a></li>
+            <li><a href="#hascontext">has context</a></li>
+            <li><a href="#nextcontext">next context</a></li>
+        </ul>
+        <div class="entity property" id="dependson">
+            <h3>depends on<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#dependson" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#dependsOn</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a context to another context it depends on.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Equivalent properties</th>
+                    <td>
+                        <a href="https://w3id.org/digitalconstruction/0.5/Contexts#dependsOn">dicc:dependsOn</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="#context">context</a><sup class="sup-c" title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="https://w3id.org/ocqa/adaptive#Context">Context</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hascontent">
+            <h3>has content<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hascontent" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#hasContent</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Links a context to the resource that represents its content.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Equivalent properties</th>
+                    <td>
+                        <a href="https://w3id.org/digitalconstruction/0.5/Contexts#hasContent">dicc:hasContent</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="#context">context</a><sup class="sup-c" title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hascontext">
+            <h3>has context<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hascontext" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#hasContext</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Links a context collection to a contained context.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Equivalent properties</th>
+                    <td>
+                        <a href="https://w3id.org/digitalconstruction/0.5/Contexts#hasContext">dicc:hasContext</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="#contextcollection">context collection</a><sup class="sup-c" title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="https://w3id.org/ocqa/adaptive#Context">Context</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="nextcontext">
+            <h3>next context<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#nextcontext" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#nextContext</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a context to the next context in a sequence.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Equivalent properties</th>
+                    <td>
+                        <a href="https://w3id.org/digitalconstruction/0.5/Contexts#nextContext">dicc:nextContext</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="#context">context</a><sup class="sup-c" title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="https://w3id.org/ocqa/adaptive#Context">Context</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="datatypeproperties">
+        <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#graphuploaddate">graph upload date</a></li>
+            <li><a href="#graphowner">graph owner</a></li>
+            <li><a href="#source">source</a></li>
+        </ul>
+        <div class="entity property" id="graphuploaddate">
+            <h3>graph upload date<sup title="datatype property" class="sup-dp">dp</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#graphuploaddate" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                        title="Datatype Properties Index">DPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#hasGraphUploadDate</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Timestamp when the graph was uploaded.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="graphowner">
+            <h3>graph owner<sup title="datatype property" class="sup-dp">dp</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#graphowner" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                        title="Datatype Properties Index">DPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#hasOwnerOfGraph</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Name of the owner of the graph.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="source">
+            <h3>source<sup title="datatype property" class="sup-dp">dp</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#source" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties"
+                        title="Datatype Properties Index">DPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/ocqa/adaptive#hasSource</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Source identifier or reference for the resource.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-properties</th>
+                    <td>
+                        <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="annotationproperties">
+        <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#creator">creator</a></li>
+            <li><a href="#description">description</a></li>
+            <li><a href="#issued">issued</a></li>
+            <li><a href="#license">license</a></li>
+            <li><a href="#modified">modified</a></li>
+            <li><a href="#title">title</a></li>
+            <li><a href="#preferrednamespaceprefix">preferred namespace prefix</a></li>
+            <li><a href="#preferrednamespaceURI">preferred namespace URI</a></li>
+        </ul>
+        <div class="entity property" id="creator">
+            <h3>creator<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#creator" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/creator</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Indicates the agent that created the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="description">
+            <h3>description<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#description" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/description</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Provides a textual description of the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="issued">
+            <h3>issued<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#issued" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/issued</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Date of formal issuance of the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="license">
+            <h3>license<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#license" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/license</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Link to the license governing use of the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="modified">
+            <h3>modified<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#modified" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/modified</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Date of last modification of the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="title">
+            <h3>title<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#title" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties"
+                        title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/dc/terms/title</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Name given to the resource.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="preferrednamespaceprefix">
+            <h3>preferred namespace prefix<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#preferrednamespaceprefix" title="fragment link to here">#</a>&nbsp;<a
+                        href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Suggested prefix for the namespace.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="preferrednamespaceURI">
+            <h3>preferred namespace URI<sup title="annotation property" class="sup-ap">ap</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#preferrednamespaceURI" title="fragment link to here">#</a>&nbsp;<a
+                        href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Suggested namespace URI.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#AsBuilt">AsBuilt</a></li>
+            <li><a href="#AsDesigned">AsDesigned</a></li>
+            <li><a href="#AsPerformed">AsPerformed</a></li>
+            <li><a href="#AsPlanned">AsPlanned</a></li>
+            <li><a href="#Version01">Version01</a></li>
+            <li><a href="#Version02">Version02</a></li>
+        </ul>
+        <div class="entity named_individual" id="AsBuilt">
+            <h3>AsBuilt<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#AsBuilt
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a
+                        href="https://w3id.org/ocqa/adaptive#ConstructionStatusContext">ConstructionStatusContext</a><br />
+                </dd>
+            </table>
+        </div>
+        <div class="entity named_individual" id="AsDesigned">
+            <h3>AsDesigned<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#AsDesigned
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a
+                        href="https://w3id.org/ocqa/adaptive#ConstructionStatusContext">ConstructionStatusContext</a><br />
+                </dd>
+            </table>
+        </div>
+        <div class="entity named_individual" id="AsPerformed">
+            <h3>AsPerformed<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#AsPerformed
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a
+                        href="https://w3id.org/ocqa/adaptive#ConstructionStatusContext">ConstructionStatusContext</a><br />
+                </dd>
+            </table>
+        </div>
+        <div class="entity named_individual" id="AsPlanned">
+            <h3>AsPlanned<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#AsPlanned
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a
+                        href="https://w3id.org/ocqa/adaptive#ConstructionStatusContext">ConstructionStatusContext</a><br />
+                </dd>
+            </table>
+        </div>
+        <div class="entity named_individual" id="Version01">
+            <h3>Version01<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#Version01
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a href="https://w3id.org/ocqa/adaptive#VersionContext">VersionContext</a><br />
+                </dd>
+            </table>
+        </div>
+        <div class="entity named_individual" id="Version02">
+            <h3>Version02<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/ocqa/adaptive#Version02
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a href="https://w3id.org/ocqa/adaptive#VersionContext">VersionContext</a><br />
+                </dd>
+            </table>
+        </div>
+    </section>
+
+    <section id="namespaces">
+        <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <dl>
+            <dt>default (ocqa-adaptive)</dt>
+            <dd><code>https://w3id.org/ocqa/adaptive#</code></dd>
+            <dt>brick</dt>
+            <dd><code>https://brickschema.org/schema/Brick#</code></dd>
+            <dt>csvw</dt>
+            <dd><code>http://www.w3.org/ns/csvw#</code></dd>
+            <dt>dc</dt>
+            <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+            <dt>dcam</dt>
+            <dd><code>http://purl.org/dc/dcam/</code></dd>
+            <dt>dcat</dt>
+            <dd><code>http://www.w3.org/ns/dcat#</code></dd>
+            <dt>dcmitype</dt>
+            <dd><code>http://purl.org/dc/dcmitype/</code></dd>
+            <dt>dcterms</dt>
+            <dd><code>http://purl.org/dc/terms/</code></dd>
+            <dt>dica</dt>
+            <dd><code>https://w3id.org/digitalconstruction/0.5/Agents#</code></dd>
+            <dt>dicc</dt>
+            <dd><code>https://w3id.org/digitalconstruction/0.5/Contexts#</code></dd>
+            <dt>dice</dt>
+            <dd><code>https://w3id.org/digitalconstruction/0.5/Entities#</code></dd>
+            <dt>dicp</dt>
+            <dd><code>https://w3id.org/digitalconstruction/0.5/Processes#</code></dd>
+            <dt>doap</dt>
+            <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+            <dt>foaf</dt>
+            <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+            <dt>geo</dt>
+            <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+            <dt>odrl</dt>
+            <dd><code>http://www.w3.org/ns/odrl/2/</code></dd>
+            <dt>org</dt>
+            <dd><code>http://www.w3.org/ns/org#</code></dd>
+            <dt>owl</dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt>prof</dt>
+            <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+            <dt>prov</dt>
+            <dd><code>http://www.w3.org/ns/prov#</code></dd>
+            <dt>qb</dt>
+            <dd><code>http://purl.org/linked-data/cube#</code></dd>
+            <dt>rdf</dt>
+            <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+            <dt>rdfs</dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+            <dt>sdo</dt>
+            <dd><code>https://schema.org/</code></dd>
+            <dt>sh</dt>
+            <dd><code>http://www.w3.org/ns/shacl#</code></dd>
+            <dt>skos</dt>
+            <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+            <dt>sosa</dt>
+            <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+            <dt>ssn</dt>
+            <dd><code>http://www.w3.org/ns/ssn/</code></dd>
+            <dt>time</dt>
+            <dd><code>http://www.w3.org/2006/time#</code></dd>
+            <dt>vann</dt>
+            <dd><code>http://purl.org/vocab/vann/</code></dd>
+            <dt>void</dt>
+            <dd><code>http://rdfs.org/ns/void#</code></dd>
+            <dt>wgs</dt>
+            <dd><code>https://www.w3.org/2003/01/geo/wgs84_pos#</code></dd>
+            <dt>xsd</dt>
+            <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+        </dl>
+    </section>
+    <section id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+            <tr>
+                <td><sup class="sup-c" title="Classes">c</sup></td>
+                <td>Classes</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-op" title="Object Properties">op</sup></td>
+                <td>Object Properties</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-fp" title="Functional Properties">fp</sup></td>
+                <td>Functional Properties</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-dp" title="Data Properties">dp</sup></td>
+                <td>Data Properties</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-ap" title="Annotation Properties">ap</sup></td>
+                <td>Annotation Properties</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-p" title="Properties">p</sup></td>
+                <td>Properties</td>
+            </tr>
+            <tr>
+                <td><sup class="sup-ni" title="Named Individuals">ni</sup></td>
+                <td>Named Individuals</td>
+            </tr>
+        </table>
+    </section>
+</body>
+
+</html>

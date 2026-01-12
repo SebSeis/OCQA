@@ -1,5 +1,6 @@
 from pylode import OntDoc, MakeDocco, APP_DIR
 #from pathlib import Path
+import os
 from os.path import join, dirname, abspath
 
 # initialise
@@ -19,12 +20,14 @@ from os.path import join, dirname, abspath
 #print(input_rdf)
 #print(output_html)
 TESTS_DIR = dirname(abspath(__file__))
-print(TESTS_DIR)
-print(join(TESTS_DIR, "230707_OCQA_03.ttl"))
+ONTOLOGY_DIR = join(TESTS_DIR, "Modules", "Adaptive")
+os.chdir(ONTOLOGY_DIR)
+print(ONTOLOGY_DIR)
+print(join(ONTOLOGY_DIR, "ocqa-adaptive.ttl"))
 #od=OntDoc(default_language="en",source_info=input_rdf, g=input_rdf)
-h = MakeDocco(input_data_file=join(TESTS_DIR, "230707_OCQA_03.ttl"))
+h = MakeDocco(input_data_file=join(ONTOLOGY_DIR, "ocqa-adaptive.ttl"))
 # generate the HTML doc
-h.document(destination=join(TESTS_DIR, "newindex.html"))
+h.document(destination=join(ONTOLOGY_DIR, "newindex.html"))
 
 
 #html = OntDoc(source_info=input_rdf, include_css=True, outputformat="html", default_language="en",get_curies_online=False,use_curies_stored=True, g=any, destination)

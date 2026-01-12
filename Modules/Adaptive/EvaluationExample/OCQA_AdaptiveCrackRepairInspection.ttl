@@ -1,0 +1,200 @@
+@prefix ocqaRule: <https://w3id.org/ocqaRule#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ocqa: <https://w3id.org/ocqa#> .
+@prefix obpa: <https://w3id.org/obpa#> .
+@prefix ocqa: <https://w3id.org/ocqa#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dica: <https://w3id.org/digitalconstruction/0.5/Agents#> .
+@prefix dice: <https://w3id.org/digitalconstruction/0.5/Entities#> .
+@prefix dicp: <https://w3id.org/digitalconstruction/0.5/Processes#> .
+@prefix ex: <https://example.de/foundationInspection#>  .
+@prefix props:    <http://lbd.arch.rwth-aachen.de/props#> .
+@prefix beo:      <https://pi.pauwel.be/voc/buildingelement#> .
+@prefix ocqa-screed:      <https://w3id.org/ocqa-screed#> .
+@base <https://w3id.org/ocqaRule#>.
+
+# SHACL NodeShape for all dice:Foundation instances
+ocqaRule:FoundationInspectionShape
+    a sh:NodeShape ;
+    sh:target ocqaRule:CracksNeedingInspection;
+    #sh:targetClass ocqa-screed:Crack;
+    #@Hannes can we use here directly a target node? Which contains the crack?
+    sh:rule ocqaRule:PlanScreedCrackRemoveInspectionShape ;
+    sh:rule ocqaRule:AssignCrackFillingInspectionCharacteristic;
+    sh:rule ocqaRule:AssignProcedureAndEquipment 
+    #sh:rule ocqaRule:AssignTimeFrame 
+.
+ocqaRule:CracksNeedingInspection
+  a sh:SPARQLTarget ;
+  sh:select """
+    PREFIX ocqa:        <https://w3id.org/ocqa#>
+    PREFIX ocqa-screed: <https://w3id.org/ocqa-screed#>
+    PREFIX dicp:        <https://w3id.org/digitalconstruction/0.5/Processes#>
+
+    SELECT ?this
+    WHERE {
+      ?this a ocqa-screed:Crack .
+
+      ?ins a ocqa-screed:CrackInspection ;
+           ocqa:hasRecord ?this .
+
+      ?repair a dicp:Activity ;
+              dicp:hasObject ?this .
+
+      FILTER NOT EXISTS {
+        ?inspection ocqa:hasInspectionObject ?this .
+      }
+    }
+  """ .
+
+
+ocqaRule:ScreedInspectionConditionShape
+  a sh:NodeShape ;
+  sh:property [
+    sh:path props:gewerk_simple ;
+    sh:hasValue "Betonarbeiten" ;
+  ] ;
+  sh:property [
+    sh:path [ sh:inversePath dicp:hasObject ] ;
+    sh:qualifiedValueShape [ sh:class ocqa-screed:FlatnessInspection ] ;
+    sh:qualifiedMaxCount 0 ;
+   ] ;
+    sh:property [
+     sh:path [ sh:inversePath dicp:hasObject ] ;
+     sh:qualifiedValueShape [ sh:class ocqa-screed:Screeding ] ;
+     sh:qualifiedMinCount 1 ;
+  ] ;
+    sh:property [
+     sh:path [ sh:inversePath dicp:hasObject ] ;
+     sh:qualifiedValueShape [ sh:class ocqa-screed:DryingScreed ] ;
+     sh:qualifiedMinCount 1 ;
+  ] .
+
+ocqaRule:PlanScreedCrackRemoveInspectionShape
+  a sh:SPARQLRule ;
+  sh:order 0 ;
+  #sh:condition ocqaRule:ScreedInspectionConditionShape;
+  sh:construct """
+    PREFIX dicp: <https://w3id.org/digitalconstruction/0.5/Processes#>
+    PREFIX ocqa: <https://w3id.org/ocqa#>
+    PREFIX ocqa-screed:      <https://w3id.org/ocqa-screed#> 
+
+    CONSTRUCT {
+
+        #?repairActivity dicp:hasObject $this.
+        ?ins a ocqa:Inspection,
+         ocqa-screed:CrackRepairInspection;
+           ocqa:hasInspectionObject $this.
+        ?repairActivity dicp:precedes ?ins.
+    }
+    WHERE {
+      # all screeding activities for this slab
+      ?repairActivity a dicp:Activity ;
+         dicp:hasObject $this .
+      BIND( IRI(CONCAT("https://example.org/ocqa/example#Inspection_", STRUUID())) AS ?ins )
+    }
+  """ .
+
+# ocqaRule:AssignCrackFillingInspectionCharacteristic
+#   a sh:SPARQLRule ;
+#   sh:order 1 ;
+#   sh:construct """
+#     PREFIX ocqa: <https://w3id.org/ocqa#>
+#     PREFIX ocqa-screed: <https://w3id.org/ocqa-screed#>
+
+#     CONSTRUCT {
+#       ?ins ocqa:hasInspCharacteristic ?blank.
+#     $this ocqa-screed:hasCrackWidthExtension ?blank1. 
+#       ?blank1 a ocqa-screed:Characteristic ;
+#  ocqa:hasAssignedCharacteristicValue ocqa-screed:AssignedWithExtension.
+#     $this ocqa-screed:hasTransverseSlotDistance ?blank2. 
+#       ?blank2 a ocqa-screed:Characteristic ;
+#  ocqa:hasAssignedCharacteristicValue ocqa-screed:AssignedTransverseSlot.
+
+#     }
+#     WHERE {
+#       $this ^ocqa:hasInspectionObject ?ins .
+#       ?ins a ocqa-screed:CrackRepairInspection .
+#       BIND( BNODE() AS ?blank )
+#     }
+#   """ .
+ocqaRule:AssignCrackFillingInspectionCharacteristic
+  a sh:SPARQLRule ;
+  sh:order 1 ;
+  sh:construct """
+    PREFIX ocqa:        <https://w3id.org/ocqa#>
+    PREFIX ocqa-screed: <https://w3id.org/ocqa-screed#>
+
+    CONSTRUCT {
+      ?ins ocqa:hasInspCharacteristic [
+        a ocqa-screed:Characteristic ;
+        ocqa:hasAssignedCharacteristicValue ocqa-screed:AssignedWithExtension
+      ] ;
+      ocqa:hasInspCharacteristic [
+        a ocqa-screed:Characteristic ;
+        ocqa:hasAssignedCharacteristicValue ocqa-screed:AssignedTransverseSlot
+      ] .
+    }
+    WHERE {
+      $this ^ocqa:hasInspectionObject ?ins .
+      ?ins a ocqa-screed:CrackRepairInspection .
+    }
+  """ .
+
+
+ocqaRule:AssignProcedureAndEquipment
+  a sh:SPARQLRule ;
+  sh:order 2 ;
+  sh:construct """
+    PREFIX ocqa: <https://w3id.org/ocqa#>
+    PREFIX ocqa-screed: <https://w3id.org/ocqa-screed#>
+    CONSTRUCT {
+      ?ins ocqa:hasInspectionProcedure ocqa-screed:SpiritLevelMeasurement .
+        ?ins ocqa:hasInspectionEquipment ocqa-screed:SpiritLevel, ocqa-screed:WedgeGauge.
+    }
+    WHERE {
+      $this ^ocqa:hasInspectionObject ?ins .
+      ?ins a ocqa-screed:CrackRepairInspection .
+    }
+  """ .
+
+ocqaRule:AssignTimeFrame
+  a sh:SPARQLRule ;
+  sh:order 3 ;
+    sh:condition [
+    sh:property [    # No timeframe already exist for inspection on this slab
+        sh:path ([ sh:inversePath ocqa:hasInspectionObject ] dicp:occupiesTimeInterval ) ;
+        sh:qualifiedValueShape [ sh:class ocqa-screed:Screeding ] ;
+        sh:maxCount 0
+    ]
+    ];
+  sh:construct """
+    PREFIX ocqa: <https://w3id.org/ocqa#>
+    PREFIX ocqa-screed: <https://w3id.org/ocqa-screed#>
+    PREFIX dicp: <https://w3id.org/digitalconstruction/0.5/Processes#>
+    PREFIX dice: <https://w3id.org/digitalconstruction/0.5/Entities#>
+    PREFIX time: <http://www.w3.org/2006/time#>
+    PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+    CONSTRUCT {
+      ?ins dicp:occupiesTimeInterval [
+        dice:hasStart [ time:inXSDDateTime ?start ] ;
+        dice:hasEnd   [ time:inXSDDateTime ?end   ]
+      ] .
+    }
+    WHERE {
+      $this ^ocqa:hasInspectionObject ?ins .
+      ?ins a ocqa-screed:FlatnessInspection .
+      ?scr a ocqa-screed:Screeding ; dicp:hasObject $this ;
+           dicp:occupiesTimeInterval/dice:hasEnd/time:inXSDDateTime ?endOfScreeding .
+    ?drying a ocqa-screed:DryingScreed ; dicp:hasObject $this ;
+            dicp:occupiesTimeInterval/dice:hasEnd/time:inXSDDateTime ?endOfScreedDrying .
+      BIND( (?endOfScreeding + "P7D"^^xsd:dayTimeDuration) AS ?start )
+      BIND( ?endOfScreedDrying AS ?end )
+    }
+  """ .
+
