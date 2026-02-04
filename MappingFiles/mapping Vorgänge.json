@@ -1,0 +1,92 @@
+{
+  "baseIRI": "http://example.com/ocqa/inspection#",
+  "namespaces": {
+    "opm": "https://w3id.org/opm#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "ocqa": "https://w3id.org/ocqa#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dica": "https://w3id.org/digitalconstruction/0.5/Agents",
+    "dice": "https://w3id.org/digitalconstruction/0.5/Entities#",
+    "dicp": "https://w3id.org/digitalconstruction/0.5/Processes#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "vann": "http://purl.org/vocab/vann/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "ocqa-cat": "https://w3id.org/ocqa/catalog#",
+    "ocqa-con": "https://w3id.org/ocqa/contract#",
+    "ocqa-reg": "https://w3id.org/ocqa/regulation#",
+    "ocqa-rule": "https://w3id.org/ocqa/rule#",
+    "dicv": "https://w3id.org/digitalconstruction/0.5/Variables#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "preceedes"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Precceding Activity",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasObject"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Bauteil",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Actitivty ID",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Activity"
+          }
+        }
+      ]
+    }
+  ]
+}

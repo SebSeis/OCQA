@@ -1,0 +1,1071 @@
+//20240809 create mapping schema with file name 20240908_mapping Inspection8.json
+{
+  "baseIRI": "http://example.com/ocqa/inspection#",
+  "namespaces": {
+    "opm": "https://w3id.org/opm#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "ocqa": "https://w3id.org/ocqa#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dica": "https://w3id.org/digitalconstruction/0.5/Agents",
+    "dice": "https://w3id.org/digitalconstruction/0.5/Entities#",
+    "dicp": "https://w3id.org/digitalconstruction/0.5/Processes#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "vann": "http://purl.org/vocab/vann/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "ocqa-cat": "https://w3id.org/ocqa/catalog#",
+    "ocqa-con": "https://w3id.org/ocqa/contract#",
+    "ocqa-reg": "https://w3id.org/ocqa/regulation#",
+    "ocqa-rule": "https://w3id.org/ocqa/rule#",
+    "dicv": "https://w3id.org/digitalconstruction/0.5/Variables#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasAgent"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Prüfer",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasLocation"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Verortung",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "ocqa",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasStatus"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Status",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "occupiesTimeInterval"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeIntervalInspection_\" + row.index",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasBuildingUnit"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Raum",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasObject"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "IFC ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "precedes"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Subsequent",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "ID",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ocqa",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Inspection"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "ocqa",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasInspection"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Prüfung",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "ocqa",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "InspectionPlan"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dica",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isResponsiblefor"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Prüfer",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dica",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Agent"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isLocationOf"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Verortung",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Location"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isBuildingObjectOf"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "IFC ID",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "BuildingObject"
+          }
+        },
+        {
+          "transformation": {
+            "expression": "\"https://w3id.org/ocqa#\" +cells[\"Bauteil\"].value",
+            "language": "grel"
+          },
+          "valueSource": {
+            "source": "row_index"
+          }
+        },
+        {
+          "transformation": {
+            "expression": "ifc",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "IfcElement"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isBuildingUnitOf"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Raum",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "BuildingUnit"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isBuildingUnitOf"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Raum-Nummer",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "BuildingUnit"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "occupiesTimeInterval"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeInterval_\" + cells[\"Activity ID\"].value",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasObject"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "IFC ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Activity ID",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dicp",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Activity"
+          }
+        },
+        {
+          "transformation": {
+            "expression": "\"https://w3id.org/ocqa#\" +\"Herstellen_\"  + cells[\"Bauteil\"].value",
+            "language": "grel"
+          },
+          "valueSource": {
+            "source": "row_index"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasStart"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeInstantStart_\" + cells[\"Activity ID\"].value",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasEnd"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeInstantEnd_\" + cells[\"Activity ID\"].value",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeInterval_\" + cells[\"Activity ID\"].value",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInterval"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasValue"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Start",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "dateTime"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeInstantStart_\" + cells[\"Activity ID\"].value",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInstant"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasValue"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Ende",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "dateTime"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeInstantEnd_\" + cells[\"Activity ID\"].value",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInstant"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasValue"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Prüfdatum",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "dateTime"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeInstanceStartInspection_\" + row.index",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInstant"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasStart"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeInstanceStartInspection_\" + row.index",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dice",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasEnd"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"TimeInstantEndInspection_\" + row.index",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeIntervalInspection_\" + row.index",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInterval"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasValue"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "PruefdatumEnde",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "dateTime"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "\"TimeInstanceEndInspection_\" + row.index",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dice",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "TimeInstant"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasSubActivity"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Meanwhile",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dicp",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "precedes"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ID",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "valueSource": {
+          "columnName": "Precedes",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    }
+  ]
+}
